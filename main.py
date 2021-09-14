@@ -13,7 +13,7 @@ def print_hi(name):
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     print_hi('PyCharm')
-    f = open('test', 'w')
+    f = open('/home/pi/Desktop/work/raspb-controller/test', 'w')
     f.close()
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
