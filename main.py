@@ -24,7 +24,7 @@ if __name__ == '__main__':
     ledY = LED(21)
     while True:
         sleep(0.1)
-        ledW.toggle()
-        ledY.toggle()
+        ledW.off()
+        ledY.off()
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
