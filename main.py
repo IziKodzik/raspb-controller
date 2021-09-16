@@ -23,8 +23,6 @@ if __name__ == '__main__':
     button = Button(2)
     button.wait_for_inactive()
     print('to loop')
-    while not button.is_active:
-        print()
     f.close()
     print('finito')
 
