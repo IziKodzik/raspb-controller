@@ -6,6 +6,7 @@ import random
 from time import sleep
 from datetime import datetime
 from gpiozero import Button
+
 from gpiozero import LED, Pin, Button, DigitalInputDevice
 
 
@@ -22,6 +23,9 @@ if __name__ == '__main__':
     f.write('nie mozna 2 narazryx?')
     print('to loopopo')
     f.close()
+    while True:
+        w = 1
+
     print('finito')
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
