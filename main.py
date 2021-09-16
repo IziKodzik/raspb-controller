@@ -25,7 +25,7 @@ if __name__ == '__main__':
     print('to loopopo')
     f.close()
     s = random.randrange(2000)
-    button.when_deactivated = sys.exit
+    # button.when_deactivated = sys.exit
     while True:
         print('qq')
         sleep(1)
