@@ -21,7 +21,7 @@ if __name__ == '__main__':
     f = open('/home/pi/Desktop/work/raspb-controller/test', 'w')
     f.write('zas p,roblem :TF:')
     button = Button(2)
-    print('to loop')
+    print('to loopopo')
     f.close()
     print('finito')
 
