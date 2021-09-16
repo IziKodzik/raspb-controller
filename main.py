@@ -19,7 +19,7 @@ if __name__ == '__main__':
     print_hi('PyCharm')
 
     f = open('/home/pi/Desktop/work/raspb-controller/test', 'w')
-    f.write('tera to ta XD')
+    f.write('zas problem :TF:')
     button = Button(2)
     print('to loop')
     f.close()
