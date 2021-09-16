@@ -18,13 +18,13 @@ def print_hi(name):
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     print_hi('PyCharm')
-
+    button = Button(2)
     f = open('/home/pi/Desktop/work/raspb-controller/test', 'w')
     f.write('nie mozna 2?')
     print('to loopopo')
     f.close()
     s = random.randrange(2000)
-    while True:
+    while button.is_active:
         print(s)
         sleep(5)
     print('finito')
