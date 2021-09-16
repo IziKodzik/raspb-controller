@@ -26,8 +26,7 @@ if __name__ == '__main__':
     f.close()
     s = random.randrange(2000)
     button.when_deactivated = sys.exit
-    while button.is_active:
+    while True:
         w = 1
-    print('finito')
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
