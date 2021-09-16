@@ -19,7 +19,7 @@ if __name__ == '__main__':
     print_hi('PyCharm')
 
     f = open('/home/pi/Desktop/work/raspb-controller/test', 'a')
-    f.write('ycki')
+    f.write('qaycki')
     button = Button(2)
     button.wait_for_inactive()
     print('to loop')
