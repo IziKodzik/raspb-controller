@@ -19,11 +19,6 @@ def print_hi(name):
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     print_hi('PyCharm')
-    f = open('/home/pi/Desktop/work/raspb-controller/test', 'w')
-    f.write('nie mozna 2?')
-    print('to loopopo')
-    f.close()
-    s = random.randrange(2000)
     # button.when_deactivated = sys.exit
     ledW = LED(20)
     ledY = LED(21)
