@@ -21,7 +21,7 @@ if __name__ == '__main__':
     f.write('cki')
     f.close()
     while True:
-        f = open(f'/home/pi/Desktop/work/raspb-controller/test{random.randrange(10000)}', 'w')
+        f = open(f'/home/pi/Desktop/work/raspb-controller/test', 'w')
         f.write(f'{datetime.now()}')
         f.close()
         sleep(10)
