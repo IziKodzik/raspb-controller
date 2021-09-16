@@ -4,8 +4,8 @@
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 import random
 from time import sleep
-from datetime import  datetime
-
+from datetime import datetime
+from gpiozero import Button
 from gpiozero import LED, Pin, Button, DigitalInputDevice
 
 
@@ -20,7 +20,8 @@ if __name__ == '__main__':
     f = open('/home/pi/Desktop/work/raspb-controller/test', 'w')
     f.write('cki')
     f.close()
-    while True:
+    button = Button(2)
+    while not button.is_active:
         f = open(f'/home/pi/Desktop/work/raspb-controller/test', 'w')
         f.write(f'{datetime.now()}')
         f.close()
