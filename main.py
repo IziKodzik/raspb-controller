@@ -14,7 +14,7 @@ def print_hi(name):
 if __name__ == '__main__':
     print_hi('PyCharm')
     f = open('/home/pi/Desktop/work/raspb-controller/test', 'w')
-    f.write('ck')
+    f.write('cki')
     f.close()
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
