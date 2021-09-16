@@ -21,10 +21,8 @@ if __name__ == '__main__':
     print_hi('PyCharm')
     # button.when_deactivated = sys.exit
     ledW = LED(20)
-    ledY = LED(21)
     while True:
         sleep(1)
         ledW.toggle()
-        ledY.toggle()
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
