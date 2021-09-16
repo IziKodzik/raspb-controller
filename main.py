@@ -27,6 +27,7 @@ if __name__ == '__main__':
     s = random.randrange(2000)
     button.when_deactivated = sys.exit
     while True:
-        w = 1
+        print('qq')
+        sleep(1)
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
