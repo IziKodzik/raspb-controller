@@ -26,7 +26,7 @@ if __name__ == '__main__':
     f.close()
     s = random.randrange(2000)
     # button.when_deactivated = sys.exit
-    ledW = LED(21)
+    ledW = LED(20)
     while True:
         ledW.on()
         sleep(2)
