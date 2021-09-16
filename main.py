@@ -19,6 +19,7 @@ if __name__ == '__main__':
     print_hi('PyCharm')
     print('to loop')
     button = Button(2)
+    button.wait_for_inactive()
     while not button.is_active:
         print(f'jews')
 
