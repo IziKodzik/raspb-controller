@@ -26,8 +26,11 @@ if __name__ == '__main__':
     f.close()
     s = random.randrange(2000)
     # button.when_deactivated = sys.exit
+    ledY = LED(20)
     while True:
-        print('qq')
-        sleep(5)
+        ledY.on()
+        sleep(2)
+        ledY.off()
+        sleep(2)
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
