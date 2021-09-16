@@ -3,6 +3,7 @@
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 import random
+import sys
 from time import sleep
 from datetime import datetime
 from gpiozero import Button
@@ -24,9 +25,9 @@ if __name__ == '__main__':
     print('to loopopo')
     f.close()
     s = random.randrange(2000)
+    button.when_deactivated = sys.exit
     while button.is_active:
         print(s)
-        sleep(5)
     print('finito')
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
