@@ -19,14 +19,13 @@ if __name__ == '__main__':
     print_hi('PyCharm')
     f = open('/home/pi/Desktop/work/raspb-controller/test', 'a')
     f.write('cki')
-    f.close()
     button = Button(2)
     button.wait_for_inactive()
     print('to loop')
     while not button.is_active:
         f.write(f'{datetime.now()}')
-        f.close()
         sleep(10)
+    f.close()
     print('finito')
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
