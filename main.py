@@ -19,7 +19,7 @@ if __name__ == '__main__':
     print_hi('PyCharm')
 
     f = open('/home/pi/Desktop/work/raspb-controller/test', 'w')
-    f.write('nie mozna 2 naraz?')
+    f.write('nie mozna 2 narazryx?')
     print('to loopopo')
     f.close()
     print('finito')
