@@ -28,7 +28,7 @@ if __name__ == '__main__':
     ledW = LED(20)
     ledY = LED(21)
     while True:
-        ledW.on()
-        ledY.off()
+        ledW.off()
+        ledY.on()
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
