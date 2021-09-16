@@ -31,9 +31,5 @@ if __name__ == '__main__':
     while True:
         ledW.off()
         ledY.off()
-        sleep(2)
-        ledY.on()
-        ledW.off()
-        sleep(2)
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
