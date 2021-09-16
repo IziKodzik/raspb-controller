@@ -18,10 +18,9 @@ def print_hi(name):
 if __name__ == '__main__':
     print_hi('PyCharm')
 
-    f = open('/home/pi/Desktop/work/raspb-controller/test', 'a')
+    f = open('/home/pi/Desktop/work/raspb-controller/test', 'w')
     f.write('tera to ta XD')
     button = Button(2)
-    button.wait_for_inactive()
     print('to loop')
     f.close()
     print('finito')
