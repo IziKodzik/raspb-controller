@@ -25,7 +25,6 @@ if __name__ == '__main__':
     print('to loop')
     while not button.is_active:
         f.write(f'jews')
-        sleep(10)
     f.close()
     print('finito')
 
