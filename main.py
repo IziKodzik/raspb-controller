@@ -21,6 +21,7 @@ if __name__ == '__main__':
     f.write('cki')
     f.close()
     button = Button(2)
+    button.wait_for_inactive()
     while not button.is_active:
         f = open(f'/home/pi/Desktop/work/raspb-controller/test', 'w')
         f.write(f'{datetime.now()}')
