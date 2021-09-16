@@ -17,12 +17,15 @@ def print_hi(name):
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     print_hi('PyCharm')
-    print('to loop')
+
+    f = open('/home/pi/Desktop/work/raspb-controller/test', 'a')
+    f.write('cki')
     button = Button(2)
     button.wait_for_inactive()
+    print('to loop')
     while not button.is_active:
-        print(f'jews')
-
+        print()
+    f.close()
     print('finito')
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
