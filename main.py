@@ -17,13 +17,12 @@ def print_hi(name):
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     print_hi('PyCharm')
-    f = open('/home/pi/Desktop/work/raspb-controller/test', 'w')
+    f = open('/home/pi/Desktop/work/raspb-controller/test', 'a')
     f.write('cki')
     f.close()
     button = Button(2)
     button.wait_for_inactive()
     while not button.is_active:
-        f = open(f'/home/pi/Desktop/work/raspb-controller/test', 'w')
         f.write(f'{datetime.now()}')
         f.close()
         sleep(10)
