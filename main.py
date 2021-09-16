@@ -28,6 +28,6 @@ if __name__ == '__main__':
     # button.when_deactivated = sys.exit
     while True:
         print('qq')
-        sleep(1)
+        sleep(5)
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
