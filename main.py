@@ -23,9 +23,10 @@ if __name__ == '__main__':
     f.write('nie mozna 2 narazryx?')
     print('to loopopo')
     f.close()
+    s = random.randrange(2000)
     while True:
-        w = 1
-
+        print(s)
+        sleep(5)
     print('finito')
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
