@@ -20,6 +20,6 @@ if __name__ == '__main__':
     l = LED(18)
     while True:
         if sensor.distance * 100 < 10:
-            l.off()
-        else:
             l.on()
+        else:
+            l.off()
