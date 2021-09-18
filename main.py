@@ -17,4 +17,4 @@ if __name__ == '__main__':
     radar_motor = StepperMotor(14, 15)
     while True:
         radar_motor.take_steps(200 * 8)
-        sleep(1)
+        sleep(3)
