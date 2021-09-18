@@ -16,6 +16,7 @@ if __name__ == '__main__':
     print_hi('PyCharm')
     ledW = LED(16)
     while True:
+        sleep(0.000000000000000001)
         ledW.toggle()
 
 
