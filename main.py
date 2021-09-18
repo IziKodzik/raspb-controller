@@ -14,12 +14,7 @@ def print_hi(name):
 
 if __name__ == '__main__':
     print_hi('PyCharm')
-    pin = LED(16)
-    pin.off()
+    radar_motor = StepperMotor(14, 15)
     while True:
-        for no in range(200 * 8):
-            pin.on()
-            sleep(0.0001)
-            pin.off()
-            sleep(0.0001)
+        radar_motor.take_steps(200 * 8)
         sleep(1)
