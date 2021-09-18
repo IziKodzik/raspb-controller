@@ -1,10 +1,11 @@
+
 import random
 import sys
 from time import sleep
 from datetime import datetime
 from gpiozero import Button
 
-from gpiozero import LED, Pin, Button, DigitalInputDevice
+from gpiozero import LED, DistanceSensor
 from StepperMotor import StepperMotor
 
 
@@ -13,7 +14,13 @@ def print_hi(name):
 
 
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    print_hi('Controller')
+    sensor = DistanceSensor(echo=23, trigger=24)
     radar_motor = StepperMotor(14, 15)
+    l = LED(18)
     while True:
         radar_motor.take_steps(200 * 8)
+        if sensor.distance < 10:
+            l.off()
+        else:
+            l.on()
