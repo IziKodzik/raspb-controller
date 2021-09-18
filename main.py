@@ -21,3 +21,4 @@ if __name__ == '__main__':
             sleep(0.0001)
             pin.off()
             sleep(0.0001)
+        sleep(1)
