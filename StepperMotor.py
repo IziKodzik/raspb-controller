@@ -22,7 +22,7 @@ class StepperMotor:
         for step_no in range(step_count):
             self.take_step()
 
-    def take_steps(self, step_count, brake_time):
-        for step_no in range(step_count):
-            self.take_step()
-            sleep(brake_time)
+    # def take_steps(self, step_count, brake_time):
+    #     for step_no in range(step_count):
+    #         self.take_step()
+    #         sleep(brake_time)
