@@ -1,3 +1,5 @@
+from time import sleep
+
 from gpiozero import LED
 
 
@@ -15,3 +17,4 @@ class StepperMotor:
     def take_steps(self, step_count):
         for step_no in range(step_count):
             self.take_step()
+            sleep(0.0000000000001)

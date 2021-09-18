@@ -16,8 +16,6 @@ def print_hi(name):
 if __name__ == '__main__':
     print_hi('PyCharm')
     radar_motor = StepperMotor(16)
-    while True:
-        radar_motor.take_step()
-        sleep(0.1)
+    radar_motor.take_steps(360)
 
 
