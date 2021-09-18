@@ -1,5 +1,3 @@
-
-
 import random
 import sys
 from time import sleep
@@ -9,6 +7,7 @@ from gpiozero import Button
 from gpiozero import LED, Pin, Button, DigitalInputDevice
 from StepperMotor import StepperMotor
 
+
 def print_hi(name):
     print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.g
 
@@ -16,6 +15,4 @@ def print_hi(name):
 if __name__ == '__main__':
     print_hi('PyCharm')
     radar_motor = StepperMotor(16)
-    radar_motor.take_steps(360)
-
-
+    radar_motor.take_steps(360 * 8)
