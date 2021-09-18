@@ -19,7 +19,6 @@ if __name__ == '__main__':
     radar_motor = StepperMotor(14, 15)
     l = LED(18)
     while True:
-        Thread(target=radar_motor.take_steps(200 * 8)).start()
         if sensor.distance * 100 < 10:
             l.off()
         else:
