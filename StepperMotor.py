@@ -9,10 +9,8 @@ class StepperMotor:
         self.pin = LED(pin_no)
 
     def take_step(self):
-        self.pin.off()
         self.pin.on()
         self.pin.off()
-        self.pin.on()
 
     def take_steps(self, step_count):
         for step_no in range(step_count):
