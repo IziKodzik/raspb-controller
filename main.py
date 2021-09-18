@@ -21,4 +21,6 @@ if __name__ == '__main__':
     while True:
         radar_motor.take_steps(200 * 8)
         l.on()
-        print(sensor.distance)
+        if sensor.distance == 3:
+            print(sensor.distance)
+
