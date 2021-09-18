@@ -16,10 +16,7 @@ class StepperMotor:
         sleep(0.0001)
 
     def change_dir(self):
-        self.dir_pin.off()
-        sleep(0.0001)
-        self.dir_pin.on()
-        sleep(0.0001)
+        self.dir_pin.toggle()
 
     def take_steps(self, step_count):
         for step_no in range(step_count):
