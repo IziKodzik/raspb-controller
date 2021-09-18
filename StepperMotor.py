@@ -26,4 +26,4 @@ class StepperMotor:
         for step_no in range(steps_amount):
             self.take_step()
             if brake_time is not None:
-                sleep(0.01)
+                sleep(brake_time)
