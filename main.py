@@ -15,8 +15,9 @@ def print_hi(name):
 if __name__ == '__main__':
     print_hi('PyCharm')
     pin = LED(16)
-    for no in range(200 * 8):
-        pin.on()
-        sleep(0.0001)
-        pin.off()
-        sleep(0.0001)
+    while True:
+        for no in range(200 * 8):
+            pin.on()
+            sleep(0.0001)
+            pin.off()
+            sleep(0.0001)
