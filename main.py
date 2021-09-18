@@ -14,7 +14,7 @@ def print_hi(name):
 
 if __name__ == '__main__':
     print_hi('PyCharm')
-    ledW = LED(21)
+    ledW = LED(20)
     while True:
         sleep(1)
 
