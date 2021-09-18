@@ -1,4 +1,3 @@
-
 import random
 import sys
 from time import sleep
@@ -20,7 +19,7 @@ if __name__ == '__main__':
     l = LED(18)
     while True:
         radar_motor.take_steps(200 * 8)
-        if sensor.distance < 10 * 100:
+        if sensor.distance * 100 < 10:
             l.off()
         else:
             l.on()
