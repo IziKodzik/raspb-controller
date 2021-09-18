@@ -22,8 +22,8 @@ class StepperMotor:
     #     for step_no in range(step_count):
     #         self.take_step()
 
-    def take_steps(self, step_count, brake_time=None):
-        for step_no in range(step_count):
+    def take_steps(self, steps_amount, brake_time=None):
+        for step_no in range(steps_amount):
             self.take_step()
             if brake_time is not None:
                 sleep(brake_time)

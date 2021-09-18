@@ -16,4 +16,4 @@ if __name__ == '__main__':
     print_hi('PyCharm')
     radar_motor = StepperMotor(14, 15)
     while True:
-        radar_motor.take_steps(200 * 8)
+        radar_motor.take_steps(200 * 8, 1)
