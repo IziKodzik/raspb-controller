@@ -18,11 +18,12 @@ class StepperMotor:
     def change_dir(self):
         self.dir_pin.toggle()
 
-    def take_steps(self, step_count):
-        for step_no in range(step_count):
-            self.take_step()
-
-    # def take_steps(self, step_count, brake_time):
+    # def take_steps(self, step_count):
     #     for step_no in range(step_count):
     #         self.take_step()
-    #         sleep(brake_time)
+
+    def take_steps(self, step_count, brake_time=None):
+        for step_no in range(step_count):
+            self.take_step()
+            if brake_time is not None:
+                sleep(brake_time)
