@@ -18,3 +18,4 @@ if __name__ == '__main__':
     while True:
         radar_motor.take_steps(200 * 8)
         sleep(3)
+        radar_motor.change_dir()
