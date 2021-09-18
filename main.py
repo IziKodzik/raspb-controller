@@ -18,7 +18,7 @@ if __name__ == '__main__':
     while True:
         for no in range(200 * 8):
             pin.on()
-            sleep(0.0001)
+            sleep(0.0000001)
             pin.off()
-            sleep(0.0001)
+            sleep(0.0000001)
         sleep(1)
