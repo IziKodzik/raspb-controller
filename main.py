@@ -17,5 +17,6 @@ if __name__ == '__main__':
     ledW = LED(16)
     while True:
         sleep(1)
+        ledW.toggle()
 
 
