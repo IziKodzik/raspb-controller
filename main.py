@@ -18,8 +18,8 @@ if __name__ == '__main__':
     sensor = DistanceSensor(echo=23, trigger=24)
     radar_motor = StepperMotor(14, 15)
     l = LED(18)
+    sensor.threshold = 10 / 100
     while True:
-        if sensor.distance * 100 < 10:
-            l.on()
-        else:
-            l.off()
+        l.off()
+        sensor.wait_for_active()
+        l.on()
