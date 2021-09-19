@@ -20,6 +20,4 @@ if __name__ == '__main__':
     l = LED(18)
     sensor.threshold = 10 / 100
     while True:
-        l.off()
-        sensor.wait_for_active()
         l.on()
