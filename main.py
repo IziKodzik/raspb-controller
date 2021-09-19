@@ -21,3 +21,4 @@ if __name__ == '__main__':
     sensor.threshold = 10 / 100
     while True:
         print('qxd')
+        print(sensor.distance)
