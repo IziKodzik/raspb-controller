@@ -22,5 +22,6 @@ if __name__ == '__main__':
     while True:
         if sensor.distance < 0.1:
             l.on()
+            print('???')
         else:
             l.off()
