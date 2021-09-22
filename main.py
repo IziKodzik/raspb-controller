@@ -15,7 +15,7 @@ def print_hi(name):
 
 if __name__ == '__main__':
     print_hi('Controller')
-    l = LED(18)
+    l = LED(15)
     while True:
         l.on()
         sleep(0.25)
