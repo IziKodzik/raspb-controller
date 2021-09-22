@@ -13,6 +13,6 @@ if __name__ == '__main__':
     while True:
         left_motor.go_with_speed(0.3)
         sleep(1)
-        left_motor.go_with_speed(1)
+        left_motor.go_with_speed(0.6)
         sleep(1)
 
