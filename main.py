@@ -9,5 +9,8 @@ from StepperMotor import StepperMotor
 
 if __name__ == '__main__':
     print('controller running')
-    left_motor = Motor(14)
+    left_motor = Motor(15)
+    left_motor.go_with_speed(0.3)
+    sleep(10)
     left_motor.pwm_pin.off()
+
