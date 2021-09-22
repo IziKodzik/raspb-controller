@@ -15,5 +15,5 @@ if __name__ == '__main__':
         left_motor.on()
         sleep(1)
         left_motor.off()
-        sleep(1)
+        sleep(0.5)
 
