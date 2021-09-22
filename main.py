@@ -11,11 +11,3 @@ if __name__ == '__main__':
     print('controller running')
     left_motor = Motor(15)
     left_motor.pwm_pin.off()
-    while True:
-        for i in range(0, 100):
-            left_motor.pwm_pin.value = i / 100.0
-            sleep(0.01)
-        sleep(1)
-        for i in range(0, 100):
-            left_motor.pwm_pin.value = (100 - i) / 100.0
-            sleep(0.01)
