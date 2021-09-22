@@ -9,7 +9,7 @@ from StepperMotor import StepperMotor
 
 if __name__ == '__main__':
     print('controller running')
-    left_motor = PWMLED(15)
+    left_motor = PWMLED(18)
     while True:
         left_motor.on()
         sleep(1)
