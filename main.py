@@ -4,13 +4,15 @@ from threading import Thread
 from time import sleep
 from datetime import datetime
 from Motor import Motor
-from gpiozero import PWMLED, DistanceSensor
+from gpiozero import LED, PWMLED, DistanceSensor
 from StepperMotor import StepperMotor
 
 if __name__ == '__main__':
     print('controller running')
-    left_motor = Motor(8)
-    left_motor.go_with_speed(0.01)
-    sleep(4)
-    left_motor.pwm_pin.off()
+    pwma = PWMLED(14)
+    pwma.value = 0.5
+    ao2 = LED(15)
+    ao2.on()
+    ao1 = LED(18)
+    ao1.off()
 
