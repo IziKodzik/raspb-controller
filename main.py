@@ -12,4 +12,6 @@ if __name__ == '__main__':
     left_motor = PWMLED(18)
     left_motor.off()
     while True:
-        left_motor.value = random.randrange(0, 100) / 100.0
+        for i in range(0, 100):
+            left_motor.value = i / 100.0
+            sleep(0.01)
