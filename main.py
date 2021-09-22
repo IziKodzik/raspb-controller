@@ -11,5 +11,8 @@ if __name__ == '__main__':
     print('controller running')
     left_motor = Motor(15)
     while True:
-        left_motor.pwm_pin.on()
+        left_motor.go_with_speed(0.3)
+        sleep(1)
+        left_motor.go_with_speed(1)
+        sleep(1)
 
