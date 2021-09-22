@@ -14,4 +14,5 @@ if __name__ == '__main__':
         left_motor.go_with_speed(0.3)
         sleep(1)
         left_motor.go_with_speed(1)
+        sleep(1)
 
