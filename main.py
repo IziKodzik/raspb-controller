@@ -10,5 +10,6 @@ from StepperMotor import StepperMotor
 if __name__ == '__main__':
     print('controller running')
     led = LED(15)
-    led.on()
+    while True:
+        led.on()
 
