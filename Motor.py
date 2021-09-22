@@ -7,5 +7,4 @@ class Motor:
         self.pwm_pin = PWMLED(pwm_pin)
 
     def go_with_speed(self, speed):
-        self.pwm_pin.value(speed)
-
+        self.pwm_pin.value = speed
