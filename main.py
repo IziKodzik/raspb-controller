@@ -15,3 +15,7 @@ if __name__ == '__main__':
         for i in range(0, 100):
             left_motor.value = i / 100.0
             sleep(0.01)
+        sleep(1)
+        for i in range(0, 100):
+            left_motor.value = (100 - i) / 100.0
+            sleep(0.01)
