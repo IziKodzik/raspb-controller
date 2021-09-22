@@ -14,3 +14,4 @@ if __name__ == '__main__':
         for i in range(0, 100):
             led.value = i / 100.0
             sleep(0.01)
+        led.off()
