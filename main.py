@@ -4,20 +4,12 @@ from threading import Thread
 from time import sleep
 from datetime import datetime
 from gpiozero import Button
-
+from Motor import Motor
 from gpiozero import LED, DistanceSensor
 from StepperMotor import StepperMotor
 
-
-def print_hi(name):
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.g
-
-
 if __name__ == '__main__':
-    print_hi('Controller')
-    l = LED(15)
+    print('controller running')
+    left_motor = Motor(16)
     while True:
-        l.on()
-        sleep(1)
-        l.off()
-        sleep(0.25)
+        left_motor.pwm_pin.pulse()
