@@ -15,14 +15,9 @@ def print_hi(name):
 
 if __name__ == '__main__':
     print_hi('Controller')
-    sensor = DistanceSensor(echo=23, trigger=24)
-    radar_motor = StepperMotor(14, 15)
     l = LED(18)
-    sensor.threshold = 10 / 100
     while True:
-        # print(sensor.distance)
-        if sensor.distance < 0.1:
-            l.on()
-            print('???')
-        else:
-            l.off()
+        l.on()
+        sleep(0.25)
+        l.off()
+        sleep(0.25)
