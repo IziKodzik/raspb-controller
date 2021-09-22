@@ -18,6 +18,6 @@ if __name__ == '__main__':
     l = LED(15)
     while True:
         l.on()
-        sleep(0.25)
+        sleep(1)
         l.off()
         sleep(0.25)
