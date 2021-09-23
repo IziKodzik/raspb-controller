@@ -12,6 +12,4 @@ if __name__ == '__main__':
     print('controller running')
     l = LED(18)
     l.on()
-    sleep(5)
-    while True:
-        l.on()
+    sleep(10)
