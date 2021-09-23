@@ -14,7 +14,7 @@ if __name__ == '__main__':
     i = LED(23)
     j = LED(24)
     i.on()
-    j.off()
+    j.on()
     pwm.on()
 
     sleep(10)
