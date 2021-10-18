@@ -22,8 +22,8 @@ if __name__ == '__main__':
         sleep(0.3)
 
         for x in range(100):
-            right_motor.go_with_speed((60 - x) / 100.0)
-            left_motor.go_with_speed((60 - x) / 100.0)
+            right_motor.go_with_speed((100 - x) / 100.0)
+            left_motor.go_with_speed((100 - x) / 100.0)
             sleep(0.1)
         right_motor.toggle_direction()
         left_motor.toggle_direction()
