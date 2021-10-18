@@ -12,6 +12,6 @@ if __name__ == '__main__':
     print('controller running')
     pwm = LED(18)
     pwm.on()
-    sleep(2000)
+    sleep(1)
     pwm.value = 10
-    sleep(2000)
+    sleep(1)
