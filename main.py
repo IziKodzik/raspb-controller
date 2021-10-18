@@ -15,12 +15,13 @@ if __name__ == '__main__':
     left_motor.toggle_direction()
 
     while True:
-        for x in range(60):
+        for x in range(100):
             right_motor.go_with_speed(x / 100.0)
             left_motor.go_with_speed(x / 100.0)
             sleep(0.1)
         sleep(0.3)
-        for x in range(60):
+
+        for x in range(100):
             right_motor.go_with_speed((60 - x) / 100.0)
             left_motor.go_with_speed((60 - x) / 100.0)
             sleep(0.1)
