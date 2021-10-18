@@ -13,3 +13,5 @@ if __name__ == '__main__':
     pwm = LED(18)
     pwm.on()
     sleep(2000)
+    pwm.value = 10
+    sleep(2000)
