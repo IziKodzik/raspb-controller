@@ -18,5 +18,8 @@ if __name__ == '__main__':
         for x in range(100):
             pwm.value = x/100.0
             sleep(0.1)
+        ain1.toggle()
+        ain2.toggle()
+
 
 
