@@ -17,7 +17,7 @@ if __name__ == '__main__':
     while True:
         for x in range(100):
             pwm.value = x/100.0
-            sleep(0.1)
+            sleep(0.01)
         ain1.toggle()
         ain2.toggle()
 
