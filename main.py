@@ -13,8 +13,8 @@ if __name__ == '__main__':
     pwm = LED(18)
     while True:
         pwm.value = 0.3
-        pwm.on()
         sleep(1)
         pwm.value = 1
-        pwm.on()
         sleep(1)
+
+
