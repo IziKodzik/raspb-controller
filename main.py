@@ -10,9 +10,8 @@ from StepperMotor import StepperMotor
 
 if __name__ == '__main__':
     print('controller running')
-    motor = Motor(18, 15, 14)
+    right_motor = Motor(18, 15, 14)
+    left_motor = Motor(22, 27, 17)
     while True:
-        motor.go_with_speed(1)
-
-
-
+        right_motor.go_with_speed(0.6)
+        left_motor.go_with_speed(0.3)
