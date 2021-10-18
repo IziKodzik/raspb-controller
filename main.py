@@ -17,7 +17,8 @@ if __name__ == '__main__':
     right_motor.go_with_speed(0.6)
     left_motor.go_with_speed(0.6)
     while True:
-        sleep(3)
         right_motor.toggle_direction()
         left_motor.toggle_direction()
+        sleep(1)
+
 
