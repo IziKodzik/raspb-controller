@@ -12,9 +12,9 @@ if __name__ == '__main__':
     print('controller running')
     pwm = LED(18)
     while True:
-        pwm.value = 100
+        pwm.value = 0.3
         pwm.on()
         sleep(1)
-        pwm.value = 10
+        pwm.value = 1
         pwm.on()
         sleep(1)
