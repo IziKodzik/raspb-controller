@@ -11,6 +11,7 @@ from StepperMotor import StepperMotor
 if __name__ == '__main__':
     print('controller running')
     pwm = LED(18)
-
+    while True:
+        pwm.value = 0.5
 
 
