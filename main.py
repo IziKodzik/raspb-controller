@@ -14,11 +14,11 @@ if __name__ == '__main__':
     left_motor = Motor(22, 27, 17)
     left_motor.toggle_direction()
 
-    right_motor.go_with_speed(1)
-    left_motor.go_with_speed(1)
+    right_motor.go_with_speed(0.6)
+    left_motor.go_with_speed(0.6)
     while True:
         right_motor.toggle_direction()
         left_motor.toggle_direction()
-        sleep(1)
+        sleep(0.3)
 
 
