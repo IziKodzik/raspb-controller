@@ -20,7 +20,7 @@ def get_dir():
 
 if __name__ == '__main__':
     global dir
-    dir = 'p'
+
     stdscr = curses.initscr()
     t = threading.Thread(target=get_dir)
     t.setDaemon(True)
