@@ -11,11 +11,30 @@ def isData():
     return select.select([sys.stdin], [], [], 0) == ([sys.stdin], [], [])
 
 
+def met():
+    if c == ord('w'):
+        right_motor.go_forward()
+        left_motor.go_forward()
+
+    elif c == ord('s'):
+        right_motor.go_backward()
+        left_motor.go_backward()
+    elif c == ord('a'):
+        right_motor.go_backward()
+        left_motor.go_forward()
+    elif c == ord('d'):
+        left_motor.go_backward()
+        right_motor.go_forward()
+    else:
+        right_motor.go_with_speed(0)
+        left_motor.go_with_speed(0)
+
+
 if __name__ == '__main__':
     print('controller running')
     stdscr = curses.initscr()
     curses.noecho()
-    stdscr.nodelay(1)
+    stdscr.nodelay(True)
     right_motor = Motor(18, 15, 14)
     left_motor = Motor(22, 27, 17)
 
@@ -25,22 +44,6 @@ if __name__ == '__main__':
 
         while True:
             c = stdscr.getch()
-            if c == ord('w'):
-                right_motor.go_forward()
-                left_motor.go_forward()
-
-            elif c == ord('s'):
-                right_motor.go_backward()
-                left_motor.go_backward()
-            elif c == ord('a'):
-                right_motor.go_backward()
-                left_motor.go_forward()
-            elif c == ord('d'):
-                left_motor.go_backward()
-                right_motor.go_forward()
-            else:
-                right_motor.go_with_speed(0)
-                left_motor.go_with_speed(0)
 
 
 
