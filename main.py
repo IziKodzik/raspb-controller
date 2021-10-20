@@ -27,10 +27,13 @@ if __name__ == '__main__':
                 if c == 'w':
                     right_motor.go_forward()
                     left_motor.go_forward()
-                if c == 's':
+
+                elif c == 's':
                     right_motor.go_backward()
                     left_motor.go_backward()
-
+                else:
+                    right_motor.go_with_speed(0)
+                    left_motor.go_with_speed(0)
 
     finally:
         termios.tcsetattr(sys.stdin, termios.TCSADRAIN, old_settings)
