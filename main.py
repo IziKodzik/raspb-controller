@@ -15,6 +15,7 @@ from StepperMotor import StepperMotor
 
 if __name__ == '__main__':
     print('controller running')
+    pygame.init()
     right_motor = Motor(18, 15, 14)
     left_motor = Motor(22, 27, 17)
     left_motor.toggle_direction()
