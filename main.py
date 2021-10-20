@@ -34,6 +34,7 @@ if __name__ == '__main__':
                 else:
                     right_motor.go_with_speed(0)
                     left_motor.go_with_speed(0)
+                print(c)
 
     finally:
         termios.tcsetattr(sys.stdin, termios.TCSADRAIN, old_settings)
