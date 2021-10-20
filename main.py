@@ -25,17 +25,17 @@ if __name__ == '__main__':
 
         while True:
             c = stdscr.getch()
-            if c == 'w':
+            if c == ord('w'):
                 right_motor.go_forward()
                 left_motor.go_forward()
 
-            elif c == 's':
+            elif c == ord('s'):
                 right_motor.go_backward()
                 left_motor.go_backward()
-            elif c == 'a':
+            elif c == ord('a'):
                 right_motor.go_backward()
                 left_motor.go_forward()
-            elif c == 'd':
+            elif c == ord('d'):
                 left_motor.go_backward()
                 right_motor.go_forward()
             else:
