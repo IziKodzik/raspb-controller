@@ -3,7 +3,11 @@ import sys
 from threading import Thread
 from time import sleep
 from datetime import datetime
+
+import pygame.key
+
 from Motor import Motor
+from pygame.locals import *
 import RPi.GPIO
 from gpiozero import LED, PWMLED, DistanceSensor
 from StepperMotor import StepperMotor
@@ -17,4 +21,5 @@ if __name__ == '__main__':
     left_motor.go_with_speed(1)
     right_motor.go_with_speed(1)
     while True:
-        x = 1
+        keys = pygame.key.get_pressed()
+        print(keys)
