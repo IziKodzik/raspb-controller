@@ -1,5 +1,6 @@
 import curses
 import threading
+from time import sleep
 
 from Motor import Motor
 from Robot import Robot
@@ -27,6 +28,5 @@ if __name__ == '__main__':
     t.start()
 
     while deer != 'x':
-        print(deer)
-
+        sleep(1)
     print('Bye!')
