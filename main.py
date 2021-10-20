@@ -12,6 +12,7 @@ def prepare_robot():
 
 
 def get_dir():
+    print('listenin')
     while True:
         dir = stdscr.getkey()
         if ord(dir) > 0:
@@ -29,6 +30,5 @@ if __name__ == '__main__':
     while True:
         if dir == 'x':
             break
-        print('negro')
 
     print('Bye!')
