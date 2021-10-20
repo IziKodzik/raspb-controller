@@ -1,47 +1,21 @@
 import select
+from time import sleep
 
 from Motor import Motor
-import sys, pygame
-import curses
-import termios
-import tty
-
-
-def isData():
-    return select.select([sys.stdin], [], [], 0) == ([sys.stdin], [], [])
-
-
-def met():
-    if c == ord('w'):
-        right_motor.go_forward()
-        left_motor.go_forward()
-
-    elif c == ord('s'):
-        right_motor.go_backward()
-        left_motor.go_backward()
-    elif c == ord('a'):
-        right_motor.go_backward()
-        left_motor.go_forward()
-    elif c == ord('d'):
-        left_motor.go_backward()
-        right_motor.go_forward()
-    else:
-        right_motor.go_with_speed(0)
-        left_motor.go_with_speed(0)
-
+from Robot import Robot
 
 if __name__ == '__main__':
     print('controller running')
-    stdscr = curses.initscr()
-    curses.noecho()
-    stdscr.nodelay(True)
     right_motor = Motor(18, 15, 14)
     left_motor = Motor(22, 27, 17)
-
+    robot = Robot(left_motor, right_motor)
     while True:
-        c = stdscr.getch()
-        if c != -1:
-            print('yee')
-        else:
-            print('nah')
+        robot.go_forward()
+        sleep(1.5)
+        robot.go_backward()
+        sleep(1.5)
+        robot.turn_left()
+        sleep(1.5)
+        robot.turn_right()
+        sleep(1.5)
 
