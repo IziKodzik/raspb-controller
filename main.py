@@ -22,7 +22,7 @@ def get_dir(dee):
 if __name__ == '__main__':
     deer = 'p'
     stdscr = curses.initscr()
-    t = threading.Thread(target=get_dir, args=("Thread-1", deer))
+    t = threading.Thread(target=get_dir, args=deer)
     t.setDaemon(True)
     t.start()
 
