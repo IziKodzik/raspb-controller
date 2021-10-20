@@ -15,7 +15,7 @@ if __name__ == '__main__':
     print('controller running')
     stdscr = curses.initscr()
     curses.noecho()
-    stdscr.nodelay()
+    stdscr.nodelay(1)
     right_motor = Motor(18, 15, 14)
     left_motor = Motor(22, 27, 17)
 
