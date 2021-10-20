@@ -27,6 +27,6 @@ if __name__ == '__main__':
     t.start()
 
     while deer != 'x':
-        1
+        print(deer)
 
     print('Bye!')
