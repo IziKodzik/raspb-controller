@@ -22,20 +22,24 @@ if __name__ == '__main__':
 
         while True:
             c = 0
-            if isData():
-                c = sys.stdin.read(1)
-                if c == 'w':
-                    right_motor.go_forward()
-                    left_motor.go_forward()
+            c = sys.stdin.read(1)
+            if c == 'w':
+                right_motor.go_forward()
+                left_motor.go_forward()
 
-                elif c == 's':
-                    right_motor.go_backward()
-                    left_motor.go_backward()
-
-                print(c)
+            elif c == 's':
+                right_motor.go_backward()
+                left_motor.go_backward()
+            elif c == 'a':
+                right_motor.go_backward()
+                left_motor.go_forward()
+            elif c == 'd':
+                left_motor.go_backward()
+                right_motor.go_forward()
             else:
                 right_motor.go_with_speed(0)
                 left_motor.go_with_speed(0)
+            print(c)
 
     finally:
         termios.tcsetattr(sys.stdin, termios.TCSADRAIN, old_settings)
