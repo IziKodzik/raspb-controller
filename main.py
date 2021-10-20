@@ -31,10 +31,11 @@ if __name__ == '__main__':
                 elif c == 's':
                     right_motor.go_backward()
                     left_motor.go_backward()
-                else:
-                    right_motor.go_with_speed(0)
-                    left_motor.go_with_speed(0)
+
                 print(c)
+            else:
+                right_motor.go_with_speed(0)
+                left_motor.go_with_speed(0)
 
     finally:
         termios.tcsetattr(sys.stdin, termios.TCSADRAIN, old_settings)
