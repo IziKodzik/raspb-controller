@@ -18,9 +18,11 @@ class Motor:
         self.dir_pin1.toggle()
 
     def go_forward(self):
+        self.go_with_speed(1)
         self.dir_pin0.on()
         self.dir_pin1.off()
 
     def go_backward(self):
+        self.go_with_speed(1)
         self.dir_pin0.off()
         self.dir_pin1.on()
