@@ -38,14 +38,10 @@ if __name__ == '__main__':
     right_motor = Motor(18, 15, 14)
     left_motor = Motor(22, 27, 17)
 
-    old_settings = termios.tcgetattr(sys.stdin)
-    try:
-        tty.setcbreak(sys.stdin.fileno())
+    while True:
+        c = stdscr.getch()
+        if c != -1:
+            print('yee')
+        else:
+            print('nah')
 
-        while True:
-            c = stdscr.getch()
-
-
-
-    finally:
-        termios.tcsetattr(sys.stdin, termios.TCSADRAIN, old_settings)
