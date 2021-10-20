@@ -2,6 +2,7 @@ import select
 
 from Motor import Motor
 import sys, pygame
+import curses
 import termios
 import tty
 
@@ -12,7 +13,9 @@ def isData():
 
 if __name__ == '__main__':
     print('controller running')
-    pygame.init()
+    stdscr = curses.initscr()
+    curses.noecho()
+    stdscr.nodelay()
     right_motor = Motor(18, 15, 14)
     left_motor = Motor(22, 27, 17)
 
@@ -21,8 +24,7 @@ if __name__ == '__main__':
         tty.setcbreak(sys.stdin.fileno())
 
         while True:
-            c = 0
-            c = sys.stdin.read(1)
+            c = stdscr.getch()
             if c == 'w':
                 right_motor.go_forward()
                 left_motor.go_forward()
