@@ -24,16 +24,16 @@ if __name__ == '__main__':
             c = 0
             if isData():
                 c = sys.stdin.read(1)
-                # if c == 'w':
-                #     right_motor.go_forward()
-                #     left_motor.go_forward()
-                #
-                # elif c == 's':
-                #     right_motor.go_backward()
-                #     left_motor.go_backward()
-                # else:
-                #     right_motor.go_with_speed(0)
-                #     left_motor.go_with_speed(0)
+                if c == 'w':
+                    right_motor.go_forward()
+                    left_motor.go_forward()
+
+                elif c == 's':
+                    right_motor.go_backward()
+                    left_motor.go_backward()
+                else:
+                    right_motor.go_with_speed(0)
+                    left_motor.go_with_speed(0)
                 print(c)
 
     finally:
