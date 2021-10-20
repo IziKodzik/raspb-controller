@@ -1,5 +1,5 @@
-
 import curses
+import threading
 
 from Motor import Motor
 from Robot import Robot
@@ -11,14 +11,24 @@ def prepare_robot():
     return Robot(left_motor, right_motor)
 
 
-if __name__ == '__main__':
-    stdscr = curses.initscr()
+def get_dir():
     while True:
-        x = stdscr.getkey()
-        if ord(x) > 0:
-            print('You pressed the', x, 'key.')
-        print('negro')
-        if x == 27:
+        dir = stdscr.getkey()
+        if ord(dir) > 0:
+            print('You pressed the', dir, 'key.')
+
+
+if __name__ == '__main__':
+    global dir
+    dir = 'p'
+    stdscr = curses.initscr()
+    t = threading.Thread(target=get_dir)
+    t.setDaemon(True)
+    t.start()
+
+    while True:
+        if dir == 'x':
             break
+        print('negro')
 
     print('Bye!')
