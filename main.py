@@ -1,21 +1,24 @@
-import select
-from time import sleep
+
+import curses
 
 from Motor import Motor
 from Robot import Robot
 
-if __name__ == '__main__':
-    print('controller running')
+
+def prepare_robot():
     right_motor = Motor(18, 15, 14)
     left_motor = Motor(22, 27, 17)
-    robot = Robot(left_motor, right_motor)
-    while True:
-        robot.go_forward()
-        sleep(1.5)
-        robot.go_backward()
-        sleep(1.5)
-        robot.turn_left()
-        sleep(1.5)
-        robot.turn_right()
-        sleep(1.5)
+    return Robot(left_motor, right_motor)
 
+
+if __name__ == '__main__':
+    stdscr = curses.initscr()
+    while True:
+        x = stdscr.getkey()
+        if x > 0:
+            print('You pressed the', x, 'key.')
+
+        if x == 27:
+            break
+
+    print('Bye!')
