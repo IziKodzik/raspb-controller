@@ -15,7 +15,7 @@ if __name__ == '__main__':
     stdscr = curses.initscr()
     while True:
         x = stdscr.getkey()
-        if x > 0:
+        if ord(x) > 0:
             print('You pressed the', x, 'key.')
 
         if x == 27:
