@@ -15,3 +15,5 @@ if __name__ == '__main__':
 
     left_motor.go_with_speed(1)
     right_motor.go_with_speed(1)
+    while True:
+        x = 1
