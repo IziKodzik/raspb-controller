@@ -17,7 +17,7 @@ if __name__ == '__main__':
         x = stdscr.getkey()
         if ord(x) > 0:
             print('You pressed the', x, 'key.')
-
+        print('negro')
         if x == 27:
             break
 
