@@ -16,8 +16,7 @@ def get_dir():
     while True:
         dir = stdscr.getkey()
         if ord(dir) > 0:
-            print('You pressed the', dir, 'key.')
-
+            print(dir == 'x')
 
 if __name__ == '__main__':
     global dir
