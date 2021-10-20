@@ -11,23 +11,22 @@ def prepare_robot():
     return Robot(left_motor, right_motor)
 
 
-def get_dir():
+def get_dir(dee):
     print('listenin')
     while True:
-        dir = stdscr.getkey()
-        if ord(dir) > 0:
-            print(dir == 'x')
+        dee = stdscr.getkey()
+        if ord(dee) > 0:
+            print(dee == 'x')
+
 
 if __name__ == '__main__':
-    global dir
-
+    deer = 'p'
     stdscr = curses.initscr()
-    t = threading.Thread(target=get_dir)
+    t = threading.Thread(target=get_dir, args=("Thread-1", deer))
     t.setDaemon(True)
     t.start()
 
-    while True:
-        if dir == 'x':
-            break
+    while deer != 'x':
+        1
 
     print('Bye!')
