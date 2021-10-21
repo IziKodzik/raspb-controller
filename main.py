@@ -13,7 +13,7 @@ def prepare_robot():
 
 
 if __name__ == '__main__':
-    collision_sensor = DistanceSensor(echo=2, trigger=3)
+    collision_sensor = DistanceSensor(echo=23, trigger=24)
     while True:
         print(collision_sensor.distance * 100)
         sleep(1)
