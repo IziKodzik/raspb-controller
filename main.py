@@ -24,4 +24,5 @@ if __name__ == '__main__':
     collision_sensor.threshold_distance = 0.05
     collision_sensor.when_deactivated = partial(test, 2)
     while True:
+        sleep(1)
         print(collision_sensor.distance)
