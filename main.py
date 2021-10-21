@@ -19,7 +19,7 @@ def prepare_robot():
 if __name__ == '__main__':
     collision_sensor = DistanceSensor(echo=23, trigger=24)
     collision_sensor.threshold_distance = 0.05
-    collision_sensor.when_activated = test
+    collision_sensor.when_deactivated = test
     while True:
-        print('Negro')
+        print(collision_sensor.distance)
         sleep(1)
