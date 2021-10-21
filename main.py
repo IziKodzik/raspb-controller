@@ -1,4 +1,5 @@
 import sys
+from threading import Thread
 from time import sleep
 from gpiozero.pins.pigpio import PiGPIOFactory
 from gpiozero import DistanceSensor
@@ -8,8 +9,8 @@ from Robot import Robot
 from functools import partial
 
 
-def test(x):
-    print(f'test {x}')
+def test(proc):
+    proc = False
 
 
 def prepare_robot():
@@ -19,9 +20,11 @@ def prepare_robot():
 
 
 if __name__ == '__main__':
+    proceed = True
+
     collision_sensor = DistanceSensor(echo=23, trigger=24, pin_factory=PiGPIOFactory())
     collision_sensor.threshold_distance = 0.05
-    collision_sensor.when_deactivated = partial(test, 2)
-    while True:
+    collision_sensor.when_deactivated = partial(test, proceed)
+    while proceed:
         sleep(1)
         print(collision_sensor.distance)
