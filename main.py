@@ -6,6 +6,10 @@ from Motor import Motor
 from Robot import Robot
 
 
+def test():
+    print('test')
+
+
 def prepare_robot():
     right_motor = Motor(18, 15, 14)
     left_motor = Motor(22, 27, 17)
@@ -14,6 +18,8 @@ def prepare_robot():
 
 if __name__ == '__main__':
     collision_sensor = DistanceSensor(echo=23, trigger=24)
+    collision_sensor.threshold_distance = 0.05
+    collision_sensor.when_activated = test
     while True:
-        print(collision_sensor.distance * 100)
+        print('Negro')
         sleep(1)
