@@ -1,6 +1,6 @@
-import curses
-import threading
 from time import sleep
+
+from gpiozero import DistanceSensor
 
 from Motor import Motor
 from Robot import Robot
@@ -12,22 +12,8 @@ def prepare_robot():
     return Robot(left_motor, right_motor)
 
 
-def get_dir(dee):
-    print('listenin')
-    while True:
-        dee = stdscr.getkey()
-        if ord(dee) > 0:
-            print(dee == 'x')
-
-
 if __name__ == '__main__':
-    deer = 'p'
-    stdscr = curses.initscr()
-    t = threading.Thread(target=get_dir, args=deer)
-    t.setDaemon(True)
-    t.start()
-
-    while deer != 'x':
-        print(deer)
+    collision_sensor = DistanceSensor(echo=2, trigger=3)
+    while True:
+        print(collision_sensor.distance * 100)
         sleep(1)
-    print('Bye!')
