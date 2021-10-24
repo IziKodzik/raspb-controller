@@ -6,8 +6,12 @@ from gpiozero import DistanceSensor, LED
 from Motor import Motor
 from Robot import Robot
 from functools import partial
-
-
+# 14 - yellow with black
+# 15 - green
+# 16 - black
+# 17 - blue
+# 27 - red
+# 22 - yellow
 
 def prepare_robot():
     right_motor = Motor(14, 15, 18)
@@ -16,7 +20,7 @@ def prepare_robot():
 
 
 if __name__ == '__main__':
-    led = LED(18)
-    led.on()
+    bot = prepare_robot()
+    bot.go_forward()
     while True:
         1
