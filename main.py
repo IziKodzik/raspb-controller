@@ -18,5 +18,5 @@ def prepare_robot():
 if __name__ == '__main__':
     led = LED(15)
     led.on()
-    sleep(100)
-
+    while True:
+        1
