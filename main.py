@@ -8,7 +8,7 @@ from Robot import Robot
 from functools import partial
 # 14 - yellow with black
 # 15 - green
-# 16 - black
+# 18 - black
 # 17 - blue
 # 27 - red
 # 22 - yellow
@@ -21,6 +21,6 @@ def prepare_robot():
 
 if __name__ == '__main__':
     bot = prepare_robot()
+    sleep(3)
     bot.go_forward()
-    while True:
-        1
+    sleep(10)
