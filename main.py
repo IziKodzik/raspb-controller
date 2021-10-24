@@ -1,16 +1,12 @@
 import sys
 from threading import Thread
 from time import sleep
-from gpiozero.pins.pigpio import PiGPIOFactory
 from gpiozero import DistanceSensor, LED
 
 from Motor import Motor
 from Robot import Robot
 from functools import partial
 
-
-def test(proc):
-    proc = False
 
 
 def prepare_robot():
@@ -20,7 +16,6 @@ def prepare_robot():
 
 
 if __name__ == '__main__':
-    proceed = True
     led = LED(18)
     led.on()
     sleep(100)
