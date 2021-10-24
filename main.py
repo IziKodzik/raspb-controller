@@ -16,7 +16,7 @@ def prepare_robot():
 
 
 if __name__ == '__main__':
-    led = LED(18)
+    led = LED(14)
     led.on()
     sleep(100)
 
