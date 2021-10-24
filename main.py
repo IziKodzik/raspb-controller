@@ -21,6 +21,6 @@ def prepare_robot():
 
 if __name__ == '__main__':
     bot = prepare_robot()
-    sleep(3)
+    bot.turn_left()
     bot.go_forward()
     sleep(10)
