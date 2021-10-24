@@ -2,7 +2,7 @@ import sys
 from threading import Thread
 from time import sleep
 from gpiozero.pins.pigpio import PiGPIOFactory
-from gpiozero import DistanceSensor
+from gpiozero import DistanceSensor, LED
 
 from Motor import Motor
 from Robot import Robot
@@ -21,10 +21,7 @@ def prepare_robot():
 
 if __name__ == '__main__':
     proceed = True
+    led = LED(18)
+    led.on()
+    sleep(100)
 
-    collision_sensor = DistanceSensor(echo=23, trigger=24, pin_factory=PiGPIOFactory())
-    collision_sensor.threshold_distance = 0.05
-    collision_sensor.when_deactivated = partial(test, proceed)
-    while proceed:
-        sleep(1)
-        print(collision_sensor.distance)
