@@ -34,7 +34,7 @@ def test():
 if __name__ == '__main__':
     bot = prepare_robot()
     print('?')
-
+    sleep(2)
     sensor = DistanceSensor(echo=24, trigger=23, pin_factory=PiGPIOFactory())
     sensor.when_in_range = test
     sleep(100)
