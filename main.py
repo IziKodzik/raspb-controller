@@ -1,3 +1,4 @@
+import os
 import sys
 from threading import Thread
 from time import sleep
@@ -28,8 +29,7 @@ def tst():
 
 
 def test():
-    print("tre")
-
+    os.system("sudo reboot")
 
 if __name__ == '__main__':
     bot = prepare_robot()
@@ -37,5 +37,5 @@ if __name__ == '__main__':
     sleep(2)
     sensor = DistanceSensor(echo=24, trigger=23, pin_factory=PiGPIOFactory())
     sensor.when_in_range = test
-    sleep(100)
-    print('??')
+    while True:
+        print(sensor.distance)
