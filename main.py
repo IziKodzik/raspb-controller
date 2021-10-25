@@ -38,4 +38,3 @@ if __name__ == '__main__':
     sensor = DistanceSensor(echo=24, trigger=23, pin_factory=PiGPIOFactory())
     sensor.wait_for_inactive()
     print('??')
-    sleep(100)
