@@ -36,5 +36,5 @@ if __name__ == '__main__':
     print('?')
 
     sensor = DistanceSensor(echo=24, trigger=23)
-    sensor.wait_for_active()
+    sensor.wait_for_inactive()
     print('??')
