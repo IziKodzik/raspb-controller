@@ -35,6 +35,6 @@ if __name__ == '__main__':
     print('?')
     sleep(2)
     sensor = DistanceSensor(echo=24, trigger=23, pin_factory=PiGPIOFactory())
-    sensor.when_in_range = partial(test, bo)
+    sensor.when_in_range = partial(test, bot)
     while True:
         1
