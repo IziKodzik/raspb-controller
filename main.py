@@ -39,4 +39,4 @@ if __name__ == '__main__':
     sensor.when_activated = test
 
     while True:
-        1
+        print(sensor.distance)
