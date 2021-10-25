@@ -24,9 +24,8 @@ def prepare_robot():
     return Robot(left_motor, right_motor)
 
 
-def test(bo, sens):
+def test(bo):
     print('Noted:')
-    print(sens.distance)
     bo.turn_left()
 
 
@@ -36,6 +35,6 @@ if __name__ == '__main__':
     print('?')
     sleep(2)
     sensor = DistanceSensor(echo=24, trigger=23, pin_factory=PiGPIOFactory())
-    sensor.when_in_range = partial(test, bo=bot, sens=sensor)
+    sensor.when_in_range = partial(test, bo)
     while True:
         1
