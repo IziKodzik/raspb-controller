@@ -33,6 +33,9 @@ def test():
 
 if __name__ == '__main__':
     bot = prepare_robot()
-    bot.turn_left()
-    while True:
-        print('?')
+    print('?')
+
+    sensor = DistanceSensor(echo=24, trigger=23)
+    sensor.when_in_range = test
+    sleep(100)
+    print('??')
