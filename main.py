@@ -8,6 +8,8 @@ from Robot import Robot
 from gpiozero.pins.pigpio import PiGPIOFactory
 
 from functools import partial
+
+
 # 14 - yellow with black
 # 15 - green
 # 18 - black
@@ -21,9 +23,14 @@ def prepare_robot():
     return Robot(left_motor, right_motor)
 
 
+def tst():
+    print("true")
+
+
 if __name__ == '__main__':
     bot = prepare_robot()
 
     sensor = DistanceSensor(echo=24, trigger=23)
-    while 1 == 1:
-        print(sensor.distance)
+    sensor.when_activated = tst
+    while True:
+        1
