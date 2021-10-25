@@ -28,8 +28,7 @@ def test(bo, sens):
     print('Noted:')
     print(sens.distance)
     bo.turn_left()
-    sens.wait_for_out_of_range()
-    bo.stop()
+
 
 
 if __name__ == '__main__':
