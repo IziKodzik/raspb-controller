@@ -27,7 +27,7 @@ def tst():
     print("true")
 
 
-def test(sens):
+def test():
     print("tre")
 
 
@@ -36,7 +36,6 @@ if __name__ == '__main__':
     print('?')
 
     sensor = DistanceSensor(echo=24, trigger=23, pin_factory=PiGPIOFactory())
-
-    sensor.when_in_range = test
-    sleep(100)
+    sensor.wait_for_inactive()
     print('??')
+    sleep(100)
