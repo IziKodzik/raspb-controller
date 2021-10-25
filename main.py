@@ -33,4 +33,4 @@ if __name__ == '__main__':
     sensor = DistanceSensor(echo=24, trigger=23)
     sensor.when_deactivated = tst
     while True:
-        print(sensor.distance)
+        1
