@@ -35,8 +35,7 @@ if __name__ == '__main__':
     bot = prepare_robot()
 
     sensor = DistanceSensor(echo=24, trigger=23)
-    sensor.threshold_distance = 0.1
-    sensor.when_deactivated = test
 
     while True:
+        print(sensor.distance)
         sleep(1)
