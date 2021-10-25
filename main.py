@@ -31,6 +31,6 @@ if __name__ == '__main__':
     bot = prepare_robot()
 
     sensor = DistanceSensor(echo=24, trigger=23)
-    sensor.when_activated = tst
+    sensor.when_deactivated = tst
     while True:
         print(sensor.distance)
