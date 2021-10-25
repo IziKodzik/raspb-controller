@@ -33,8 +33,6 @@ def test():
 
 if __name__ == '__main__':
     bot = prepare_robot()
-    print('?')
-
-    sensor = DistanceSensor(echo=24, trigger=23)
+    bot.turn_left()
     while True:
-        print(sensor.distance)
+        print('?')
