@@ -24,16 +24,15 @@ def prepare_robot():
     return Robot(left_motor, right_motor)
 
 
-
-
 def test():
     print('co jes?')
+
 
 if __name__ == '__main__':
     bot = prepare_robot()
     print('?')
     sleep(2)
     sensor = DistanceSensor(echo=24, trigger=23, pin_factory=PiGPIOFactory())
-    sensor.when_in_range = test
+    sensor.when_in_range = partial(test)
     while True:
         1
