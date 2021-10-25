@@ -5,6 +5,8 @@ from gpiozero import DistanceSensor, LED
 
 from Motor import Motor
 from Robot import Robot
+from gpiozero.pins.pigpio import PiGPIOFactory
+
 from functools import partial
 # 14 - yellow with black
 # 15 - green
@@ -21,6 +23,7 @@ def prepare_robot():
 
 if __name__ == '__main__':
     bot = prepare_robot()
-    bot.turn_left()
-    bot.go_forward()
-    sleep(10)
+
+    sensor = DistanceSensor(echo=24, trigger=23, pin_factory=PiGPIOFactory())
+    while 1 == 1:
+        print(sensor.distance)
