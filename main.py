@@ -36,7 +36,7 @@ if __name__ == '__main__':
 
     sensor = DistanceSensor(echo=24, trigger=23)
     sensor.threshold = 0.1
+    sensor.when_deactivated = test
 
     while True:
-        sensor.wait_for_inactive()
-        print("XDDD")
+        1
