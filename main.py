@@ -34,9 +34,7 @@ def test():
 if __name__ == '__main__':
     bot = prepare_robot()
     print('?')
+
     sensor = DistanceSensor(echo=24, trigger=23)
     sensor.wait_for_inactive()
     print('??')
-    while True:
-        print(sensor.distance)
-        sleep(1)
