@@ -24,6 +24,6 @@ def prepare_robot():
 if __name__ == '__main__':
     bot = prepare_robot()
 
-    sensor = DistanceSensor(echo=24, trigger=23, pin_factory=PiGPIOFactory())
+    sensor = DistanceSensor(echo=24, trigger=23)
     while 1 == 1:
         print(sensor.distance)
