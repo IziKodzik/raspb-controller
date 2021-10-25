@@ -24,12 +24,10 @@ def prepare_robot():
     return Robot(left_motor, right_motor)
 
 
-def tst():
-    print("true")
 
 
 def test():
-    os.system("sudo reboot")
+    print('co jes?')
 
 if __name__ == '__main__':
     bot = prepare_robot()
