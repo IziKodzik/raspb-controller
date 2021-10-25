@@ -26,6 +26,7 @@ def prepare_robot():
 def tst():
     print("true")
 
+
 def test():
     print("tre")
 
@@ -33,12 +34,9 @@ def test():
 if __name__ == '__main__':
     bot = prepare_robot()
 
-    sensor = DistanceSensor(echo=24, trigger=23, pin_factory=PiGPIOFactory())
+    sensor = DistanceSensor(echo=24, trigger=23)
     sensor.threshold = 0.1
 
-    sensor.when_deactivated = tst
-    sensor.when_activated = test
-
     while True:
-        sleep(1)
-        1
+        sensor.wait_for_inactive()
+        print("XDDD")
