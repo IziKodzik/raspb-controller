@@ -39,8 +39,8 @@ if __name__ == '__main__':
     end = time.time() + 10
     while time.time() < end:
         bot.go_forward()
-        while sensor.distance > 0.5:
+        while sensor.distance > 0.5 and time.time() < end:
             1
         bot.turn_left()
-        while sensor.distance < 0.5:
+        while sensor.distance < 0.5 and time.time() < end:
             1
