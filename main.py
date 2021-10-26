@@ -32,11 +32,6 @@ def test(bo):
 
 if __name__ == '__main__':
     bot = prepare_robot()
-    bot.turn_left()
-    sleep(10)
-    bot.stop()
-    print('?')
-    sleep(2)
     sensor = DistanceSensor(echo=24, trigger=23, pin_factory=PiGPIOFactory())
     # sensor.when_in_range = partial(test, bot)
     while True:
