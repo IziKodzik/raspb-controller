@@ -32,7 +32,7 @@ def test(bo):
 
 if __name__ == '__main__':
     bot = prepare_robot()
-    bot.go_forward()
+    bot.go_backward()
     sleep(2)
     print('?')
     sleep(2)
