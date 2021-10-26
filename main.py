@@ -44,3 +44,4 @@ if __name__ == '__main__':
         bot.turn_left()
         while sensor.distance < 0.5 and time.time() < end:
             1
+    bot.stop()
