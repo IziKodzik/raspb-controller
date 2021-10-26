@@ -33,6 +33,7 @@ def test(bo):
 if __name__ == '__main__':
     bot = prepare_robot()
     sensor = DistanceSensor(echo=24, trigger=23, pin_factory=PiGPIOFactory())
+    sensor.threshold_distance = 0.7
     # sensor.when_in_range = partial(test, bot)
     while True:
         bot.go_forward()
