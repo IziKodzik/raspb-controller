@@ -32,6 +32,8 @@ def test(bo):
 
 if __name__ == '__main__':
     bot = prepare_robot()
+    bot.go_forward()
+    sleep(2)
     print('?')
     sleep(2)
     sensor = DistanceSensor(echo=24, trigger=23, pin_factory=PiGPIOFactory())
