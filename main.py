@@ -37,6 +37,8 @@ if __name__ == '__main__':
     # sensor.when_in_range = partial(test, bot)
     while True:
         bot.go_forward()
-        sensor.wait_for_in_range()
+        while sensor.distance > 0.5:
+            1
         bot.turn_left()
-        sensor.wait_for_out_of_range()
+        while sensor.distance < 0.5:
+            1
