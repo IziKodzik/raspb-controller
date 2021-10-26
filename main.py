@@ -1,5 +1,7 @@
+import datetime
 import os
 import sys
+import time
 from threading import Thread
 from time import sleep
 from gpiozero import DistanceSensor, LED
@@ -29,13 +31,13 @@ def test(bo):
     bo.turn_left()
 
 
-
 if __name__ == '__main__':
     bot = prepare_robot()
     sensor = DistanceSensor(echo=24, trigger=23, pin_factory=PiGPIOFactory())
     sensor.threshold_distance = 0.7
     # sensor.when_in_range = partial(test, bot)
-    while True:
+    end = time.time() + 10
+    while time.time() < end:
         bot.go_forward()
         while sensor.distance > 0.5:
             1
