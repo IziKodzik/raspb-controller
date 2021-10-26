@@ -36,7 +36,7 @@ if __name__ == '__main__':
     sensor = DistanceSensor(echo=24, trigger=23, pin_factory=PiGPIOFactory())
     sensor.threshold_distance = 0.7
     # sensor.when_in_range = partial(test, bot)
-    end = time.time() + 10
+    end = time.time() + 40
     while time.time() < end:
         bot.go_forward()
         while sensor.distance > 0.5 and time.time() < end:
