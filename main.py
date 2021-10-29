@@ -13,7 +13,7 @@ time.sleep(2)
 print('Going...')
 
 GPIO.output(23, 1)
-time.sleep(0.00001)
+time.sleep(1)
 GPIO.output(23, 0)
 
 while GPIO.input(24) == 0:
