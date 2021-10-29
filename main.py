@@ -6,13 +6,15 @@ GPIO.setwarnings(False)  # Ignore warning for now
 GPIO.setmode(GPIO.BCM)  # Use physical pin numbering
 GPIO.setup(24, GPIO.IN)  # Set pin 10 to be an input pin and set initial value to be pulled low (off)
 GPIO.setup(23, GPIO.OUT)  # Set pin 10 to be an input pin and set initial value to be pulled low (off)
-GPIO.setup(14, GPIO.OUT)  # Set pin 10 to be an input pin and set initial value to be pulled low (off)
+# GPIO.setup(14, GPIO.OUT)  # Set pin 10 to be an input pin and set initial value to be pulled low (off)
 
 
-GPIO.output(23, 0)
 print('You ready?')
 GPIO.cleanup()
+GPIO.output(23, 0)
+
 time.sleep(2)
+print('You go?')
 
 while True:
     GPIO.output(23, 1)
@@ -29,10 +31,10 @@ while True:
 
     distance = pulse_duration * 17165
     distance = round(distance, 1)
-    if distance > 5:
-        GPIO.output(14, 1)
-    else:
-        GPIO.output(14, 0)
+    # if distance > 5:
+    #     GPIO.output(14, 1)
+    # else:
+    #     GPIO.output(14, 0)
     print(f'Dis: {distance}')
     time.sleep(0.1)
 GPIO.cleanup()
