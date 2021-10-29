@@ -17,6 +17,7 @@ time.sleep(0.00001)
 GPIO.output(23, 0)
 
 while GPIO.input(24) == 0:
+    print('dead')
     pulse_start = time.time()
 print('...')
 
