@@ -42,5 +42,6 @@ def distance():
 
 
 if __name__ == '__main__':
-    GPIO.output(GPIO_TRIGGER, True)
-
+    while True:
+        print(GPIO.input(GPIO_ECHO))
+        time.sleep(0.5)
