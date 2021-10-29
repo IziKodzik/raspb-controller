@@ -42,6 +42,7 @@ def distance():
 
 
 if __name__ == '__main__':
+    print('qie')
     try:
         while True:
             dist = distance()
