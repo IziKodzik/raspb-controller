@@ -4,15 +4,26 @@ import RPi.GPIO as GPIO  # Import Raspberry Pi GPIO library
 
 GPIO.setwarnings(False)  # Ignore warning for now
 GPIO.setmode(GPIO.BCM)  # Use physical pin numbering
-GPIO.setup(15, GPIO.IN)  # Set pin 10 to be an input pin and set initial value to be pulled low (off)
-GPIO.setup(18, GPIO.OUT)  # Set pin 10 to be an input pin and set initial value to be pulled low (off)
+GPIO.setup(24, GPIO.IN)  # Set pin 10 to be an input pin and set initial value to be pulled low (off)
+GPIO.setup(23, GPIO.OUT)  # Set pin 10 to be an input pin and set initial value to be pulled low (off)
 
-while True:  # Run forever
-    GPIO.output(18, 1)
-    start = time.time()
-    time.sleep(0.00001)
-    GPIO.output(18, 0)
-    while GPIO.input(15) != GPIO.HIGH:
-        print(time.time() - start)
-    while GPIO.input(15) == 1:
-        print('end')
+
+GPIO.output(23, 0)
+time.sleep(2)
+
+GPIO.output(23, 1)
+time.sleep(0.00001)
+GPIO.output(23, 0)
+
+while GPIO.input(24) == 0:
+    pulse_start = time.time()
+
+while GPIO.input(24) == 1:
+    pulse_end = time.time()
+
+pulse_duration = pulse_end - pulse_start
+
+distance = pulse_duration * 17165
+distance = round(distance, 1)
+print(f'Dis: {distance}')
+GPIO.cleanup()
