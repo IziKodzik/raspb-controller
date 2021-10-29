@@ -18,6 +18,7 @@ GPIO.output(23, 0)
 
 while GPIO.input(24) == 0:
     pulse_start = time.time()
+print('...')
 
 while GPIO.input(24) == 1:
     pulse_end = time.time()
