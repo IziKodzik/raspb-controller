@@ -11,6 +11,7 @@ GPIO.setup(14, GPIO.OUT)  # Set pin 10 to be an input pin and set initial value 
 
 GPIO.output(23, 0)
 print('You ready?')
+GPIO.cleanup()
 time.sleep(2)
 
 while True:
