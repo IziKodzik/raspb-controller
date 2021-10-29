@@ -10,6 +10,7 @@ GPIO.setup(23, GPIO.OUT)  # Set pin 10 to be an input pin and set initial value 
 GPIO.output(23, 0)
 print('You ready?')
 time.sleep(2)
+print('Going...')
 
 GPIO.output(23, 1)
 time.sleep(0.00001)
