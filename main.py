@@ -7,7 +7,6 @@ GPIO.setup(15, GPIO.IN,
 GPIO.setup(18, GPIO.OUT)  # Set pin 10 to be an input pin and set initial value to be pulled low (off)
 
 while True:  # Run forever
+    GPIO.output(18, 1)
     if GPIO.input(15) == GPIO.HIGH:
-        GPIO.output(18, 1)
-    else:
-        GPIO.output(18, 0)
+        print('negro')
