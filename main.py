@@ -30,7 +30,7 @@ while True:
     distance = round(distance, 1)
     if distance > 5:
         GPIO.output(14, 1)
-    else
+    else:
         GPIO.output(14, 0)
     print(f'Dis: {distance}')
     time.sleep(0.1)
