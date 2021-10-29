@@ -14,3 +14,4 @@ while True:  # Run forever
     GPIO.output(18, 0)
     if GPIO.input(15) == GPIO.HIGH:
         print(time.time() - start)
+    time.sleep(0.01)
