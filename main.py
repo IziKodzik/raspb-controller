@@ -1,12 +1,9 @@
 import time
 
 import RPi.GPIO as GPIO  # Import Raspberry Pi GPIO library
-from  UltrasonicSensor import UltrasonicSensor
-GPIO.setwarnings(False)  # Ignore warning for now
+from UltrasonicSensor import UltrasonicSensor
+
 GPIO.setmode(GPIO.BCM)  # Use physical pin numbering
-GPIO.setup(24, GPIO.IN)  # Set pin 10 to be an input pin and set initial value to be pulled low (off)
-GPIO.setup(23, GPIO.OUT)  # Set pin 10 to be an input pin and set initial value to be pulled low (off)
-GPIO.setup(14, GPIO.OUT)  # Set pin 10 to be an input pin and set initial value to be pulled low (off)
 
 GPIO.output(23, 0)
 print('You ready?')
