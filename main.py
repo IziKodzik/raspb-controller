@@ -5,7 +5,6 @@ from UltrasonicSensor import UltrasonicSensor
 
 GPIO.setmode(GPIO.BCM)  # Use physical pin numbering
 try:
-    GPIO.cleanup()
     print('You ready?')
     time.sleep(2)
     print('Going...')
@@ -16,6 +15,7 @@ try:
         time.sleep(0.1)
 except KeyboardInterrupt:
     GPIO.cleanup()
+
 #
 #
 # while True:
