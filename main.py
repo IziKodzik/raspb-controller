@@ -12,11 +12,16 @@ import RPi.GPIO as GPIO  # Import Raspberry Pi GPIO library
 # print('You ready?')
 # time.sleep(2)
 # print('Going...')
-from gpiozero import DistanceSensor
+from gpiozero import DistanceSensor, LED
 
 sensor = DistanceSensor(trigger=23, echo=24)
 sensor.wait_for_in_range()
 print('out')
+
+led = LED(14)
+
+led.on()
+time.sleep(2)
 # while True:
 #     try:
 #         GPIO.output(23, 1)
