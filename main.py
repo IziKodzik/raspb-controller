@@ -29,7 +29,7 @@ while True:
 
         distance = pulse_duration * 17165
         distance = round(distance, 1)
-        if distance < 5:
+        if distance < 30:
             GPIO.output(14, 1)
         else:
             GPIO.output(14, 0)
