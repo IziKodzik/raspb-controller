@@ -18,9 +18,11 @@ class UltrasonicSensor:
         time.sleep(0.00001)
         GPIO.output(self.trigger_pin, 0)
 
+        pulse_start = time.time()
         while GPIO.input(self.echo_pin) == 0:
             pulse_start = time.time()
 
+        pulse_end = time.time()
         while GPIO.input(self.echo_pin) == 1:
             pulse_end = time.time()
 
@@ -29,5 +31,5 @@ class UltrasonicSensor:
         return pulse_duration * 17165
 
     def wait_for_in_range(self):
-        while self.measure() != 2:
-            time.sleep(0.01)
+        while self.measure() > self.range:
+            1
