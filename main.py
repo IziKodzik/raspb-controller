@@ -29,9 +29,9 @@ while True:
 
         distance = pulse_duration * 17165
         distance = round(distance, 1)
+        print(f'Dis: {distance}')
         if distance < 5:
             GPIO.output(14, 1)
-            print(f'Dis: {distance}')
         else:
             GPIO.output(14, 0)
     except KeyboardInterrupt:
