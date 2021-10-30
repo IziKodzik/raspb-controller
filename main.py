@@ -9,7 +9,9 @@ print('You ready?')
 time.sleep(2)
 print('Going...')
 sensor = UltrasonicSensor(24, 23)
-sensor.measure()
+while True:
+    sensor.measure()
+    time.sleep(0.1)
 #
 #
 # while True:
