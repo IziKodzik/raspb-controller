@@ -9,10 +9,8 @@ try:
     time.sleep(2)
     print('Going...')
     sensor = UltrasonicSensor(24, 23)
-    # sensor.wait_for_in_range()
-    while True:
-        print(sensor.measure())
-        time.sleep(0.1)
+    sensor.wait_for_in_range()
+    print('2')
 except KeyboardInterrupt:
     GPIO.cleanup()
 
