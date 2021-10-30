@@ -12,22 +12,25 @@ print('You ready?')
 time.sleep(2)
 print('Going...')
 
-GPIO.output(23, 1)
-time.sleep(0.00001)
-GPIO.output(23, 0)
+while True:
+    try:
+        GPIO.output(23, 1)
+        time.sleep(0.00001)
+        GPIO.output(23, 0)
 
-while GPIO.input(24) == 0:
-    print('dead')
-    pulse_start = time.time()
-print('...')
+        while GPIO.input(24) == 0:
+            print('dead')
+            pulse_start = time.time()
+        print('...')
 
-while GPIO.input(24) == 1:
-    pulse_end = time.time()
+        while GPIO.input(24) == 1:
+            pulse_end = time.time()
 
-pulse_duration = pulse_end - pulse_start
+        pulse_duration = pulse_end - pulse_start
 
-distance = pulse_duration * 17165
-distance = round(distance, 1)
-print(f'Dis: {distance}')
-time.sleep(0.1)
-GPIO.cleanup()
+        distance = pulse_duration * 17165
+        distance = round(distance, 1)
+        print(f'Dis: {distance}')
+        time.sleep(0.1)
+    except KeyboardInterrupt:
+        GPIO.cleanup()
