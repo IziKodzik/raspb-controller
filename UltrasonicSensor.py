@@ -29,4 +29,5 @@ class UltrasonicSensor:
         return pulse_duration * 17165
 
     def wait_for_in_range(self):
-        print(self.measure())
+        while self.measure() != 2:
+            1
