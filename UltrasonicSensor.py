@@ -30,4 +30,4 @@ class UltrasonicSensor:
 
     def wait_for_in_range(self):
         while self.measure() != 2:
-            1
+            time.sleep(0.01)
