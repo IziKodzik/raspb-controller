@@ -10,7 +10,7 @@ try:
     time.sleep(2)
     print('Going...')
     sensor = UltrasonicSensor(24, 23)
-    sensor.wait_for_in_range()
+    # sensor.wait_for_in_range()
     while True:
         sensor.measure()
         time.sleep(0.1)
