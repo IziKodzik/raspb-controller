@@ -6,6 +6,7 @@ GPIO.setwarnings(False)  # Ignore warning for now
 GPIO.setmode(GPIO.BCM)  # Use physical pin numbering
 GPIO.setup(24, GPIO.IN)  # Set pin 10 to be an input pin and set initial value to be pulled low (off)
 GPIO.setup(23, GPIO.OUT)  # Set pin 10 to be an input pin and set initial value to be pulled low (off)
+GPIO.setup(14, GPIO.OUT)  # Set pin 10 to be an input pin and set initial value to be pulled low (off)
 
 GPIO.output(23, 0)
 print('You ready?')
@@ -19,9 +20,7 @@ while True:
         GPIO.output(23, 0)
 
         while GPIO.input(24) == 0:
-            print('dead')
             pulse_start = time.time()
-        print('...')
 
         while GPIO.input(24) == 1:
             pulse_end = time.time()
@@ -30,7 +29,10 @@ while True:
 
         distance = pulse_duration * 17165
         distance = round(distance, 1)
-        print(f'Dis: {distance}')
-        time.sleep(0.1)
+        if distance < 5:
+            GPIO.output(14, 1)
+        else:
+            GPIO.output(14, 0)
+        # print(f'Dis: {distance}')
     except KeyboardInterrupt:
         GPIO.cleanup()
