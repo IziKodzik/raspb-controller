@@ -5,10 +5,12 @@ from UltrasonicSensor import UltrasonicSensor
 
 GPIO.setmode(GPIO.BCM)  # Use physical pin numbering
 
+GPIO.cleanup()
 print('You ready?')
 time.sleep(2)
 print('Going...')
 sensor = UltrasonicSensor(24, 23)
+sensor.wait_for_in_range()
 while True:
     sensor.measure()
     time.sleep(0.1)
