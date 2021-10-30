@@ -26,7 +26,7 @@ class UltrasonicSensor:
 
         pulse_duration = pulse_end - pulse_start
 
-        distance = pulse_duration * 17165
+        return pulse_duration * 17165
         print(distance)
 
     def wait_for_in_range(self):
