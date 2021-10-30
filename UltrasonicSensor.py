@@ -7,6 +7,7 @@ class UltrasonicSensor:
 
     def __init__(self, echo_pin, trigger_pin):
         self.echo_pin = echo_pin
+        self.range = 30.0
         GPIO.setup(echo_pin, GPIO.IN)
         self.trigger_pin = trigger_pin
         GPIO.setup(trigger_pin, GPIO.OUT)
@@ -25,6 +26,8 @@ class UltrasonicSensor:
 
         pulse_duration = pulse_end - pulse_start
 
-        distance = pulse_duration * 17165
-        distance = round(distance, 1)
-        print(distance)
+        return pulse_duration * 17165
+
+    def wait_for_in_range(self):
+        while self.measure() > self.range:
+            1
