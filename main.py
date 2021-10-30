@@ -31,8 +31,8 @@ while True:
         distance = round(distance, 1)
         if distance < 5:
             GPIO.output(14, 1)
+            print(f'Dis: {distance}')
         else:
             GPIO.output(14, 0)
-        # print(f'Dis: {distance}')
     except KeyboardInterrupt:
         GPIO.cleanup()
