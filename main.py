@@ -36,7 +36,7 @@ pwm = PWMLED(21)
 led1.on()
 led.on()
 for x in range(255):
-    pwm.value = x
+    pwm.value = x/255
     time.sleep(0.01)
 while True:
     pass
