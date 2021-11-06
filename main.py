@@ -11,7 +11,7 @@ import busio
 import adafruit_vl53l0x
 
 # Initialize I2C bus and sensor.
-from gpiozero import LED
+from gpiozero import LED, PWMLED
 
 from Motor import Motor
 from Robot import Robot
@@ -31,6 +31,12 @@ from Robot import Robot
 # print("Range: {0}mm".format(vl53.range))
 # time.sleep(0.5)
 led = LED(20)
+led1 = LED(16)
+pwm = PWMLED(21)
+led1.on()
 led.on()
+for x in range(255):
+    pwm.value = x
+    time.sleep(0.01)
 while True:
     pass
