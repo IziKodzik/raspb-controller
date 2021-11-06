@@ -32,3 +32,5 @@ from Robot import Robot
 # time.sleep(0.5)
 led = LED(21)
 led.on()
+while True:
+    pass
