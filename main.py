@@ -31,14 +31,8 @@ from Robot import Robot
 # print("Range: {0}mm".format(vl53.range))
 # time.sleep(0.5)
 motor0 = Motor(21, 20, 16)
-# motor1 = Motor(21, 20, 16)
-led = LED(13)
-led1 = LED(19)
-pwm = PWMLED(26)
-led1.on()
-led.on()
-for x in range(255):
-    pwm.value = x/255
-    time.sleep(0.01)
+motor1 = Motor(26, 19, 13)
+
 while True:
-    pass
+    motor0.go_forward()
+    motor1.go_backward()
