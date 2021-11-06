@@ -11,6 +11,8 @@ import busio
 import adafruit_vl53l0x
 
 # Initialize I2C bus and sensor.
+from gpiozero import LED
+
 from Motor import Motor
 from Robot import Robot
 #
@@ -26,10 +28,7 @@ from Robot import Robot
 # vl53.measurement_timing_budget = 200000
 # The default timing budget is 33ms, a good compromise of speed and accuracy.
 # Main loop will read the range and print it every second.
-left_motor = Motor(21, 20, 16)
-right_motor = Motor(17, 27, 22)
 # print("Range: {0}mm".format(vl53.range))
 # time.sleep(0.5)
-
-robot = Robot(left_motor, right_motor)
-robot.turn_right()
+led = LED(21)
+led.on()
