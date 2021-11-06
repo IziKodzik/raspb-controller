@@ -30,7 +30,7 @@ from Robot import Robot
 # Main loop will read the range and print it every second.
 # print("Range: {0}mm".format(vl53.range))
 # time.sleep(0.5)
-led = LED(21)
+led = LED(20)
 led.on()
 while True:
     pass
