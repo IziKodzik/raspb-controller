@@ -32,9 +32,9 @@ from Robot import Robot
 # time.sleep(0.5)
 motor0 = Motor(21, 20, 16)
 # motor1 = Motor(21, 20, 16)
-led = LED(26)
+led = LED(13)
 led1 = LED(19)
-pwm = PWMLED(13)
+pwm = PWMLED(26)
 led1.on()
 led.on()
 for x in range(255):
