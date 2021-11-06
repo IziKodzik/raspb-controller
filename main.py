@@ -30,9 +30,11 @@ from Robot import Robot
 # Main loop will read the range and print it every second.
 # print("Range: {0}mm".format(vl53.range))
 # time.sleep(0.5)
-led = LED(20)
-led1 = LED(16)
-pwm = PWMLED(21)
+motor0 = Motor(21, 20, 16)
+# motor1 = Motor(21, 20, 16)
+led = LED(26)
+led1 = LED(19)
+pwm = PWMLED(13)
 led1.on()
 led.on()
 for x in range(255):
