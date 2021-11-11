@@ -1,2 +1,2 @@
 import smbus2 as smbus
-bus = smbus.SMBus(0)
+bus = smbus.SMBus(1)
