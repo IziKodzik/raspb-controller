@@ -5,6 +5,7 @@
 # Will print the sensed range/distance every second.
 import time
 
+import adafruit_adxl34x
 import board
 import busio
 
@@ -18,8 +19,9 @@ from Robot import Robot
 #
 i2c = busio.I2C(board.SCL, board.SDA)
 vl53 = adafruit_vl53l0x.VL53L0X(i2c)
+accelerometer = adafruit_adxl34x.ADXL345(i2c)
 while True:
-    print("Range: {0}mm".format(vl53.range))
+    print("%f %f %f"%accelerometer.acceleration)
     time.sleep(0.5)
 
 # Optionally adjust the measurement timing budget to change speed and accuracy.
