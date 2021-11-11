@@ -1,10 +1,10 @@
 import time
 import board
 import busio
-import adafruit_adxl34x
+import adafruit_lis3dh
 
 i2c = busio.I2C(board.SCL, board.SDA)
-accelerometer = adafruit_adxl34x.ADXL345(i2c,address=0x1d)
+accelerometer = adafruit_lis3dh.LIS3DH_I2C(i2c,address=0x1d)
 
 while True:
     print("%f %f %f"%accelerometer.acceleration)
