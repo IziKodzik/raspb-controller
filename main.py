@@ -16,8 +16,11 @@ from gpiozero import LED, PWMLED
 from Motor import Motor
 from Robot import Robot
 #
-# i2c = busio.I2C(board.SCL, board.SDA)
-# vl53 = adafruit_vl53l0x.VL53L0X(i2c)
+i2c = busio.I2C(board.SCL, board.SDA)
+vl53 = adafruit_vl53l0x.VL53L0X(i2c)
+while True:
+    print("Range: {0}mm".format(vl53.range))
+    time.sleep(0.5)
 
 # Optionally adjust the measurement timing budget to change speed and accuracy.
 # See the example here for more details:
@@ -28,11 +31,3 @@ from Robot import Robot
 # vl53.measurement_timing_budget = 200000
 # The default timing budget is 33ms, a good compromise of speed and accuracy.
 # Main loop will read the range and print it every second.
-# print("Range: {0}mm".format(vl53.range))
-# time.sleep(0.5)
-motor0 = Motor(21, 20, 16)
-motor1 = Motor(26, 19, 13)
-
-while True:
-    motor0.go_forward()
-    motor1.go_backward()
