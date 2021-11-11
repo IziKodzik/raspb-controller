@@ -5,6 +5,6 @@ sleep(0.1)
 bus = smbus.SMBus(1)
 
 while True:
-    print(bus.read_byte_data(0x1d, 0x10))
+    print(bus.read_byte_data(0x1d, 0x0D))
     sleep(0.01)
 bus.close()
