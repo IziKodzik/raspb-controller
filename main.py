@@ -12,6 +12,7 @@ import busio
 import adafruit_vl53l0x
 
 # Initialize I2C bus and sensor.
+from Adafruit_PureIO import smbus
 from gpiozero import LED, PWMLED
 
 from Motor import Motor
@@ -19,9 +20,10 @@ from Robot import Robot
 #
 i2c = busio.I2C(board.SCL, board.SDA)
 # vl53 = adafruit_vl53l0x.VL53L0X(i2c)
-accelerometer = adafruit_adxl34x.ADXL345(i2c)
+bus = smbus.SMBus(0)
+address = 'dx10'
+print(bus.read_byte_data(address, 1))
 while True:
-    print("%f %f %f"%accelerometer.acceleration)
     time.sleep(0.5)
 
 # Optionally adjust the measurement timing budget to change speed and accuracy.
