@@ -4,6 +4,7 @@
 # Simple demo of the VL53L0X distance sensor.
 # Will print the sensed range/distance every second.
 import time
+import smbus
 
 import adafruit_adxl34x
 import adafruit_lis3dh
