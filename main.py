@@ -9,6 +9,10 @@ import adafruit_adxl34x
 import adafruit_lis3dh
 import board
 import busio
+addres = 'fx10'
+
+bus = smbus.SMBus(0)
+
 
 import adafruit_vl53l0x
 
