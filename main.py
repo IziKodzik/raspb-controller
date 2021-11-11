@@ -1,7 +1,10 @@
+import time
+
 from lis3dh import LIS3DH, device
 from time import sleep
 
 registers = device()
+time.sleep(1)
 lis = LIS3DH(port=1, scale=registers.CTRL_REG4.SCALE_4G, data_rate=registers.CTRL_REG1.ODR_10Hz)
 
 data = lis.read_dummy_register()
