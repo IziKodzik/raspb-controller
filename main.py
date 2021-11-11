@@ -1,12 +1,8 @@
-from time import sleep
-
-import smbus2 as smbus
-sleep(0.1)
-bus = smbus.SMBus(1)
-
-while True:
-    print(bus.read_byte_data(0x1d, 0x28))
-
-    print(bus.read_byte_data(0x1d, 0x29))
-    sleep(0.1)
-bus.close()
+import time
+import board
+import digitalio
+import adafruit_lis3dh
+spi = board.SPI()
+cs = digitalio.DigitalInOut(board.D5)  # Set to appropriate CS pin!
+int1 = digitalio.DigitalInOut(board.D6) # Set to correct pin for interrupt!
+lis3dh = adafruit_lis3dh.LIS3DH_SPI(spi, cs, int1=int1)
