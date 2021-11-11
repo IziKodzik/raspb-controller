@@ -6,6 +6,7 @@
 import time
 
 import adafruit_adxl34x
+import adafruit_lis3dh
 import board
 import busio
 
@@ -20,9 +21,7 @@ from Robot import Robot
 #
 i2c = busio.I2C(board.SCL, board.SDA)
 # vl53 = adafruit_vl53l0x.VL53L0X(i2c)
-bus = smbus.SMBus(0)
-address = 'dx10'
-print(bus.read_byte_data(address, 1))
+lis3dh = adafruit_lis3dh.LIS3DH_I2C(i2c)
 while True:
     time.sleep(0.5)
 
