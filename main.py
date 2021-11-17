@@ -6,10 +6,11 @@
 import time
 
 import board
-import busio
 
-import adafruit_vl53l0x
 
 # Initialize I2C bus and sensor.
-motor = Motor(21, 20 ,16)
+from Motor import Motor
+
+motor = Motor(21, 20, 16)
 motor.go_forward()
+time.sleep(10)
