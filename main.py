@@ -23,6 +23,6 @@ led = LED(17)
 # stepper = StepperMotor(17, 27)
 while True:
     led.on()
-    time.sleep(0.1)
+    time.sleep(0.001)
     led.off()
-    time.sleep(0.1)
+    time.sleep(0.001)
