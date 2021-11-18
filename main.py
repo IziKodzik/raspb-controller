@@ -20,5 +20,5 @@ motor_l = Motor(13, 19, 26)
 motor_l.go_forward()
 
 stepper = StepperMotor(17, 27)
-while True:
+for i in range(1024):
     stepper.take_step()
