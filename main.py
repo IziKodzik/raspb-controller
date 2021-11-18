@@ -18,8 +18,7 @@ motor_l = Motor(13, 19, 26)
 motor_l.go_forward()
 
 stepper = StepperMotor(17, 27)
-for i in range(1024):
+for i in range(100000000000):
     stepper.take_step()
-    time.sleep(0.1)
 
 time.sleep(10)
