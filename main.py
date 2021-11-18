@@ -20,9 +20,6 @@ motor_l = Motor(13, 19, 26)
 motor_l.go_forward()
 led = LED(17)
 
-# stepper = StepperMotor(17, 27)
+stepper = StepperMotor(17, 27)
 while True:
-    led.on()
-    time.sleep(0.001)
-    led.off()
-    time.sleep(0.001)
+    stepper.take_step()
