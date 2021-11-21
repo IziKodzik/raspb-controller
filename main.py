@@ -44,5 +44,5 @@ from PIL import Image, ImageDraw, ImageFont
 #     time.sleep(1)
 i2c = busio.I2C(SCL, SDA)
 disp = adafruit_ssd1306.SSD1306_I2C(128,64, i2c)
-while True:
-    disp.fill(0)
+disp.fill(0)
+oled.show()
