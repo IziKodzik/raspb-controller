@@ -47,7 +47,6 @@ BORDER = 5
 #     time.sleep(1)
 i2c = busio.I2C(SCL, SDA)
 disp = adafruit_ssd1306.SSD1306_I2C(128,12, i2c)
-disp.begin()
 
 # Clear display.
 disp.clear()
