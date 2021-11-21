@@ -61,3 +61,5 @@ x = 0
 draw.text((x, top + 0), "IP: " + IP, font=font, fill=255)
 disp.image(image)
 disp.show()
+while True:
+    pass
