@@ -55,8 +55,8 @@ padding = -2
 top = padding
 bottom = height - padding
 font = ImageFont.load_default()
+x = 0
 while True:
-
     # Draw a black filled box to clear the image.
     draw.rectangle((0, 0, width, height), outline=0, fill=0)
 
@@ -73,10 +73,10 @@ while True:
 
     # Write four lines of text.
 
-    draw.text((x, top+0), "IP: "+IP, font=font, fill=255)
-    draw.text((x, top+8), CPU, font=font, fill=255)
-    draw.text((x, top+16), MemUsage, font=font, fill=255)
-    draw.text((x, top+25), Disk, font=font, fill=255)
+    draw.text((x, top + 0), "IP: " + IP, font=font, fill=255)
+    draw.text((x, top + 8), CPU, font=font, fill=255)
+    draw.text((x, top + 16), MemUsage, font=font, fill=255)
+    draw.text((x, top + 25), Disk, font=font, fill=255)
 
     # Display image.
     disp.image(image)
