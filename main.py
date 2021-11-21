@@ -5,6 +5,7 @@
 # Will print the sensed range/distance every second.
 import time
 
+import adafruit_adxl34x
 import adafruit_vl53l0x
 import board
 
@@ -24,9 +25,15 @@ import busio
 # while True:
 #     time.sleep(0.01)
 #     stepper.take_step()
+# i2c = busio.I2C(board.SCL, board.SDA)
+# vl53 = adafruit_vl53l0x.VL53L0X(i2c)
+
+# while True:
+#     print("Range: {0}mm".format(vl53.range))
+#     time.sleep(1.0)
 i2c = busio.I2C(board.SCL, board.SDA)
-vl53 = adafruit_vl53l0x.VL53L0X(i2c)
+accelerometer = adafruit_adxl34x.ADXL345(i2c)
 
 while True:
-    print("Range: {0}mm".format(vl53.range))
-    time.sleep(1.0)
+    print("%f %f %f"%accelerometer.acceleration)
+    time.sleep(1)
