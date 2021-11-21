@@ -21,4 +21,5 @@ motor_l.go_forward()
 
 stepper = StepperMotor(17, 27)
 while True:
+    time.sleep(0.01)
     stepper.take_step()
