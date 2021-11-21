@@ -45,77 +45,59 @@ BORDER = 5
 # while True:
 #     print("%f %f %f"%accelerometer.acceleration)
 #     time.sleep(1)
-
-# SPDX-FileCopyrightText: 2021 ladyada for Adafruit Industries
-# SPDX-License-Identifier: MIT
-
-"""
-This demo will fill the screen with white, draw a black box on top
-and then print Hello World! in the center of the display
-
-This example is for use on (Linux) computers that are using CPython with
-Adafruit Blinka to support CircuitPython libraries. CircuitPython does
-not support PIL/pillow (python imaging library)!
-"""
-
-import board
-import digitalio
-from PIL import Image, ImageDraw, ImageFont
-import adafruit_ssd1306
-
-# Define the Reset Pin
-oled_reset = digitalio.DigitalInOut(board.D4)
-
-# Change these
-# to the right size for your display!
-WIDTH = 128
-HEIGHT = 32  # Change to 64 if needed
-BORDER = 5
-
-# Use for I2C.
-i2c = board.I2C()
-oled = adafruit_ssd1306.SSD1306_I2C(WIDTH, HEIGHT, i2c, addr=0x3C, reset=oled_reset)
-
-# Use for SPI
-# spi = board.SPI()
-# oled_cs = digitalio.DigitalInOut(board.D5)
-# oled_dc = digitalio.DigitalInOut(board.D6)
-# oled = adafruit_ssd1306.SSD1306_SPI(WIDTH, HEIGHT, spi, oled_dc, oled_reset, oled_cs)
+i2c = busio.I2C(SCL, SDA)
+disp = adafruit_ssd1306.SSD1306_I2C(128,64, i2c)
+disp.begin()
 
 # Clear display.
-oled.fill(0)
-oled.show()
+disp.clear()
+disp.display()
 
 # Create blank image for drawing.
 # Make sure to create image with mode '1' for 1-bit color.
-image = Image.new("1", (oled.width, oled.height))
+width = disp.width
+height = disp.height
+image = Image.new('1', (width, height))
 
 # Get drawing object to draw on image.
 draw = ImageDraw.Draw(image)
 
-# Draw a white background
-draw.rectangle((0, 0, oled.width, oled.height), outline=255, fill=255)
+# Draw a black filled box to clear the image.
+draw.rectangle((0,0,width,height), outline=0, fill=0)
 
-# Draw a smaller inner rectangle
-draw.rectangle(
-    (BORDER, BORDER, oled.width - BORDER - 1, oled.height - BORDER - 1),
-    outline=0,
-    fill=0,
-)
+# Draw some shapes.
+# First define some constants to allow easy resizing of shapes.
+padding = 2
+shape_width = 20
+top = padding
+bottom = height-padding
+# Move left to right keeping track of the current x position for drawing shapes.
+x = padding
+# Draw an ellipse.
+draw.ellipse((x, top , x+shape_width, bottom), outline=255, fill=0)
+x += shape_width+padding
+# Draw a rectangle.
+draw.rectangle((x, top, x+shape_width, bottom), outline=255, fill=0)
+x += shape_width+padding
+# Draw a triangle.
+draw.polygon([(x, bottom), (x+shape_width/2, top), (x+shape_width, bottom)], outline=255, fill=0)
+x += shape_width+padding
+# Draw an X.
+draw.line((x, bottom, x+shape_width, top), fill=255)
+draw.line((x, top, x+shape_width, bottom), fill=255)
+x += shape_width+padding
 
 # Load default font.
 font = ImageFont.load_default()
 
-# Draw Some Text
-text = "Hello World!"
-(font_width, font_height) = font.getsize(text)
-draw.text(
-    (oled.width // 2 - font_width // 2, oled.height // 2 - font_height // 2),
-    text,
-    font=font,
-    fill=255,
-)
+# Alternatively load a TTF font.  Make sure the .ttf font file is in the same directory as the python script!
+# Some other nice fonts to try: http://www.dafont.com/bitmap.php
+#font = ImageFont.truetype('Minecraftia.ttf', 8)
 
-# Display image
-oled.image(image)
-oled.show()
+# Write two lines of text.
+draw.text((x, top),    'Hello',  font=font, fill=255)
+draw.text((x, top+20), 'World!', font=font, fill=255)
+
+# Display image.
+disp.image(image)
+disp.display()
