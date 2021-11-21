@@ -5,6 +5,7 @@
 # Will print the sensed range/distance every second.
 import time
 
+import adafruit_vl53l0x
 import board
 
 
