@@ -43,21 +43,5 @@ from PIL import Image, ImageDraw, ImageFont
 #     print("%f %f %f"%accelerometer.acceleration)
 #     time.sleep(1)
 i2c = busio.I2C(SCL, SDA)
-disp = adafruit_ssd1306.SSD1306_I2C(32, 1, i2c)
+disp = adafruit_ssd1306.SSD1306_I2C(128,64, i2c)
 disp.fill(0)
-disp.show()
-width = disp.width
-height = disp.height
-image = Image.new("1", (width, height))
-draw = ImageDraw.Draw(image)
-draw.rectangle((0, 0, width, height), outline=0, fill=0)
-padding = -2
-top = padding
-bottom = height - padding
-font = ImageFont.load_default()
-x = 0
-while True:
-    # Draw a black filled box to clear the image.
-
-    disp.image(image)
-    disp.show()
