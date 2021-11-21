@@ -46,7 +46,7 @@ BORDER = 5
 #     print("%f %f %f"%accelerometer.acceleration)
 #     time.sleep(1)
 i2c = busio.I2C(SCL, SDA)
-display = adafruit_ssd1306.SSD1306_I2C(128, 64, i2c)
+display = adafruit_ssd1306.SSD1306_I2C(128, 32, i2c)
 
 width = display.width
 height = display.height
