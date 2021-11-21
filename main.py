@@ -46,8 +46,14 @@ BORDER = 5
 #     print("%f %f %f"%accelerometer.acceleration)
 #     time.sleep(1)
 i2c = busio.I2C(SCL, SDA)
-disp = adafruit_ssd1306.SSD1306_I2C(128,64, i2c)
+display = adafruit_ssd1306.SSD1306_I2C(128, 64, i2c)
+display.fill(0)
 
-width = disp.width
-height = disp.height
-image = Image.new('1', (width, height))
+width = display.width
+height = display.height
+display.pixel(0, 0, 1)
+# Set a pixel in the middle 64, 16 position.
+display.pixel(64, 16, 1)
+# Set a pixel in the opposite 127, 31 position.
+display.pixel(127, 31, 1)
+display.show()
