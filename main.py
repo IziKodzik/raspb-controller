@@ -47,6 +47,8 @@ BORDER = 5
 #     time.sleep(1)
 i2c = busio.I2C(SCL, SDA)
 display = adafruit_ssd1306.SSD1306_I2C(128, 32, i2c)
+display.fill(0)
+display.show()
 
 width = display.width
 height = display.height
