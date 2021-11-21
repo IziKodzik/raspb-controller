@@ -44,4 +44,4 @@ from PIL import Image, ImageDraw, ImageFont
 #     time.sleep(1)
 i2c = busio.I2C(SCL, SDA)
 disp = adafruit_ssd1306.SSD1306_I2C(128,128, i2c)
-disp.fill(1)
+disp.fill(0)
