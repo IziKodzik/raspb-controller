@@ -55,27 +55,9 @@ padding = -2
 top = padding
 bottom = height - padding
 font = ImageFont.load_default()
+cmd = "hostname -I | cut -d' ' -f1"
+IP = subprocess.check_output(cmd, shell=True).decode("utf-8")
 x = 0
-while True:
-    # Draw a black filled box to clear the image.
-    draw.rectangle((0, 0, width, height), outline=0, fill=0)
-
-    # Shell scripts for system monitoring from here:
-    # https://unix.stackexchange.com/questions/119126/command-to-display-memory-usage-disk-usage-and-cpu-load
-    cmd = "hostname -I | cut -d' ' -f1"
-    IP = subprocess.check_output(cmd, shell=True).decode("utf-8")
-    cmd = 'cut -f 1 -d " " /proc/loadavg'
-    CPU = subprocess.check_output(cmd, shell=True).decode("utf-8")
-    cmd = "free -m | awk 'NR==2{printf \"Mem: %s/%s MB  %.2f%%\", $3,$2,$3*100/$2 }'"
-    MemUsage = subprocess.check_output(cmd, shell=True).decode("utf-8")
-    cmd = 'df -h | awk \'$NF=="/"{printf "Disk: %d/%d GB  %s", $3,$2,$5}\''
-    Disk = subprocess.check_output(cmd, shell=True).decode("utf-8")
-
-    # Write four lines of text.
-
-    draw.text((x, top + 0), "IP: " + IP, font=font, fill=255)
-
-
-    # Display image.
-    disp.image(image)
-    disp.show()
+draw.text((x, top + 0), "IP: " + IP, font=font, fill=255)
+disp.image(image)
+disp.show()
