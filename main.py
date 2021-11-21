@@ -79,4 +79,3 @@ while True:
     # Display image.
     disp.image(image)
     disp.show()
-    time.sleep(0.1)
