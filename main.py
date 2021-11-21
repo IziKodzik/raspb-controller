@@ -46,20 +46,8 @@ BORDER = 5
 #     print("%f %f %f"%accelerometer.acceleration)
 #     time.sleep(1)
 i2c = busio.I2C(SCL, SDA)
-disp = adafruit_ssd1306.SSD1306_I2C(128,12, i2c)
+disp = adafruit_ssd1306.SSD1306_I2C(128,64, i2c)
 
-# Clear display.
-disp.clear()
-disp.display()
-
-# Create blank image for drawing.
-# Make sure to create image with mode '1' for 1-bit color.
 width = disp.width
 height = disp.height
 image = Image.new('1', (width, height))
-
-# Get drawing object to draw on image.
-draw = ImageDraw.Draw(image)
-
-# Draw a black filled box to clear the image.
-draw.rectangle((0, 0,width,height), outline=0, fill=0)
