@@ -43,7 +43,7 @@ from PIL import Image, ImageDraw, ImageFont
 #     print("%f %f %f"%accelerometer.acceleration)
 #     time.sleep(1)
 i2c = busio.I2C(SCL, SDA)
-disp = adafruit_ssd1306.SSD1306_I2C(32, 32, i2c)
+disp = adafruit_ssd1306.SSD1306_I2C(32, 1, i2c)
 disp.fill(0)
 disp.show()
 width = disp.width
