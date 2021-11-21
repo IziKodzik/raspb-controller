@@ -26,6 +26,7 @@ import busio
 #     stepper.take_step()
 i2c = busio.I2C(board.SCL, board.SDA)
 vl53 = adafruit_vl53l0x.VL53L0X(i2c)
+vl53.set_address(29)
 
 while True:
     print("Range: {0}mm".format(vl53.range))
