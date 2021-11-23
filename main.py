@@ -20,19 +20,16 @@ from gpiozero import LED
 from StepperMotor import StepperMotor
 import busio
 from PIL import Image, ImageDraw, ImageFont
-WIDTH = 128
-HEIGHT = 32  # Change to 64 if needed
-BORDER = 5
 
 # motor_r = Motor(21, 20, 16)
 # motor_r.go_forward()
 # motor_l = Motor(13, 19, 26)
 # motor_l.go_forward()
 #
-# stepper = StepperMotor(17, 27)
-# while True:
-#     time.sleep(0.01)
-#     stepper.take_step()
+stepper = StepperMotor(17, 27)
+while True:
+    time.sleep(0.01)
+    stepper.take_step()
 # i2c = busio.I2C(board.SCL, board.SDA)
 # vl53 = adafruit_vl53l0x.VL53L0X(i2c)
 
