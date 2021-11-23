@@ -29,7 +29,6 @@ from PIL import Image, ImageDraw, ImageFont
 stepper = StepperMotor(17, 27)
 while True:
     stepper.take_step()
-    time.sleep(0.0001)
 # i2c = busio.I2C(board.SCL, board.SDA)
 # vl53 = adafruit_vl53l0x.VL53L0X(i2c)
 
