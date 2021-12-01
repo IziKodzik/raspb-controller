@@ -7,7 +7,7 @@ motor1 = Motor(21, 20, 16)
 motor2 = Motor(13, 19, 26)
 stepper = StepperMotor(17, 27)
 while True:
-    for i in range(0, 1024):
+    for i in range(0, 200):
         stepper.take_step()
     time.sleep(1)
 
