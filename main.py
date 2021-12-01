@@ -9,7 +9,7 @@ stepper = StepperMotor(17, 27)
 while True:
     for i in range(0, 1024):
         stepper.take_step()
-        time.sleep(1)
+    time.sleep(1)
 
 # motor1.go_forward()
 # motor2.go_forward()
