@@ -17,4 +17,4 @@ motor2.go_forward()
 
 # motor1.go_forward()
 # motor2.go_forward()
-time.sleep(3)
+time.sleep(2)
