@@ -13,7 +13,7 @@ time.sleep(1)
 while True:
     for i in range(0, 200*8):
         stepper.take_step()
-    time.sleep(1)
+    time.sleep(4)
 
 # motor1.go_forward()
 # motor2.go_forward()
