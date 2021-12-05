@@ -14,6 +14,12 @@ time.sleep(4)
 
 motor1.go_forward()
 motor2.go_forward()
+time.sleep(1)
+motor1.go_backward()
+motor2.go_backward()
+time.sleep(1)
+motor1.go_with_speed(0)
+motor2.go_with_speed(0)
 stepper.change_dir()
 for i in range(0, 200*8):
     stepper.take_step()
