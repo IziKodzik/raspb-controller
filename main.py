@@ -14,7 +14,7 @@ time.sleep(1)
 
 motor1.go_forward()
 motor2.go_forward()
-time.sleep(10)
+time.sleep(1)
 motor1.go_backward()
 motor2.go_backward()
 time.sleep(1)
