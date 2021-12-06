@@ -12,7 +12,7 @@ stepper = StepperMotor(17, 27)
 
 i2c = busio.I2C(board.SCL, board.SDA)
 vl53 = adafruit_vl53l0x.VL53L0X(i2c)
-print("Range: {0}mm".format(vl53.range))
 
 while True:
+    print("Range: {0}mm".format(vl53.range))
     stepper.take_step()
