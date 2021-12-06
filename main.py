@@ -16,10 +16,10 @@ from luma.oled.device import sh1106
 serial = i2c(port=1, address=0x3C)
 
 # substitute ssd1331(...) or sh1106(...) below if using that device
-device = sh1106(serial)
-with canvas(device) as draw:
-    draw.rectangle(device.bounding_box, outline="white", fill="black")
-    draw.text((30, 40), "SUM", fill="white")
+# device = sh1106(serial)
+# with canvas(device) as draw:
+#     draw.rectangle(device.bounding_box, outline="white", fill="black")
+#     draw.text((30, 40), "SUM", fill="white")
 
 motor1 = Motor(21, 20, 16)
 motor2 = Motor(13, 19, 26)
