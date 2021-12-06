@@ -15,4 +15,5 @@ vl53 = adafruit_vl53l0x.VL53L0X(i2c)
 
 while True:
     print("Range: {0}mm".format(vl53.range))
+    time.sleep(0.2)
     stepper.take_step()
