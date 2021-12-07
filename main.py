@@ -14,7 +14,6 @@ i2c = busio.I2C(board.SCL, board.SDA)
 vl53 = adafruit_vl53l0x.VL53L0X(i2c)
 for i in range(1600):
     stepper.take_step()
-    print(vl53.range)
 
 stepper.change_dir()
 time.sleep(1)
