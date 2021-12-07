@@ -15,6 +15,7 @@ vl53 = adafruit_vl53l0x.VL53L0X(i2c)
 while True:
     for i in range(200):
         stepper.take_step()
+        time.sleep(1)
     stepper.change_dir()
 time.sleep(1)
 print(vl53.range)
