@@ -12,9 +12,10 @@ stepper = StepperMotor(17, 27)
 
 i2c = busio.I2C(board.SCL, board.SDA)
 vl53 = adafruit_vl53l0x.VL53L0X(i2c)
-print(vl53.range)
 for i in range(200):
     stepper.take_step()
+    print(vl53.range)
+
 stepper.change_dir()
 time.sleep(1)
 print(vl53.range)
