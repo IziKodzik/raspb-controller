@@ -14,10 +14,11 @@ i2c = busio.I2C(board.SCL, board.SDA)
 vl53 = adafruit_vl53l0x.VL53L0X(i2c)
 x = []
 
+
 for i in range(1600):
     stepper.take_step()
     x.append(vl53.range)
-print(*x, sep=',\n')
+print(*x, sep='\n')
 time.sleep(1)
 stepper.change_dir()
 
