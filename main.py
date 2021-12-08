@@ -25,6 +25,6 @@ for i in range(200):
 
 motor1.go_forward()
 motor2.go_backward()
-time.sleep(1)
+time.sleep(0.5)
 motor1.stop()
 motor2.stop()
