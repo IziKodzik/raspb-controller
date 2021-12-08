@@ -26,3 +26,8 @@ class Motor:
         self.go_with_speed(1)
         self.dir_pin0.off()
         self.dir_pin1.on()
+
+    def stop(self):
+        self.pwm_pin.off()
+        self.dir_pin1.off()
+        self.dir_pin0.off()
