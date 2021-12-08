@@ -16,7 +16,7 @@ print(vl53.range)
 while True:
     for i in range(200):
         stepper.take_step()
-        time.sleep(0.5)
+        print(vl53.range)
     stepper.change_dir()
 time.sleep(1)
 print(vl53.range)
