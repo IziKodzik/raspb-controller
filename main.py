@@ -21,6 +21,7 @@ for i in range(1600):
     print(distance)
     stepper.take_step()
 time.sleep(1)
+print('============================================')
 for mes in x:
     if(mes < 3000):
         print(mes)
