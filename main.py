@@ -17,9 +17,12 @@ x = []
 
 for i in range(1600):
     stepper.take_step()
-    x.append(vl53.range)
-print(*x, sep='\n')
+    distance = vl53.range
+    x.append(distance)
 time.sleep(1)
+for mes in x:
+    if(mes < 3000):
+        print(mes)
 stepper.change_dir()
 
 for i in range(1600):
