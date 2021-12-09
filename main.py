@@ -18,6 +18,7 @@ x = []
 for i in range(1600):
     distance = vl53.range
     x.append(distance)
+    print(distance)
     stepper.take_step()
 time.sleep(1)
 for mes in x:
