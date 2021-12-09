@@ -16,9 +16,9 @@ x = []
 
 
 for i in range(1600):
-    stepper.take_step()
     distance = vl53.range
     x.append(distance)
+    stepper.take_step()
 time.sleep(1)
 for mes in x:
     if(mes < 3000):
@@ -27,9 +27,3 @@ stepper.change_dir()
 
 for i in range(1600):
     stepper.take_step()
-
-motor1.go_forward()
-motor2.go_backward()
-time.sleep(0.25)
-motor1.stop()
-motor2.stop()
