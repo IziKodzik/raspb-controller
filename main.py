@@ -23,6 +23,8 @@ time.sleep(1)
 for mes in x:
     if(mes < 3000):
         print(mes)
+    else:
+        print()
 stepper.change_dir()
 
 for i in range(1600):
