@@ -1,11 +1,17 @@
 import time
 
+from gpiozero import MotionSensor
+
 from Motor import Motor
 from StepperMotor import StepperMotor
 import board
 import busio
 import adafruit_vl53l0x
 
+mot = MotionSensor(12)
+mot.wait_for_motion()
+print('w')
+time.sleep(1000)
 motor1 = Motor(21, 20, 16)
 motor2 = Motor(13, 19, 26)
 stepper = StepperMotor(17, 27)
