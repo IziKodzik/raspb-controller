@@ -9,7 +9,12 @@ import busio
 import adafruit_vl53l0x
 
 mot = MotionSensor(12)
-mot.wait_for_motion()
+i = 0
+while True:
+    mot.wait_for_motion()
+    print(i)
+    i = i +1
+
 print('w')
 time.sleep(1000)
 motor1 = Motor(21, 20, 16)
