@@ -14,6 +14,7 @@ while True:
     mot.wait_for_motion()
     print(i)
     i = i +1
+    mot.wait_for_inactive()
 
 print('w')
 time.sleep(1000)
