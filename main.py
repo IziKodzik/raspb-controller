@@ -10,11 +10,10 @@ import adafruit_vl53l0x
 
 mot = MotionSensor(12)
 i = 0
+GPIO.setup(12, GPIO.IN)
+
 while True:
-    mot.wait_for_motion()
-    print(i)
-    i = i +1
-    mot.wait_for_inactive()
+    print(GPIO.input(12))
 
 print('w')
 time.sleep(1000)
