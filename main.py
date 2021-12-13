@@ -1,7 +1,8 @@
 import time
 
 from gpiozero import MotionSensor
-import RPI.GPIO as GPIO
+import RPi.GPIO as GPIO
+
 from Motor import Motor
 from StepperMotor import StepperMotor
 import board
