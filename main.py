@@ -1,22 +1,20 @@
 import time
 
 from gpiozero import MotionSensor
-import RPi.GPIO as GPIO
-
+from Decoder import Decoder
 from Motor import Motor
 from StepperMotor import StepperMotor
 import board
 import busio
 import adafruit_vl53l0x
 
-mot = MotionSensor(12)
 i = 0
-GPIO.setup(12, GPIO.IN)
 
+dec = Decoder(12)
 while True:
-    print(GPIO.input(12))
-
-print('w')
+    print(i)
+    dec.wait_for_change()
+    i = i + 1
 time.sleep(1000)
 motor1 = Motor(21, 20, 16)
 motor2 = Motor(13, 19, 26)
