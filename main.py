@@ -18,6 +18,7 @@ motor1.go_forward()
 i = 0
 while True:
     dec.wait_for_change()
+    i = i+1
     if i == 20:
         motor1.stop()
     pass
