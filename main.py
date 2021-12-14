@@ -16,6 +16,8 @@ motor1 = Motor(21, 20, 16)
 motor2 = Motor(13, 19, 26)
 motor1.go_forward()
 while True:
+    dec.wait_for_change()
+    print('change')
     pass
 stepper = StepperMotor(17, 27)
 
