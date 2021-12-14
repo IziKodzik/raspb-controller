@@ -14,7 +14,7 @@ dec = Decoder(12)
 
 motor1 = Motor(21, 20, 16)
 motor2 = Motor(13, 19, 26)
-motor2.go_with_speed(0.5)
+motor1.go_forward()
 while True:
     pass
 stepper = StepperMotor(17, 27)
