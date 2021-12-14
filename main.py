@@ -11,13 +11,12 @@ import adafruit_vl53l0x
 i = 0
 
 dec = Decoder(12)
-while True:
-    print(i)
-    dec.wait_for_change()
-    i = i + 1
-time.sleep(1000)
+
 motor1 = Motor(21, 20, 16)
 motor2 = Motor(13, 19, 26)
+motor1.go_with_speed(0.5)
+while True:
+    pass
 stepper = StepperMotor(17, 27)
 
 i2c = busio.I2C(board.SCL, board.SDA)
