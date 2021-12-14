@@ -15,9 +15,9 @@ motor2 = Motor(13, 19, 26)
 motor1.go_forward()
 i = 0
 while True:
+    print(i)
     dec.wait_for_change()
     i = i+1
-    print(i)
     if i == 20:
         motor1.stop()
     pass
