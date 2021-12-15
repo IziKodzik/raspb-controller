@@ -8,7 +8,7 @@ import board
 import busio
 import adafruit_vl53l0x
 
-dec = Decoder(12)
+dec = Decoder(25)
 
 motor1 = Motor(21, 20, 16)
 motor2 = Motor(13, 19, 26)
