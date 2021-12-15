@@ -19,7 +19,7 @@ while True:
     print(i)
     dec.wait_for_change()
     i = i+1
-    if i == 200:
+    if i == 150:
         motor1.stop()
         motor2.stop()
     pass
