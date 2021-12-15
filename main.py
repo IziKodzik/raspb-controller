@@ -17,7 +17,7 @@ motor1.go_backward()
 motor2.go_forward()
 start = time.time()
 i = 0
-while time.time() - start < 0.45:
+while time.time() - start < 0.5:
     print(i)
     dec.wait_for_change()
     i = i+1
