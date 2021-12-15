@@ -21,8 +21,7 @@ def count_hits(hi, fast_rotate):
 
 hits = 0
 fr = True
-t = Thread(target=count_hits, args=(hits, fr, ))
-t.start()
+
 # i2c = busio.I2C(board.SCL, board.SDA)
 # vl53 = adafruit_vl53l0x.VL53L0X(i2c)
 #
