@@ -8,16 +8,19 @@ import board
 import busio
 import adafruit_vl53l0x
 
-dec = Decoder(25)
+dec = Decoder(23)
 
-while True:
-    print('s')
-    dec.wait_for_change()
 motor1 = Motor(21, 20, 16)
 motor2 = Motor(13, 19, 26)
 motor1.go_forward()
 i = 0
-
+while True:
+    print(i)
+    dec.wait_for_change()
+    i = i+1
+    if i == 20:
+        motor1.stop()
+    pass
 stepper = StepperMotor(17, 27)
 
 i2c = busio.I2C(board.SCL, board.SDA)
