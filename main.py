@@ -35,11 +35,7 @@ for i in range(1600):
     stepper.take_step()
 stepper.change_dir()
 print('============================================')
-for mes in x:
-    if (mes < 3000):
-        print(mes)
-    else:
-        print()
+
 x.clear()
 print('============================================')
 hits = 0
@@ -66,8 +62,3 @@ stepper.change_dir()
 for i in range(1600):
     stepper.take_step()
 print('============================================')
-for mes in x:
-    if (mes < 3000):
-        print(mes)
-    else:
-        print()
