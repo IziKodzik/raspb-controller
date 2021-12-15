@@ -9,14 +9,14 @@ import adafruit_vl53l0x
 from threading import Thread, Event
 
 
-def count_hits(hi):
+def count_hits(hi, proceed):
     dec = Decoder(23)
-    while True:
+    while proceed:
         dec.wait_for_change()
         hi = hi + 1
+    print('exit')
 
 
-hits = 0
 i2c = busio.I2C(board.SCL, board.SDA)
 vl53 = adafruit_vl53l0x.VL53L0X(i2c)
 
@@ -27,8 +27,6 @@ stepper = StepperMotor(17, 27)
 
 
 x = []
-while True:
-    stepper.take_step()
 for i in range(1600):
     distance = vl53.range
     x.append(distance)
@@ -46,12 +44,16 @@ for mes in x:
         print()
 x.clear()
 print('============================================')
+hits = 0
+proc = True
+t = Thread(target=count_hits, args=(hits, proc, ))
 motor1.go_forward()
 motor2.go_forward()
-time.sleep(1)
+time.sleep(2)
 motor1.stop()
 motor2.stop()
 time.sleep(0.5)
+proc = False
 print(hits)
 for i in range(1600):
     distance = vl53.range
