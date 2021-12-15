@@ -40,7 +40,7 @@ x.clear()
 print('============================================')
 hits = 0
 proc = True
-t = Thread(target=count_hits, args=(hits, proc, ))
+t = Thread(target=count_hits, args=(hits, ))
 t.start()
 event = Event()
 motor1.go_forward()
