@@ -58,11 +58,12 @@ for i in range(1600):
     distance = vl53.range
     x.append(distance)
     print(distance)
-stepper.take_step()
+    stepper.take_step()
 time.sleep(1)
+stepper.change_dir()
+
 for i in range(1600):
     stepper.take_step()
-stepper.change_dir()
 print('============================================')
 for mes in x:
     if (mes < 3000):
