@@ -59,7 +59,7 @@ for i in range(1600):
     distance = vl53.range
     x.append(distance)
     print(distance)
-    stepper.take_step()
+stepper.take_step()
 time.sleep(1)
 for i in range(1600):
     stepper.take_step()
@@ -70,7 +70,3 @@ for mes in x:
         print(mes)
     else:
         print()
-stepper.change_dir()
-
-for i in range(1600):
-    stepper.take_step()
