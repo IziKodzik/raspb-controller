@@ -17,8 +17,6 @@ def count_hits(hi):
 
 
 hits = 0
-t = Thread(target=count_hits, args=(hits, ))
-t.start()
 i2c = busio.I2C(board.SCL, board.SDA)
 vl53 = adafruit_vl53l0x.VL53L0X(i2c)
 
