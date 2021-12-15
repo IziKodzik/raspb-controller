@@ -1,3 +1,4 @@
+import math
 import sys
 import time
 from Decoder import Decoder
@@ -8,59 +9,21 @@ import busio
 import adafruit_vl53l0x
 from threading import Thread, Event
 
-
-event = Event()
-
-
-def count_hits(hi):
-    dec = Decoder(23)
-    while not event.is_set():
-        dec.wait_for_change()
-        hi = hi + 1
-    print('exit')
-
-
-i2c = busio.I2C(board.SCL, board.SDA)
-vl53 = adafruit_vl53l0x.VL53L0X(i2c)
 motor1 = Motor(21, 20, 16)
 motor2 = Motor(13, 19, 26)
 stepper = StepperMotor(17, 27)
+i2c = busio.I2C(board.SCL, board.SDA)
+vl53 = adafruit_vl53l0x.VL53L0X(i2c)
 
+points = []
 
-x = []
-for i in range(1600):
+for i in range(0, 1600):
     distance = vl53.range
-    x.append(distance)
+    if distance > 8000:
+        distance = 0
+    radians = 0.225 * math.pi / 360.0
+    points.append({'x': distance * math.sin(radians), 'y': distance * math.sin(radians)})
     stepper.take_step()
-time.sleep(1)
-stepper.change_dir()
-for i in range(1600):
-    stepper.take_step()
-stepper.change_dir()
-print('============================================')
 
-x.clear()
-print('============================================')
-hits = 0
-proc = True
-t = Thread(target=count_hits, args=(hits, ))
-t.start()
-motor1.go_forward()
-motor2.go_forward()
-time.sleep(2)
-motor1.stop()
-motor2.stop()
-time.sleep(0.5)
-event.set()
-print(hits)
-print('here')
-for i in range(1600):
-    distance = vl53.range
-    x.append(distance)
-    stepper.take_step()
-time.sleep(1)
-stepper.change_dir()
-
-for i in range(1600):
-    stepper.take_step()
-print('============================================')
+for point in points:
+    print(point)
