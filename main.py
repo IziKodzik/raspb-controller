@@ -6,20 +6,20 @@ from StepperMotor import StepperMotor
 import board
 import busio
 import adafruit_vl53l0x
-import _thread
-
-hits = 0
+from threading import Thread, Event
 
 
-def count_hits():
+def count_hits(hi):
     dec = Decoder(23)
     while True:
-        print(hits)
+        print(hi)
         dec.wait_for_change()
-        hits = hits + 1
+        hi = hi + 1
 
 
-_thread.start_new_thread(count_hits())
+hits = 0
+t = Thread(target=count_hits(), args=(hits, ))
+t.start()
 motor1 = Motor(21, 20, 16)
 motor2 = Motor(13, 19, 26)
 motor1.go_forward()
