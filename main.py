@@ -27,7 +27,8 @@ stepper = StepperMotor(17, 27)
 
 
 x = []
-
+while True:
+    stepper.take_step()
 for i in range(1600):
     distance = vl53.range
     x.append(distance)
