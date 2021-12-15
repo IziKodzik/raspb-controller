@@ -22,6 +22,10 @@ def count_hits():
 _thread.start_new_thread(count_hits())
 motor1 = Motor(21, 20, 16)
 motor2 = Motor(13, 19, 26)
+motor1.go_forward()
+motor2.go_backward()
+time.sleep(1)
+sys.exit()
 stepper = StepperMotor(17, 27)
 
 i2c = busio.I2C(board.SCL, board.SDA)
