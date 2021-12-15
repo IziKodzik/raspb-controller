@@ -12,7 +12,6 @@ from threading import Thread, Event
 def count_hits(hi):
     dec = Decoder(23)
     while True:
-        print(hi)
         dec.wait_for_change()
         hi = hi + 1
 
