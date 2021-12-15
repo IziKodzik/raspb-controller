@@ -18,7 +18,7 @@ def count_hits(hi):
 
 
 hits = 0
-t = Thread(target=count_hits(), args=(hits, ))
+t = Thread(target=count_hits, args=(hits, ))
 t.start()
 motor1 = Motor(21, 20, 16)
 motor2 = Motor(13, 19, 26)
