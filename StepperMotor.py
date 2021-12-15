@@ -10,7 +10,7 @@ class StepperMotor:
         self.dir_pin = LED(dir_pin_no)
 
     def take_step(self):
-        self.step_pin.pulse()
+        self.step_pin.blink()
 
 
     def change_dir(self):
