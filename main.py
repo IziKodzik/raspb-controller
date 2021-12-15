@@ -48,7 +48,10 @@ print('============================================')
 motor1.go_forward()
 motor2.go_forward()
 time.sleep(1)
-
+motor1.stop()
+motor2.stop()
+time.sleep(0.5)
+print(hits)
 for i in range(1600):
     distance = vl53.range
     x.append(distance)
