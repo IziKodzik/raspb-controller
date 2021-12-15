@@ -53,6 +53,7 @@ motor2.stop()
 time.sleep(0.5)
 proc = False
 print(hits)
+print('here')
 for i in range(1600):
     distance = vl53.range
     x.append(distance)
