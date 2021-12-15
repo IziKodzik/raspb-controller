@@ -9,9 +9,9 @@ import adafruit_vl53l0x
 from threading import Thread, Event
 
 
-def count_hits(hi, proceed):
+def count_hits(hi):
     dec = Decoder(23)
-    while proceed:
+    while not event.is_set():
         dec.wait_for_change()
         hi = hi + 1
     print('exit')
@@ -46,13 +46,14 @@ hits = 0
 proc = True
 t = Thread(target=count_hits, args=(hits, proc, ))
 t.start()
+event = Event()
 motor1.go_forward()
 motor2.go_forward()
 time.sleep(2)
 motor1.stop()
 motor2.stop()
 time.sleep(0.5)
-proc = False
+event.set()
 print(hits)
 print('here')
 for i in range(1600):
