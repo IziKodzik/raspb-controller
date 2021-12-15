@@ -18,6 +18,7 @@ motor2.go_forward()
 start = time.time()
 i = 0
 while time.time() - start < 1000:
+    print(time.time() - start)
     print(i)
     dec.wait_for_change()
     i = i+1
