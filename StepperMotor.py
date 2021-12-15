@@ -11,7 +11,9 @@ class StepperMotor:
 
     def take_step(self):
         self.step_pin.off()
+        sleep(0.00000000000000000000000000001)
         self.step_pin.on()
+        sleep(0.00000000000000000000000000001)
         self.step_pin.off()
 
 
