@@ -9,28 +9,24 @@ import adafruit_vl53l0x
 from threading import Thread, Event
 
 
-
-def count_hits(hi, fast_rotate):
+def count_hits(hi):
     dec = Decoder(23)
     while True:
         dec.wait_for_change()
         hi = hi + 1
-        if fast_rotate:
-            time.sleep(2)
 
 
 hits = 0
-fr = True
+t = Thread(target=count_hits, args=(hits, ))
+t.start()
+i2c = busio.I2C(board.SCL, board.SDA)
+vl53 = adafruit_vl53l0x.VL53L0X(i2c)
 
-# i2c = busio.I2C(board.SCL, board.SDA)
-# vl53 = adafruit_vl53l0x.VL53L0X(i2c)
-#
 
 motor1 = Motor(21, 20, 16)
 motor2 = Motor(13, 19, 26)
 stepper = StepperMotor(17, 27)
-while True:
-    stepper.take_step()
+
 
 x = []
 for i in range(1600):
