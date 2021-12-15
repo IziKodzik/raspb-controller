@@ -10,11 +10,7 @@ class StepperMotor:
         self.dir_pin = LED(dir_pin_no)
 
     def take_step(self):
-        self.step_pin.off()
-        sleep(0.000000000000000000000000000000000000000000000000000000000000000000000001)
-        self.step_pin.on()
-        sleep(0.000000000000000000000000000000000000000000000000000000000000000000000001)
-        self.step_pin.off()
+        self.step_pin.pulse()
 
 
     def change_dir(self):
