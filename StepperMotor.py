@@ -1,16 +1,16 @@
 from time import sleep
 
-from gpiozero import LED
+from gpiozero import LED, PWMLED
 
 
 class StepperMotor:
 
     def __init__(self, step_pin_no, dir_pin_no):
-        self.step_pin = LED(step_pin_no)
+        self.step_pin = PWMLED(step_pin_no)
         self.dir_pin = LED(dir_pin_no)
 
     def take_step(self):
-        self.step_pin.blink(0.000000001, 0.000000001)
+        self.step_pin.pulse(0.000000001, 0.000000001)
 
 
 
