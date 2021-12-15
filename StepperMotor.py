@@ -10,6 +10,7 @@ class StepperMotor:
         self.dir_pin = LED(dir_pin_no)
 
     def take_step(self):
+        self.step_pin.blink(0.000000001, 0.000000001)
         self.step_pin.off()
         sleep(0.000000001)
         self.step_pin.on()
