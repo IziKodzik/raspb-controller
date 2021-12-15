@@ -45,6 +45,7 @@ print('============================================')
 hits = 0
 proc = True
 t = Thread(target=count_hits, args=(hits, proc, ))
+t.start()
 motor1.go_forward()
 motor2.go_forward()
 time.sleep(2)
