@@ -24,6 +24,9 @@ for i in range(0, 1600):
     radians = 0.225 * math.pi / 360.0
     points.append({'x': distance * math.sin(radians), 'y': distance * math.sin(radians)})
     stepper.take_step()
+stepper.change_dir()
+for i in range(0, 1600):
+    stepper.take_step()
 
 for point in points:
-    print(point)
+    print(f'{point["x"]},{point["y"]}')
