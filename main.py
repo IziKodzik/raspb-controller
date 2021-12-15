@@ -1,3 +1,4 @@
+import sys
 import time
 
 from gpiozero import MotionSensor
@@ -13,16 +14,16 @@ dec = Decoder(23)
 motor1 = Motor(21, 20, 16)
 motor2 = Motor(13, 19, 26)
 motor1.go_backward()
-motor2.go_backward()
-i = 0
-while True:
+motor2.go_forward()
+start = time.time()
+while time.time() - start < 1000:
     print(i)
     dec.wait_for_change()
     i = i+1
-    if i == 150:
-        motor1.stop()
-        motor2.stop()
     pass
+motor1.stop()
+motor2.stop()
+sys.exit()
 stepper = StepperMotor(17, 27)
 
 i2c = busio.I2C(board.SCL, board.SDA)
