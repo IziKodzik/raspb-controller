@@ -14,6 +14,7 @@ motor1 = Motor(21, 20, 16)
 motor2 = Motor(13, 19, 26)
 motor1.go_forward()
 motor2.go_forward()
+i = 0
 while True:
     print(i)
     dec.wait_for_change()
