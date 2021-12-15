@@ -13,13 +13,14 @@ dec = Decoder(23)
 motor1 = Motor(21, 20, 16)
 motor2 = Motor(13, 19, 26)
 motor1.go_forward()
-i = 0
+motor2.go_forward()
 while True:
     print(i)
     dec.wait_for_change()
     i = i+1
-    if i == 20:
+    if i == 200:
         motor1.stop()
+        motor2.stop()
     pass
 stepper = StepperMotor(17, 27)
 
