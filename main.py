@@ -13,6 +13,7 @@ import busio
 import adafruit_vl53l0x
 from threading import Thread, Event
 bus = smbus.SMBus(1)
+time.sleep(1)
 
 motor1 = Motor(21, 20, 16)
 motor2 = Motor(13, 19, 26)
