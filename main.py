@@ -13,23 +13,29 @@ import busio
 import adafruit_vl53l0x
 from threading import Thread, Event
 
-def d00pa():
+
+def d00pa(decoder):
     current_thread = threading.currentThread()
+    count = 0
     while not getattr(current_thread, "_stopped"):
-        print('dpa')
+        print(count)
+        decoder.wait_for_change()
+        count += 1
 
 
-decoder_counter_thread = threading.Thread(target=d00pa)
-decoder_counter_thread._stopped = False
-decoder_counter_thread.start()
-time.sleep(4)
-decoder_counter_thread._stopped = True
 
 motor1 = Motor(21, 20, 16)
 motor2 = Motor(13, 19, 26)
 stepper = StepperMotor(17, 27)
 i2c = busio.I2C(board.SCL, board.SDA)
 vl53 = adafruit_vl53l0x.VL53L0X(i2c)
+decoder = Decoder(15)
+
+decoder_counter_thread = threading.Thread(target=d00pa, args=(decoder,))
+decoder_counter_thread._stopped = False
+decoder_counter_thread.start()
+time.sleep(4)
+decoder_counter_thread._stopped = True
 points = []
 
 for i in range(0, 1600):
@@ -42,7 +48,6 @@ for i in range(0, 1600):
         points.append({'x': (distance * math.sin(radians)), 'y': (distance * math.cos(radians))})
 
     stepper.take_step()
-thread._stopped = True
 mapPointsData = {'map-points': points}
 res = requests.post("http://192.168.0.115:8080/map-points", json=mapPointsData)
 stepper.change_dir()
