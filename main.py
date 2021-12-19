@@ -13,11 +13,11 @@ import busio
 import adafruit_vl53l0x
 from threading import Thread, Event
 
-def nigg():
+def d00pa():
     current_thread = threading.currentThread()
     while not getattr(current_thread, "_stopped"):
-        print('nig')
-    pass
+        print('dpa')
+
 
 decoder_counter_thread = threading.Thread(target=nigg)
 decoder_counter_thread._stopped = False
