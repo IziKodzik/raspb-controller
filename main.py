@@ -28,7 +28,7 @@ motor2 = Motor(13, 19, 26)
 stepper = StepperMotor(17, 27)
 i2c = busio.I2C(board.SCL, board.SDA)
 vl53 = adafruit_vl53l0x.VL53L0X(i2c)
-wheel_decoder = Decoder(15)
+wheel_decoder = Decoder(23)
 while True:
     print('sx')
     wheel_decoder.wait_for_change()
