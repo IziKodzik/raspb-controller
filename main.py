@@ -1,7 +1,7 @@
 import math
 import sys
 import time
-import smbus2
+import smbus
 
 import requests
 
