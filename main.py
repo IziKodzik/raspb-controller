@@ -24,9 +24,10 @@ for i in range(0, 1600):
     distance = vl53.range
     if distance > 8000:
         distance = 0
-    radians = i * 0.225 * math.pi / 180.0
-    points.append({'x': (distance * math.sin(radians)), 'y': (distance * math.cos(radians))})
-    stepper.take_step()
+    if distance != 0:
+        radians = i * 0.225 * math.pi / 180.0
+        points.append({'x': (distance * math.sin(radians)), 'y': (distance * math.cos(radians))})
+        stepper.take_step()
 
 mapPointsData = {'map-points': points}
 res = requests.post("http://192.168.0.115:8080/map-points", json=mapPointsData)
