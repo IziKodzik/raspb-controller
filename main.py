@@ -27,7 +27,7 @@ for i in range(0, 1600):
     if distance != 0:
         radians = i * 0.225 * math.pi / 180.0
         points.append({'x': (distance * math.sin(radians)), 'y': (distance * math.cos(radians))})
-        stepper.take_step()
+    stepper.take_step()
 
 mapPointsData = {'map-points': points}
 res = requests.post("http://192.168.0.115:8080/map-points", json=mapPointsData)
