@@ -13,15 +13,17 @@ import busio
 import adafruit_vl53l0x
 from threading import Thread, Event
 
+def nigg():
+    t = threading.currentThread()
+    while not getattr(t, "_stopped"):
+        print('nig')
+    pass
 
-def dupa():
-    current_thread = threading.currentThread
-    while not getattr(current_thread, "_stopped"):
-        print('gonwo')
-
-thread = Thread(target=dupa)
-thread._stopped = False
-thread.start()
+s = threading.Thread(target=nigg)
+s._stopped = False
+s.start()
+time.sleep(4)
+s._stopped = True
 
 motor1 = Motor(21, 20, 16)
 motor2 = Motor(13, 19, 26)
@@ -29,7 +31,6 @@ stepper = StepperMotor(17, 27)
 i2c = busio.I2C(board.SCL, board.SDA)
 vl53 = adafruit_vl53l0x.VL53L0X(i2c)
 points = []
-
 
 for i in range(0, 1600):
     distance = vl53.range
