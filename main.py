@@ -1,6 +1,7 @@
 import math
 import sys
 import time
+import smbus2
 
 import requests
 
@@ -11,6 +12,7 @@ import board
 import busio
 import adafruit_vl53l0x
 from threading import Thread, Event
+bus = smbus.SMBus(1)
 
 motor1 = Motor(21, 20, 16)
 motor2 = Motor(13, 19, 26)
