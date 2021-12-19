@@ -1,7 +1,6 @@
 import math
 import sys
 import time
-import smbus
 
 import requests
 
@@ -12,8 +11,6 @@ import board
 import busio
 import adafruit_vl53l0x
 from threading import Thread, Event
-bus = smbus.SMBus(1)
-time.sleep(1)
 
 motor1 = Motor(21, 20, 16)
 motor2 = Motor(13, 19, 26)
@@ -30,6 +27,7 @@ for i in range(0, 1600):
     radians = 0.225 * math.pi / 360.0
     points.append({'x': (distance * math.sin(radians)), 'y': (distance * math.sin(radians))})
     stepper.take_step()
+    time.sleep(0.0001)
 
 mapPointsData = {'map-points': points}
 res = requests.post("http://192.168.0.115:8080/map-points", json=mapPointsData)
