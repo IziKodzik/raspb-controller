@@ -1,3 +1,4 @@
+import math
 import threading
 import time
 
@@ -17,7 +18,10 @@ if __name__ == "__main__":
     # s.start()
     # time.sleep(4)
     # s._stopped = True
-    f = open()
+    distance = 300
+    radians = 0.225 * math.pi / 360.0
+
+    print((distance * math.sin(radians)))
     x = {'map-points':[{'x': 1, 'y': 2},
                               {'x': 1, 'y': 2},
                               {'x': 1, 'y': 2},
