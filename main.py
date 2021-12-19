@@ -19,7 +19,7 @@ def d00pa():
         print('dpa')
 
 
-decoder_counter_thread = threading.Thread(target=nigg)
+decoder_counter_thread = threading.Thread(target=d00pa)
 decoder_counter_thread._stopped = False
 decoder_counter_thread.start()
 time.sleep(4)
