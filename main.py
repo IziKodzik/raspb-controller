@@ -14,16 +14,16 @@ import adafruit_vl53l0x
 from threading import Thread, Event
 
 def nigg():
-    t = threading.currentThread()
-    while not getattr(t, "_stopped"):
+    current_thread = threading.currentThread()
+    while not getattr(current_thread, "_stopped"):
         print('nig')
     pass
 
-s = threading.Thread(target=nigg)
-s._stopped = False
-s.start()
+decoder_counter_thread = threading.Thread(target=nigg)
+decoder_counter_thread._stopped = False
+decoder_counter_thread.start()
 time.sleep(4)
-s._stopped = True
+decoder_counter_thread._stopped = True
 
 motor1 = Motor(21, 20, 16)
 motor2 = Motor(13, 19, 26)
