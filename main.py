@@ -22,7 +22,7 @@ points = []
 
 for i in range(0, 1600):
     distance = vl53.range
-    if distance > 8000:
+    if distance > 2000:
         distance = 0
     if distance != 0:
         radians = i * 0.225 * math.pi / 180.0
