@@ -24,7 +24,7 @@ for i in range(0, 1600):
     distance = vl53.range
     if distance > 8000:
         distance = 0
-    radians = i * 0.225 * math.pi / 360.0
+    radians = i * 0.225 * math.pi / 180.0
     points.append({'x': (distance * math.sin(radians)), 'y': (distance * math.sin(radians))})
     stepper.take_step()
 
