@@ -23,18 +23,18 @@ def d00pa(decoder):
         count += 1
 
 
-
 motor1 = Motor(21, 20, 16)
 motor2 = Motor(13, 19, 26)
 stepper = StepperMotor(17, 27)
 i2c = busio.I2C(board.SCL, board.SDA)
 vl53 = adafruit_vl53l0x.VL53L0X(i2c)
-decoder = Decoder(15)
+wheel_decoder = Decoder(15)
 
-decoder_counter_thread = threading.Thread(target=d00pa, args=(decoder,))
+decoder_counter_thread = threading.Thread(target=d00pa, args=(wheel_decoder,))
 decoder_counter_thread._stopped = False
 decoder_counter_thread.start()
-time.sleep(4)
+while True:
+    pass
 decoder_counter_thread._stopped = True
 points = []
 
