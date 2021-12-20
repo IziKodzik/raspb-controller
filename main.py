@@ -21,7 +21,7 @@ def d00pa(decoder):
         print(count)
         decoder.wait_for_change()
         count += 1
-
+    print('emd')
 
 motor1 = Motor(21, 20, 16)
 motor2 = Motor(13, 19, 26)
@@ -38,7 +38,7 @@ decoder_counter_thread._stopped = False
 decoder_counter_thread.start()
 motor1.go_forward()
 motor2.go_forward()
-time.sleep(4)
+time.sleep(2)
 motor1.stop()
 motor2.stop()
 decoder_counter_thread._stopped = True
