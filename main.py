@@ -26,7 +26,7 @@ def d00pa(decoder):
 motor1 = Motor(21, 20, 16)
 motor2 = Motor(13, 19, 26)
 motor1.go_forward()
-motor1.go_backward()
+motor2.go_backward()
 
 while True:
     pass
