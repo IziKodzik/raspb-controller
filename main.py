@@ -37,7 +37,7 @@ decoder_counter_thread = threading.Thread(target=d00pa, args=(wheel_decoder,))
 decoder_counter_thread._stopped = False
 decoder_counter_thread.start()
 motor1.go_forward()
-motor2.go_backward()
+motor2.go_forward()
 time.sleep(4)
 motor1.stop()
 motor2.stop()
