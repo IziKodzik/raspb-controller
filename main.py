@@ -28,8 +28,6 @@ motor2 = Motor(13, 19, 26)
 motor1.go_forward()
 motor2.go_backward()
 
-while True:
-    pass
 stepper = StepperMotor(17, 27)
 i2c = busio.I2C(board.SCL, board.SDA)
 vl53 = adafruit_vl53l0x.VL53L0X(i2c)
@@ -41,7 +39,10 @@ decoder_counter_thread.start()
 motor1.go_forward()
 motor2.go_backward()
 time.sleep(4)
+motor1.stop()
+motor2.stop()
 decoder_counter_thread._stopped = True
+
 while True:
     pass
 points = []
