@@ -14,7 +14,7 @@ import adafruit_vl53l0x
 from threading import Thread, Event
 
 
-def d00pa(decoder):
+def count_wheel_prox(decoder):
     current_thread = threading.currentThread()
     count = 0
     while not getattr(current_thread, "_stopped"):
@@ -33,18 +33,6 @@ i2c = busio.I2C(board.SCL, board.SDA)
 vl53 = adafruit_vl53l0x.VL53L0X(i2c)
 wheel_decoder = Decoder(23)
 
-decoder_counter_thread = threading.Thread(target=d00pa, args=(wheel_decoder,))
-decoder_counter_thread._stopped = False
-decoder_counter_thread.start()
-motor1.go_forward()
-motor2.go_forward()
-time.sleep(2)
-motor1.stop()
-motor2.stop()
-decoder_counter_thread._stopped = True
-
-while True:
-    pass
 points = []
 
 for i in range(0, 1600):
@@ -61,8 +49,31 @@ mapPointsData = {'map-points': points}
 res = requests.post("http://192.168.0.115:8080/map-points", json=mapPointsData)
 stepper.change_dir()
 
+
 for i in range(0, 1600):
     stepper.take_step()
 
-for point in points:
-    print(f'{point["x"]},{point["y"]}')
+decoder_counter_thread = threading.Thread(target=count_wheel_prox, args=(wheel_decoder,))
+decoder_counter_thread._stopped = False
+decoder_counter_thread.start()
+motor1.go_forward()
+motor2.go_forward()
+time.sleep(1)
+motor1.stop()
+motor2.stop()
+decoder_counter_thread._stopped = True
+
+for i in range(0, 1600):
+    distance = vl53.range
+    if distance > 8000:
+        distance = 0
+
+    if distance != 0:
+        radians = i * 0.225 * math.pi / 180.0
+        points.append({'x': (distance * math.sin(radians)), 'y': (distance * math.cos(radians))})
+
+    stepper.take_step()
+mapPointsData = {'map-points': points}
+res = requests.post("http://192.168.0.115:8080/map-points", json=mapPointsData)
+stepper.change_dir()
+points.clear()
