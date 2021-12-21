@@ -41,15 +41,15 @@ for i in range(0, 1600):
     if distance != 0:
         radians = i * 0.225 * math.pi / 180.0
         points.append({'x': (distance * math.sin(radians)), 'y': (distance * math.cos(radians))})
-
     stepper.take_step()
-mapPointsData = {'map-points': points}
-res = requests.post("http://192.168.0.115:8080/map-points", json=mapPointsData)
+
 stepper.change_dir()
-
-
 for i in range(0, 1600):
     stepper.take_step()
+
+mapPointsData = {'map-points': points}
+res = requests.post("http://192.168.0.115:8080/map-points", json=mapPointsData)
+points.clear()
 
 decoder_counter_thread = threading.Thread(target=count_wheel_prox, args=(wheel_decoder,))
 decoder_counter_thread._stopped = False
@@ -60,7 +60,7 @@ time.sleep(1)
 motor1.stop()
 motor2.stop()
 decoder_counter_thread._stopped = True
-
+print('second')
 for i in range(0, 1600):
     distance = vl53.range
     if distance > 8000:
@@ -71,7 +71,10 @@ for i in range(0, 1600):
         points.append({'x': (distance * math.sin(radians)), 'y': (distance * math.cos(radians))})
 
     stepper.take_step()
+stepper.change_dir()
+for i in range(0, 1600):
+    stepper.take_step()
+
 mapPointsData = {'map-points': points}
 res = requests.post("http://192.168.0.115:8080/map-points", json=mapPointsData)
-stepper.change_dir()
 points.clear()
