@@ -71,7 +71,7 @@ for i in range(0, 1600):
 
     if distance != 0:
         radians = i * 0.225 * math.pi / 180.0
-        points.append({'x': (distance * math.sin(radians)), 'y': (distance * math.cos(radians))})
+        points.append({'x': (distance * math.sin(radians) + x), 'y': (distance * math.cos(radians))})
 
     stepper.take_step()
 stepper.change_dir()
