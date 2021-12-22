@@ -53,6 +53,7 @@ class Robot:
 
         while True:
             print(self.accelerometer.acceleration)
+            time.sleep(0.1)
 
         points = []
         print('First scan.')
