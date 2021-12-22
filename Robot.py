@@ -20,7 +20,7 @@ class Robot:
         current_thread = threading.currentThread()
         while not getattr(current_thread, "_stopped"):
             decoder.wait_for_change(not getattr(current_thread, "_stopped"))
-            self.x += 1
+            self.counted_ticks += 1
         print('Decoding ended.')
 
     def __init__(self):
@@ -50,8 +50,8 @@ class Robot:
             stepper.take_step()
 
         stepper.change_dir()
-        mapPointsData = {'map-points': points}
-        res = requests.post("http://192.168.0.115:8080/map-points", json=mapPointsData)
+        map_points_data = {'map-points': points}
+        res = requests.post("http://192.168.0.115:8080/map-points", json=map_points_data)
         points.clear()
         self.counted_ticks = 0
         decoder_counter_thread = threading.Thread(target=self.count_wheel_prox, args=(wheel_decoder,))
@@ -77,7 +77,7 @@ class Robot:
 
             if distance != 0:
                 radians = i * 0.225 * math.pi / 180.0
-                points.append({'x': (distance * math.sin(radians) ), 'y': (distance * math.cos(radians) - self.x)})
+                points.append({'x': (distance * math.sin(radians)), 'y': (distance * math.cos(radians) - self.x)})
 
             stepper.take_step()
         stepper.change_dir()
@@ -85,6 +85,6 @@ class Robot:
             stepper.take_step()
         stepper.change_dir()
 
-        mapPointsData = {'map-points': points}
-        res = requests.post("http://192.168.0.115:8080/map-points", json=mapPointsData)
+        map_points_data = {'map-points': points}
+        res = requests.post("http://192.168.0.115:8080/map-points", json=map_points_data)
         points.clear()
