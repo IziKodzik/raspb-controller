@@ -20,9 +20,12 @@ class Robot:
 
     def detect_shift(self):
         print('Detecting acceleration...')
+        velocity = 0
         current_thread = threading.currentThread()
         while not getattr(current_thread, "_stopped"):
-            self.shift = np.subtract(self.shift, np.array(self.accelerometer.acceleration))
+            acceleration = self.accelerometer.acceleration
+            velocity = velocity + acceleration[1] * 0.01**2
+            time.sleep(0.01)
         print('Detecting acceleration ended.')
 
     def count_wheel_ticks(self, decoder):
@@ -47,7 +50,7 @@ class Robot:
         i2c = busio.I2C(board.SCL, board.SDA)
         vl53 = adafruit_vl53l0x.VL53L0X(i2c)
         self.accelerometer = adafruit_adxl34x.ADXL345(i2c)
-        self.shift = np.array([0, 0, 0])
+        self.velocity = np.array([0, 0, 0])
         self.x = 0.0
         y = 0.0
 
@@ -86,7 +89,7 @@ class Robot:
         motor2.stop()
         decoder_counter_thread._stopped = True
         time.sleep(0.5)
-        print(self.shift)
+        print(self.acceleration)
         for i in range(0, 1600):
             distance = vl53.range
             if distance > 8000:
