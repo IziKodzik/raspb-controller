@@ -59,7 +59,7 @@ decoder_counter_thread._stopped = False
 decoder_counter_thread.start()
 motor1.go_forward()
 motor2.go_forward()
-time.sleep(1)
+time.sleep(3)
 motor1.stop()
 motor2.stop()
 decoder_counter_thread._stopped = True
