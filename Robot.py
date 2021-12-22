@@ -63,7 +63,7 @@ class Robot:
         spin = 0
         motor1.go_forward()
         motor2.go_backward()
-        while True:
+        while spin<3.14:
             acceleration = self.accelerometer.acceleration
             if abs(acceleration[1]) > 0.25:
                 self.velocity[1] = self.velocity[1] + acceleration[1] * 0.001
