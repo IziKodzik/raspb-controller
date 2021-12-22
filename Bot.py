@@ -1,4 +1,4 @@
-class Robot:
+class Bot:
 
     def __init__(self, left_motor, right_motor):
         self.left_motor = left_motor
