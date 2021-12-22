@@ -63,6 +63,7 @@ class Robot:
         motor1.stop()
         motor2.stop()
         decoder_counter_thread._stopped = True
+        time.sleep(0.5)
         self.x += self.counted_ticks * 5.2
         print('ticks')
         print(self.counted_ticks)
