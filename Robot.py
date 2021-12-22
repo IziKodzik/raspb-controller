@@ -26,7 +26,7 @@ class Robot:
         current_thread = threading.currentThread()
         while not getattr(current_thread, "_stopped"):
             acceleration = self.accelerometer.acceleration
-            velocity = np.add(velocity * np.array(acceleration) * 0.01**2)
+            velocity = np.add(velocity, np.array(acceleration) * 0.01**2)
             spin += velocity[0]/2*math.pi
             self.shift[0] += velocity[1] * math.sin(spin)
             self.shift[1] += velocity[1] * math.cos(spin)
