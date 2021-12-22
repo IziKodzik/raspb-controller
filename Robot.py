@@ -12,14 +12,19 @@ from StepperMotor import StepperMotor
 import board
 import busio
 import adafruit_vl53l0x
+import numpy as np
 from threading import Thread, Event
 
 
 class Robot:
 
     def count_shift(self):
+        print('Detecting acceleration...')
+        current_thread = threading.currentThread()
+        while not getattr(current_thread, "_stopped"):
+            self.shift = self.shift.add(np.array(self.accelerometer.acceleration))
+        print('Detecting acceleration ended.')
 
-        pass
 
     def count_wheel_ticks(self, decoder):
         print('Decoding...')
@@ -41,7 +46,7 @@ class Robot:
         i2c = busio.I2C(board.SCL, board.SDA)
         vl53 = adafruit_vl53l0x.VL53L0X(i2c)
         self.accelerometer = adafruit_adxl34x.ADXL345(i2c)
-        self.acceleration = [0, 0, 0]
+        self.shift = np.array([0, 0])
         self.x = 0.0
         y = 0.0
 
@@ -76,7 +81,7 @@ class Robot:
         motor2.stop()
         decoder_counter_thread._stopped = True
         time.sleep(0.5)
-        self.x += self.counted_ticks * 5.4
+        y = self.counted_ticks * 5.4
         print('ticks')
         print(self.counted_ticks)
         print('xs')
@@ -89,7 +94,7 @@ class Robot:
 
             if distance != 0:
                 radians = i * 0.225 * math.pi / 180.0
-                points.append({'x': (distance * math.sin(radians)), 'y': (distance * math.cos(radians) + self.x)})
+                points.append({'x': (distance * math.sin(radians)), 'y': (distance * math.cos(radians) + y)})
 
             stepper.take_step()
         stepper.change_dir()
