@@ -62,7 +62,9 @@ time.sleep(2)
 motor1.stop()
 motor2.stop()
 decoder_counter_thread._stopped = True
+print(counted_ticks)
 x += counted_ticks * 5.2
+print(x)
 print('second')
 for i in range(0, 1600):
     distance = vl53.range
