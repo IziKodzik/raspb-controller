@@ -55,7 +55,7 @@ class Robot:
         self.shift = 0
 
         while True:
-            print(self.accelerometer.acceleration[1])
+            print(self.accelerometer.acceleration[0])
             time.sleep(0.01)
 
         points = []
