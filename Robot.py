@@ -27,7 +27,6 @@ class Robot:
             velocity = velocity + acceleration[1] * 0.01**2
             self.shift += velocity
             time.sleep(0.01)
-        print(self.shift)
         print('Detecting acceleration ended.')
 
     def count_wheel_ticks(self, decoder):
@@ -90,6 +89,7 @@ class Robot:
         motor2.stop()
         decoder_counter_thread._stopped = True
         time.sleep(0.5)
+        print(self.shift)
         for i in range(0, 1600):
             distance = vl53.range
             if distance > 8000:
