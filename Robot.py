@@ -40,12 +40,12 @@ class Robot:
 
         stepper = StepperMotor(17, 27)
 
-        wheel_decoder = Decoder(23)
+        # wheel_decoder = Decoder(23)
 
         i2c = busio.I2C(board.SCL, board.SDA)
         vl53 = adafruit_vl53l0x.VL53L0X(i2c)
         self.accelerometer = adafruit_adxl34x.ADXL345(i2c)
-        self.shift = np.array([0, 0])
+        self.shift = np.array([0, 0, 0])
         self.x = 0.0
         y = 0.0
 
