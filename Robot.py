@@ -26,8 +26,10 @@ class Robot:
         current_thread = threading.currentThread()
         while not getattr(current_thread, "_stopped"):
             acceleration = self.accelerometer.acceleration
-            velocity = np.add(velocity, np.array(acceleration) * 0.01**2)
-            spin += velocity[0]/2*math.pi
+            velocity = np.add(velocity, np.array(acceleration) * 0.001)
+            sz = velocity[0] / 7
+            spin += sz / 0.001
+
             self.shift[0] += velocity[1] * math.sin(spin)
             self.shift[1] += velocity[1] * math.cos(spin)
             time.sleep(0.01)
@@ -101,7 +103,7 @@ class Robot:
             if distance != 0:
                 radians = i * 0.225 * math.pi / 180.0
                 points.append({'x': (distance * math.sin(radians) - self.shift[0]),
-                               'y': (distance * math.cos(radians)) - self.shift[1]*1000})
+                               'y': (distance * math.cos(radians)) - self.shift[1] * 1000})
 
             stepper.take_step()
         stepper.change_dir()
