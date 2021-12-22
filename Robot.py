@@ -27,9 +27,14 @@ class Robot:
         while not getattr(current_thread, "_stopped"):
             acceleration = self.accelerometer.acceleration
             velocity = np.add(velocity, np.array(acceleration) * 0.001)
-            sz = velocity[0] / 7
+            sz = velocity[0] / 7.0
             spin += sz / 0.001
-
+            print('x')
+            print(velocity[0])
+            print('y')
+            print(velocity[1])
+            print('spin')
+            print(spin)
             self.shift[0] += velocity[1] * math.sin(spin)
             self.shift[1] += velocity[1] * math.cos(spin)
             time.sleep(0.01)
