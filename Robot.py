@@ -27,6 +27,7 @@ class Robot:
             velocity = velocity + acceleration[1] * 0.01**2
             self.shift += velocity
             time.sleep(0.01)
+        print(self.shift)
         print('Detecting acceleration ended.')
 
     def count_wheel_ticks(self, decoder):
@@ -97,7 +98,7 @@ class Robot:
             if distance != 0:
                 radians = i * 0.225 * math.pi / 180.0
                 points.append({'x': (distance * math.sin(radians)),
-                               'y': (distance * math.cos(radians)) + self.shift})
+                               'y': (distance * math.cos(radians)) - self.shift})
 
             stepper.take_step()
         stepper.change_dir()
