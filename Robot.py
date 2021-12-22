@@ -75,6 +75,8 @@ class Robot:
                 self.shift[0] = self.shift[0] + self.velocity[1] * 0.001 * math.sin(spin)
                 print(spin)
             time.sleep(0.001)
+        motor1.stop()
+        motor2.stop()
         while True:
             pass
 
