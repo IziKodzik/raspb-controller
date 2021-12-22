@@ -50,6 +50,7 @@ class Robot:
         # motor1.go_forward()
         # motor2.go_backward()
 
+
         stepper = StepperMotor(17, 27)
 
         # wheel_decoder = Decoder(23)
@@ -59,9 +60,18 @@ class Robot:
         self.accelerometer = adafruit_adxl34x.ADXL345(i2c)
         self.velocity = np.array([0.0, 0.0, 0.0])
         self.shift = np.array([0.0, 0.0, 0.0])
-
-        # while True:
-        #     print(self.accelerometer.acceleration[1])
+        spin = 0
+        while True:
+            acceleration = self.accelerometer.acceleration
+            self.velocity = np.add(self.velocity, np.array(acceleration) * 0.001)
+            print(self.velocity)
+            sz = self.velocity[0] / 7.0
+            spin += sz / 0.001
+            self.shift[0] = self.shift[0] + self.velocity[1] * 0.001 * math.sin(spin)
+            self.shift[1] = self.shift[1] + self.velocity[1] * 0.001 * math.cos(spin)
+            time.sleep(0.001)
+        while True:
+            pass
 
         points = []
         print('First scan.')
