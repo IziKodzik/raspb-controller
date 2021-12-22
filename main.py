@@ -14,24 +14,27 @@ import adafruit_vl53l0x
 from threading import Thread, Event
 
 
+
 def count_wheel_prox(decoder):
     print('Decoding...')
     current_thread = threading.currentThread()
-    count = 0
     while not getattr(current_thread, "_stopped"):
-        print(count)
         decoder.wait_for_change()
-        count += 1
+        # count += 1
     print('Decoding ended.')
 
+count = 0
 
 motor1 = Motor(21, 20, 16)
 motor2 = Motor(13, 19, 26)
-
 stepper = StepperMotor(17, 27)
 i2c = busio.I2C(board.SCL, board.SDA)
 vl53 = adafruit_vl53l0x.VL53L0X(i2c)
 wheel_decoder = Decoder(23)
+x = 0.0
+y = 0.0
+
+
 
 points = []
 print('First scan.')
@@ -59,10 +62,11 @@ decoder_counter_thread._stopped = False
 decoder_counter_thread.start()
 motor1.go_forward()
 motor2.go_forward()
-time.sleep(3)
+time.sleep(2)
 motor1.stop()
 motor2.stop()
 decoder_counter_thread._stopped = True
+x += count
 print('second')
 for i in range(0, 1600):
     distance = vl53.range
