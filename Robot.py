@@ -55,7 +55,7 @@ class Robot:
         self.shift = 0
 
         while True:
-            print(self.accelerometer.acceleration[0])
+            print(self.accelerometer.acceleration[1])
 
         points = []
         print('First scan.')
