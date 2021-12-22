@@ -63,8 +63,10 @@ class Robot:
         motor1.stop()
         motor2.stop()
         decoder_counter_thread._stopped = True
-        print(self.counted_ticks)
         self.x += self.counted_ticks * 5.2
+        print('ticks')
+        print(self.counted_ticks)
+        print('xs')
         print(self.x)
         print('second')
         for i in range(0, 1600):
@@ -74,7 +76,7 @@ class Robot:
 
             if distance != 0:
                 radians = i * 0.225 * math.pi / 180.0
-                points.append({'x': (distance * math.sin(radians) + self.x), 'y': (distance * math.cos(radians))})
+                points.append({'x': (distance * math.sin(radians) ), 'y': (distance * math.cos(radians) - self.x)})
 
             stepper.take_step()
         stepper.change_dir()
