@@ -98,6 +98,6 @@ class Robot:
         stepper.change_dir()
 
         map_points_data = {'map-points': points, 'i': 1}
-        res = requests.post("http://192.168.0.115:8080/map-points", json=map_points_data)
+        requests.post("http://192.168.0.115:8080/map-points", json=map_points_data)
 
         points.clear()
