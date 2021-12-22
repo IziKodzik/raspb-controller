@@ -102,8 +102,8 @@ class Robot:
 
             if distance != 0:
                 radians = i * 0.225 * math.pi / 180.0
-                points.append({'x': (distance * math.sin(radians) - self.shift[0] * 1000),
-                               'y': (distance * math.cos(radians)) - self.shift[1] * 1000})
+                points.append({'x': (distance * math.sin(radians) - self.shift[0] * 10000),
+                               'y': (distance * math.cos(radians)) - self.shift[1] * 10000})
 
             stepper.take_step()
         stepper.change_dir()
