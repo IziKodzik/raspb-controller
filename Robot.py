@@ -35,9 +35,10 @@ class Robot:
             print(velocity[1])
             print('spin')
             print(spin)
-            self.shift[0] += velocity[1] * math.sin(spin)
-            self.shift[1] += velocity[1] * math.cos(spin)
+            self.shift[0] = self.shift + velocity[1] * math.sin(spin)
+            self.shift[1] = self.shift + velocity[1] * math.cos(spin)
             time.sleep(0.01)
+        print(self.shift)
         print('Detecting acceleration ended.')
 
     def count_wheel_ticks(self, decoder):
