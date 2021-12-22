@@ -20,12 +20,16 @@ class Robot:
 
     def detect_shift(self):
         print('Detecting acceleration...')
+        o = math.pi * 14
+        spin = 0
         velocity = np.array([0, 0, 0])
         current_thread = threading.currentThread()
         while not getattr(current_thread, "_stopped"):
             acceleration = self.accelerometer.acceleration
-            velocity = np.add(velocity, np.array(acceleration) * 0.01**2)
-            self.shift += velocity
+            velocity = np.add(velocity * np.array(acceleration) * 0.01**2)
+            spin += velocity[0]/2*math.pi
+            self.shift[0] += velocity[1] * math.sin(spin)
+            self.shift[1] += velocity[1] * math.cos(spin)
             time.sleep(0.01)
         print('Detecting acceleration ended.')
 
@@ -52,7 +56,7 @@ class Robot:
         vl53 = adafruit_vl53l0x.VL53L0X(i2c)
         self.accelerometer = adafruit_adxl34x.ADXL345(i2c)
         self.velocity = np.array([0, 0, 0])
-        self.shift = 0
+        self.shift = np.array([0, 0, 0])
 
         # while True:
         #     print(self.accelerometer.acceleration[1])
