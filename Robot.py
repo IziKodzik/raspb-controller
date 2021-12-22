@@ -63,6 +63,7 @@ class Robot:
         spin = 0
 
         acceleration = self.accelerometer.acceleration
+        print(acceleration)
         self.velocity = np.add(self.velocity, np.array(acceleration) * 0.001)
         print(self.velocity)
         sz = self.velocity[0] / 7.0
