@@ -85,3 +85,7 @@ class Robot:
         mapPointsData = {'map-points': points}
         res = requests.post("http://192.168.0.115:8080/map-points", json=mapPointsData)
         points.clear()
+
+
+if __name__ == '__main':
+    r = Robot()
