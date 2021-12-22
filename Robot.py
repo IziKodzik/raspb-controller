@@ -67,12 +67,14 @@ class Robot:
             acceleration = self.accelerometer.acceleration
             if abs(acceleration[1]) > 0.25:
                 self.velocity[1] = self.velocity[1] + acceleration[1] * 0.001
-                print(self.velocity[1])
                 self.shift[1] = self.shift[1] + self.velocity[1] * 0.001 * math.cos(spin)
             if abs(acceleration[0] > 0.25):
                 sz = self.velocity[0] / 7.0
                 spin += sz / 0.001
                 self.shift[0] = self.shift[0] + self.velocity[1] * 0.001 * math.sin(spin)
+                print(self.shift)
+
+
             time.sleep(0.001)
         while True:
             pass
