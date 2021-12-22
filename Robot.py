@@ -22,7 +22,7 @@ class Robot:
         print('Detecting acceleration...')
         current_thread = threading.currentThread()
         while not getattr(current_thread, "_stopped"):
-            self.shift = np.substract(self.shift, np.array(self.accelerometer.acceleration))
+            self.shift = np.subtract(self.shift, np.array(self.accelerometer.acceleration))
         print('Detecting acceleration ended.')
 
     def count_wheel_ticks(self, decoder):
