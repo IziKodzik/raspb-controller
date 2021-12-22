@@ -20,7 +20,6 @@ class Robot:
 
     def detect_shift(self):
         print('Detecting acceleration...')
-        o = math.pi * 14
         spin = 0
         velocity = np.array([0, 0, 0])
         current_thread = threading.currentThread()
@@ -37,7 +36,7 @@ class Robot:
             print(spin)
             self.shift[0] = self.shift[0] + velocity[1] * math.sin(spin)
             self.shift[1] = self.shift[1] + velocity[1] * math.cos(spin)
-            time.sleep(0.01)
+            time.sleep(0.001)
         print(self.shift)
         print('Detecting acceleration ended.')
 
