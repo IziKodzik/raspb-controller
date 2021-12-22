@@ -18,7 +18,7 @@ def count_wheel_prox(decoder, count):
     print('Decoding...')
     current_thread = threading.currentThread()
     while not getattr(current_thread, "_stopped"):
-        decoder.wait_for_change()
+        decoder.wait_for_change(not getattr(current_thread, "_stopped"))
         count += 1
     print('Decoding ended.')
 
@@ -62,7 +62,7 @@ time.sleep(2)
 motor1.stop()
 motor2.stop()
 decoder_counter_thread._stopped = True
-x += counted_ticks * 0.52
+x += counted_ticks * 5.2
 print('second')
 for i in range(0, 1600):
     distance = vl53.range
