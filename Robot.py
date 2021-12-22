@@ -25,6 +25,7 @@ class Robot:
         while not getattr(current_thread, "_stopped"):
             acceleration = self.accelerometer.acceleration
             velocity = velocity + acceleration[1] * 0.01**2
+            self.shift += velocity
             time.sleep(0.01)
         print('Detecting acceleration ended.')
 
@@ -51,8 +52,7 @@ class Robot:
         vl53 = adafruit_vl53l0x.VL53L0X(i2c)
         self.accelerometer = adafruit_adxl34x.ADXL345(i2c)
         self.velocity = np.array([0, 0, 0])
-        self.x = 0.0
-        y = 0.0
+        self.shift = 0
 
         # while True:
         #     print(self.accelerometer.acceleration)
@@ -84,12 +84,11 @@ class Robot:
         decoder_counter_thread.start()
         motor1.go_forward()
         motor2.go_forward()
-        time.sleep(2)
+        time.sleep(3)
         motor1.stop()
         motor2.stop()
         decoder_counter_thread._stopped = True
         time.sleep(0.5)
-        print(self.acceleration)
         for i in range(0, 1600):
             distance = vl53.range
             if distance > 8000:
@@ -97,8 +96,8 @@ class Robot:
 
             if distance != 0:
                 radians = i * 0.225 * math.pi / 180.0
-                points.append({'x': (distance * math.sin(radians)) - self.shift[0],
-                               'y': (distance * math.cos(radians)) + self.shift[1]})
+                points.append({'x': (distance * math.sin(radians)),
+                               'y': (distance * math.cos(radians)) + self.shift})
 
             stepper.take_step()
         stepper.change_dir()
