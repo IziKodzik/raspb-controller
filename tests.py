@@ -3,33 +3,28 @@ import threading
 import time
 
 import requests
+class Ro:
 
+    def __init__(self):
+        self.co = 0
 
-def nigg():
-    # t = threading.currentThread()
-    # while not getattr(t, "_stopped"):
-    #     print('nig')
-    pass
+    def nigg(self):
+        t = threading.currentThread()
+        while not getattr(t, "_stopped"):
+            self.co+=1
+            time.sleep(1)
+
+    def go(self):
+        s = threading.Thread(target=Ro.nigg, args=(self, ))
+        s._stopped = False
+        s.start()
+        for i in range(0, 3):
+            print(self.co)
+            time.sleep(3)
+        s._stopped = True
+
 
 
 if __name__ == "__main__":
-    # s = threading.Thread(target=nigg)
-    # s._stopped = False
-    # s.start()
-    # time.sleep(4)
-    # s._stopped = True
-    distance = 300
-    radians = 0.225 * math.pi / 360.0
-
-    print((distance * math.sin(radians)))
-    x = {'map-points':[{'x': 1, 'y': 2},
-                              {'x': 1, 'y': 2},
-                              {'x': 1, 'y': 2},
-                              {'x': 1, 'y': 2},
-                              {'x': 1, 'y': 2},
-                              ]}
-    x['map-points'].append(   {'x': 1, 'y': 69})
-    res = requests.post("http://localhost:8080/map-points",
-                        json=x)
-    print(res.text)
-    pass
+    r = Ro()
+    r.go()

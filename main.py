@@ -15,13 +15,15 @@ from threading import Thread, Event
 
 
 def count_wheel_prox(decoder):
+    print('Decoding...')
     current_thread = threading.currentThread()
     count = 0
     while not getattr(current_thread, "_stopped"):
         print(count)
         decoder.wait_for_change()
         count += 1
-    print('emd')
+    print('Decoding ended.')
+
 
 motor1 = Motor(21, 20, 16)
 motor2 = Motor(13, 19, 26)
@@ -32,7 +34,7 @@ vl53 = adafruit_vl53l0x.VL53L0X(i2c)
 wheel_decoder = Decoder(23)
 
 points = []
-
+print('First scan.')
 for i in range(0, 1600):
     distance = vl53.range
     if distance > 8000:
@@ -47,6 +49,7 @@ stepper.change_dir()
 for i in range(0, 1600):
     stepper.take_step()
 
+stepper.change_dir()
 mapPointsData = {'map-points': points}
 res = requests.post("http://192.168.0.115:8080/map-points", json=mapPointsData)
 points.clear()
@@ -74,6 +77,7 @@ for i in range(0, 1600):
 stepper.change_dir()
 for i in range(0, 1600):
     stepper.take_step()
+stepper.change_dir()
 
 mapPointsData = {'map-points': points}
 res = requests.post("http://192.168.0.115:8080/map-points", json=mapPointsData)
