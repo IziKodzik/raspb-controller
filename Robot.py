@@ -56,8 +56,8 @@ class Robot:
 
         motor1 = Motor(21, 20, 16)
         motor2 = Motor(13, 19, 26)
-        motor1.go_forward()
-        motor2.go_backward()
+        # motor1.go_forward()
+        # motor2.go_backward()
 
         stepper = StepperMotor(17, 27)
 
@@ -69,8 +69,8 @@ class Robot:
         self.velocity = np.array([0.0, 0.0, 0.0])
         self.shift = np.array([0.0, 0.0, 0.0])
 
-        while True:
-            print(self.accelerometer.acceleration[1])
+        # while True:
+        #     print(self.accelerometer.acceleration[1])
 
         points = []
         print('First scan.')
