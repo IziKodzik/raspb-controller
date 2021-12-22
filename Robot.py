@@ -18,13 +18,12 @@ from threading import Thread, Event
 
 class Robot:
 
-    def count_shift(self):
+    def detect_shift(self):
         print('Detecting acceleration...')
         current_thread = threading.currentThread()
         while not getattr(current_thread, "_stopped"):
             self.shift = self.shift.add(np.array(self.accelerometer.acceleration))
         print('Detecting acceleration ended.')
-
 
     def count_wheel_ticks(self, decoder):
         print('Decoding...')
@@ -67,11 +66,11 @@ class Robot:
             stepper.take_step()
 
         stepper.change_dir()
-        map_points_data = {'map-points': points}
+        map_points_data = {'map-points': points, 'i': 0}
         res = requests.post("http://192.168.0.115:8080/map-points", json=map_points_data)
         points.clear()
         self.counted_ticks = 0
-        decoder_counter_thread = threading.Thread(target=self.count_wheel_ticks, args=(wheel_decoder,))
+        decoder_counter_thread = threading.Thread(target=self.detect_shift, args=(self,))
         decoder_counter_thread._stopped = False
         decoder_counter_thread.start()
         motor1.go_forward()
@@ -81,12 +80,7 @@ class Robot:
         motor2.stop()
         decoder_counter_thread._stopped = True
         time.sleep(0.5)
-        y = self.counted_ticks * 5.4
-        print('ticks')
-        print(self.counted_ticks)
-        print('xs')
-        print(self.x)
-        print('Second scan.')
+        print(self.shift)
         for i in range(0, 1600):
             distance = vl53.range
             if distance > 8000:
@@ -94,7 +88,8 @@ class Robot:
 
             if distance != 0:
                 radians = i * 0.225 * math.pi / 180.0
-                points.append({'x': (distance * math.sin(radians)), 'y': (distance * math.cos(radians) + y)})
+                points.append({'x': (distance * math.sin(radians)) + self.shift[0],
+                               'y': (distance * math.cos(radians) + y) + self.shift[1]})
 
             stepper.take_step()
         stepper.change_dir()
@@ -102,5 +97,7 @@ class Robot:
             stepper.take_step()
         stepper.change_dir()
 
-        map_points_data = {'map-points': points}
+        map_points_data = {'map-points': points, 'i': 1}
+        res = requests.post("http://192.168.0.115:8080/map-points", json=map_points_data)
+
         points.clear()
