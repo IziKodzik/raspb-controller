@@ -20,11 +20,11 @@ class Robot:
 
     def detect_shift(self):
         print('Detecting acceleration...')
-        velocity = 0
+        velocity = np.array([0, 0, 0])
         current_thread = threading.currentThread()
         while not getattr(current_thread, "_stopped"):
             acceleration = self.accelerometer.acceleration
-            velocity = velocity + acceleration[1] * 0.01**2
+            velocity = np.add(velocity, np.array(acceleration) * 0.01**2)
             self.shift += velocity
             time.sleep(0.01)
         print('Detecting acceleration ended.')
