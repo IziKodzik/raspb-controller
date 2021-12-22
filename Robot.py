@@ -21,17 +21,20 @@ class Robot:
     def detect_shift(self):
         print('Detecting acceleration...')
         spin = 0
-        velocity = np.array([0.0, 0.0, 0.0])
         current_thread = threading.currentThread()
         while not getattr(current_thread, "_stopped"):
             acceleration = self.accelerometer.acceleration
-            velocity = np.add(velocity, np.array(acceleration) * 0.001)
-            print(velocity)
-            sz = velocity[0] / 7.0
-            spin += sz / 0.001
-            self.shift[0] = self.shift[0] + velocity[1] * math.sin(spin)
-            self.shift[1] = self.shift[1] + velocity[1] * math.cos(spin)
+            if abs(acceleration[1]) > 0.25:
+                self.velocity[1] = self.velocity[1] + acceleration[1] * 0.001
+            if abs(acceleration[0] > 0.25):
+                self.velocity[0] = self.velocity[0] + acceleration[0] * 0.001
+                sz = self.velocity[0] / 7.0
+                spin += sz
+                print(spin)
             time.sleep(0.001)
+            self.shift[1] = self.shift[1] + self.velocity[1] * 0.001 * math.cos(spin)
+            self.shift[0] = self.shift[0] + self.velocity[1] * 0.001 * math.sin(spin)
+
         print(self.shift)
         print('Detecting acceleration ended.')
 
@@ -60,25 +63,6 @@ class Robot:
         self.accelerometer = adafruit_adxl34x.ADXL345(i2c)
         self.velocity = np.array([0.0, 0.0, 0.0])
         self.shift = np.array([0.0, 0.0, 0.0])
-        spin = 0
-        motor1.go_forward()
-        motor2.go_backward()
-        while spin<3.14:
-            acceleration = self.accelerometer.acceleration
-            if abs(acceleration[1]) > 0.25:
-                self.velocity[1] = self.velocity[1] + acceleration[1] * 0.001
-                self.shift[1] = self.shift[1] + self.velocity[1] * 0.001 * math.cos(spin)
-            if abs(acceleration[0] > 0.25):
-                self.velocity[0] = self.velocity[0] + acceleration[0] * 0.001
-                sz = self.velocity[0] / 7.0
-                spin += sz
-                self.shift[0] = self.shift[0] + self.velocity[1] * 0.001 * math.sin(spin)
-                print(spin)
-            time.sleep(0.001)
-        motor1.stop()
-        motor2.stop()
-        while True:
-            pass
 
         points = []
         print('First scan.')
