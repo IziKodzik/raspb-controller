@@ -95,7 +95,7 @@ class Robot:
         decoder_counter_thread.start()
         motor1.go_forward()
         motor2.go_forward()
-        time.sleep(2.5)
+        time.sleep(2)
         motor1.stop()
         motor2.stop()
         decoder_counter_thread._stopped = True
