@@ -34,6 +34,10 @@ class Robot:
             print(velocity[1])
             print('spin')
             print(spin)
+            print('vals')
+            print(math.sin(spin))
+            print(math.cos(spin))
+
             self.shift[0] = self.shift[0] + velocity[1] * math.sin(spin)
             self.shift[1] = self.shift[1] + velocity[1] * math.cos(spin)
             time.sleep(0.001)
