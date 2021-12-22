@@ -61,8 +61,8 @@ class Robot:
         self.velocity = np.array([0.0, 0.0, 0.0])
         self.shift = np.array([0.0, 0.0, 0.0])
         spin = 0
-        motor1.go_backward()
-        motor2.go_backward()
+        motor1.go_forward()
+        motor2.go_forward()
         while True:
             acceleration = self.accelerometer.acceleration
             if abs(acceleration[1]) > 0.25:
@@ -72,7 +72,7 @@ class Robot:
                 sz = self.velocity[0] / 7.0
                 spin += sz / 0.001
                 self.shift[0] = self.shift[0] + self.velocity[1] * 0.001 * math.sin(spin)
-                print(self.shift)
+                print(spin)
 
 
             time.sleep(0.001)
