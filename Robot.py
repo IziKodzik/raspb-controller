@@ -64,12 +64,12 @@ class Robot:
         motor2.stop()
         decoder_counter_thread._stopped = True
         time.sleep(0.5)
-        self.x += self.counted_ticks * 5.2
+        self.x += self.counted_ticks * 10.4
         print('ticks')
         print(self.counted_ticks)
         print('xs')
         print(self.x)
-        print('second')
+        print('Second scan.')
         for i in range(0, 1600):
             distance = vl53.range
             if distance > 8000:
