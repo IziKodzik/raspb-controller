@@ -21,23 +21,14 @@ class Robot:
     def detect_shift(self):
         print('Detecting acceleration...')
         spin = 0
-        velocity = np.array([0, 0, 0])
+        velocity = np.array([0.0, 0.0, 0.0])
         current_thread = threading.currentThread()
         while not getattr(current_thread, "_stopped"):
             acceleration = self.accelerometer.acceleration
             velocity = np.add(velocity, np.array(acceleration) * 0.001)
+            print(velocity)
             sz = velocity[0] / 7.0
             spin += sz / 0.001
-            print('x')
-            print(velocity[0])
-            print('y')
-            print(velocity[1])
-            print('spin')
-            print(spin)
-            print('vals')
-            print(self.shift[0] + velocity[1] * math.sin(spin))
-            print(self.shift[1] + velocity[1] * math.cos(spin))
-
             self.shift[0] = self.shift[0] + velocity[1] * math.sin(spin)
             self.shift[1] = self.shift[1] + velocity[1] * math.cos(spin)
             time.sleep(0.001)
@@ -111,7 +102,7 @@ class Robot:
 
             if distance != 0:
                 radians = i * 0.225 * math.pi / 180.0
-                points.append({'x': (distance * math.sin(radians) - self.shift[0]),
+                points.append({'x': (distance * math.sin(radians) - self.shift[0] * 1000),
                                'y': (distance * math.cos(radians)) - self.shift[1] * 1000})
 
             stepper.take_step()
