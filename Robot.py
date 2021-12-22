@@ -35,8 +35,8 @@ class Robot:
             print('spin')
             print(spin)
             print('vals')
-            print(math.sin(spin))
-            print(math.cos(spin))
+            print(self.shift[0] + velocity[1] * math.sin(spin))
+            print(self.shift[1] + velocity[1] * math.cos(spin))
 
             self.shift[0] = self.shift[0] + velocity[1] * math.sin(spin)
             self.shift[1] = self.shift[1] + velocity[1] * math.cos(spin)
@@ -66,8 +66,8 @@ class Robot:
         i2c = busio.I2C(board.SCL, board.SDA)
         vl53 = adafruit_vl53l0x.VL53L0X(i2c)
         self.accelerometer = adafruit_adxl34x.ADXL345(i2c)
-        self.velocity = np.array([0, 0, 0])
-        self.shift = np.array([0, 0, 0])
+        self.velocity = np.array([0.0, 0.0, 0.0])
+        self.shift = np.array([0.0, 0.0, 0.0])
 
         # while True:
         #     print(self.accelerometer.acceleration[1])
