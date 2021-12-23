@@ -24,9 +24,9 @@ class Robot:
         current_thread = threading.currentThread()
         while not getattr(current_thread, "_stopped"):
             acceleration = self.accelerometer.acceleration
-            if abs(acceleration[1]) > 0.5:
+            if abs(acceleration[1]) > 0.25:
                 self.velocity[1] = self.velocity[1] + acceleration[1] * 0.001
-            if abs(acceleration[0] > 0.5):
+            if abs(acceleration[0]) > 0.25:
                 self.velocity[0] = self.velocity[0] + acceleration[0] * 0.001
                 sz = self.velocity[0] / 7.0
                 spin += sz
@@ -51,7 +51,6 @@ class Robot:
         motor2 = Motor(13, 19, 26)
         # motor1.go_forward()
         # motor2.go_backward()
-
 
         stepper = StepperMotor(17, 27)
 
