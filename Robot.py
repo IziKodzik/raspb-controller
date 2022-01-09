@@ -65,7 +65,8 @@ class Robot:
 
     def __init__(self):
         self.display_image()
-
+        while True:
+            pass
         sys.exit(2137)
 
         motor1 = Motor(21, 20, 16)
