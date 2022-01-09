@@ -5,6 +5,7 @@ import time
 
 import adafruit_adxl34x
 import requests
+from PIL.Image import Image
 
 from Decoder import Decoder
 from Motor import Motor
@@ -51,7 +52,8 @@ class Robot:
 
     def display_image(self):
         print('xd')
-
+        img = Image.open('pepo.png')
+        img = luma.oled.device.greyscale.greyscale_device.preprocess(img)
         # rev.1 users set port=0
         # substitute spi(device=0, port=0) below if using that interface
         # substitute bitbang_6800(RS=7, E=8, PINS=[25,24,23,27]) below if using that interface
@@ -59,8 +61,8 @@ class Robot:
 
         # substitute ssd1331(...) or sh1106(...) below if using that device
         device = sh1106(serial)
-        with canvas(device, dither=True) as draw:
-            draw.rectangle((10, 10, 30, 30), outline="white", fill="red")
+        device.display(img)
+
 
     def __init__(self):
         self.display_image()
