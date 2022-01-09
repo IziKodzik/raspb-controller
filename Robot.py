@@ -52,8 +52,8 @@ class Robot:
 
     def display_image(self):
         print('xd')
-        img = open('pepo.png')
-        bimg = luma.oled.device.greyscale.greyscale_device.preprocess(img)
+        fp = open('pepo.png')
+        img = PIL.Image.open(fp)
         # rev.1 users set port=0
         # substitute spi(device=0, port=0) below if using that interface
         # substitute bitbang_6800(RS=7, E=8, PINS=[25,24,23,27]) below if using that interface
