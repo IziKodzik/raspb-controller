@@ -61,7 +61,7 @@ class Robot:
 
         # substitute ssd1331(...) or sh1106(...) below if using that device
         device = sh1106(serial)
-        device.display(bimg)
+        device.display(img)
 
 
     def __init__(self):
