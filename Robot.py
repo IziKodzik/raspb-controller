@@ -58,7 +58,10 @@ class Robot:
         serial = i2c(port=1, address=0x3C)
 
         # substitute ssd1331(...) or sh1106(...) below if using that device
-        device = ssd1306(serial)
+        device = sh1106(serial)
+        with canvas(device) as draw:
+            draw.rectangle(device.bounding_box, outline="white", fill="black")
+            draw.text((30, 40), "Hello World", fill="white")
 
     def __init__(self):
         self.display_image()
