@@ -5,7 +5,7 @@ import time
 
 import adafruit_adxl34x
 import requests
-from PIL.Image import Image
+import PIL.Image
 
 from Decoder import Decoder
 from Motor import Motor
