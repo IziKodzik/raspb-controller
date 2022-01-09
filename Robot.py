@@ -18,7 +18,8 @@ from threading import Thread, Event
 from luma.core.interface.serial import i2c, spi, pcf8574
 from luma.core.interface.parallel import bitbang_6800
 from luma.core.render import canvas
-from luma.oled.device import ssd1306, ssd1309, ssd1325, ssd1331, sh1106, ws0010
+from luma.oled.device import sh1106
+from PIL import Image
 
 
 class Robot:
@@ -52,7 +53,6 @@ class Robot:
 
     def display_image(self):
         print('xd')
-        fp = open('pepo.png')
         img = PIL.Image.open(fp)
         # rev.1 users set port=0
         # substitute spi(device=0, port=0) below if using that interface
@@ -60,8 +60,20 @@ class Robot:
         serial = i2c(port=1, address=0x3C)
 
         # substitute ssd1331(...) or sh1106(...) below if using that device
+
         device = sh1106(serial)
-        device.display(img)
+        img_path = 'pepo.png'
+        img = Image.open(img_path).convert('RGBA')
+        ffff = Image.new(img.mode, img.size, (255,) * 4)
+
+        back = Image.new("RGBA", device.size, "white")
+        posn = ((device.width - img.width) // 2, 0)
+        while True:
+            for angle in range(0, 360, 2):
+                rot = img.rotate(angle, resample=Image.BILINEAR)
+                img = Image.composite(rot, ffff, rot)
+                back.paste(img, posn)
+                device.display(back.convert(device.mode))
 
 
     def __init__(self):
