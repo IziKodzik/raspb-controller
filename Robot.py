@@ -45,7 +45,13 @@ class Robot:
             self.counted_ticks += 1
         print('Decoding ended.')
 
+    def display_image(self):
+        print('xd')
+
     def __init__(self):
+        self.display_image()
+
+        sys.exit(2137)
 
         motor1 = Motor(21, 20, 16)
         motor2 = Motor(13, 19, 26)
