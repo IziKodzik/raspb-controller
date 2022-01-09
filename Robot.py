@@ -52,7 +52,7 @@ class Robot:
 
     def display_image(self):
         print('xd')
-        img = PIL.Image.open('pepo.png')
+        img = open('pepo.png')
         bimg = luma.oled.device.greyscale.greyscale_device.preprocess(img)
         # rev.1 users set port=0
         # substitute spi(device=0, port=0) below if using that interface
