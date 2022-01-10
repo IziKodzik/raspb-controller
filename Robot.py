@@ -61,7 +61,7 @@ class Robot:
         # substitute ssd1331(...) or sh1106(...) below if using that device
 
         device = sh1106(serial)
-        img_path = 'papaj.jpg'
+        img_path = 'pepo.png'
         img = Image.open(img_path).convert('RGBA')
         ffff = Image.new(img.mode, img.size, (255,) * 4)
 
