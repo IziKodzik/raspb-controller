@@ -67,10 +67,14 @@ class Robot:
 
         back = Image.new("RGBA", device.size, "white")
         posn = ((device.width - img.width) // 2, 0)
-        back.paste(img, posn)
-        device.display(back.convert(device.mode))
         while True:
             pass
+            for angle in range(0, 360, 2):
+                rot = img.rotate(angle, resample=Image.BILINEAR)
+                img = Image.composite(rot, ffff, rot)
+                back.paste(img, posn)
+                device.display(back.convert(device.mode))
+
 
     def __init__(self):
         self.display_image()
