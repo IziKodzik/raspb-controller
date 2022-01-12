@@ -61,7 +61,7 @@ class Robot:
         # substitute ssd1331(...) or sh1106(...) below if using that device
 
         device = sh1106(serial)
-        img_path = 'sadge.png'
+        img_path = 'smiling_manL.jpg'
         img = Image.open(img_path).convert('RGBA')
         ffff = Image.new(img.mode, img.size, (255,) * 4)
 
@@ -74,6 +74,95 @@ class Robot:
         while True:
             pass
 
+    def find_landmarks(self):
+        stepper = StepperMotor(17, 27)
+        i2c = busio.I2C(board.SCL, board.SDA)
+        distance_sensor = adafruit_vl53l0x.VL53L0X(i2c)
+
+        distances = []
+        points = []
+        landmarks = []
+
+        distance = distance_sensor.distance
+        distances.append(distance)
+
+        radians = math.radians(0)
+        point = {'x': math.sin(radians) * distance, 'y': math.cos(radians) * distance, 'scan_no': 0}
+        points.append(point)
+
+        stepper.take_step()
+
+        ty = None
+
+        for i in range(1, 1600):
+            distance = distance_sensor.range
+
+
+
+            
+
+            distances.append(distance)
+
+            radians = math.radians(i * 0.225)
+            point = {'x': math.sin(radians) * distance, 'y': math.cos(radians) * distance, 'scan_no': 0}
+            points.append(point)
+
+            delta = distances[len(distances) - 2] - distances[len(distances) - 1]
+
+            if delta > 20:
+                landmarks.append(points[len(distances) - 2])
+                ty = None
+            elif delta < -20:
+                landmarks.append(points[len(distances) - 2])
+                ty = None
+            else:
+                if ty is None:
+                    if distances[len(distances) - 2] > distances[len(distances) - 1]:
+                        ty = 'D'
+                    elif distances[len(distances) - 2] < distances[len(distances) - 1]:
+                        ty = 'A'
+                    elif distances[len(distances) - 2] == distances[len(distances) - 1]:
+                        ty = 'S'
+
+                elif ty == 'D':
+                    if distances[len(distances) - 2] > distances[len(distances) - 1]:
+                        pass
+                    else:
+                        if distances[len(distances) - 2] < distances[len(distances) - 1]:
+                            ty = 'A'
+                        elif distances[len(distances) - 2] == distances[len(distances) - 1]:
+                            ty = 'S'
+                        landmarks.append(points[len(distances) - 2])
+
+                elif ty == 'A':
+                    if distances[len(distances) - 2] < distances[len(distances) - 1]:
+                        pass
+                    else:
+                        if distances[len(distances) - 2] > distances[len(distances) - 1]:
+                            ty = 'D'
+                        elif distances[len(distances) - 2] == distances[len(distances) - 1]:
+                            ty = 'S'
+                        landmarks.append(points[len(distances) - 2])
+
+                elif ty == 'S':
+                    if distances[len(distances) - 2] == distances[len(distances) - 1]:
+                        pass
+                    else:
+                        if distances[len(distances) - 2] < distances[len(distances) - 1]:
+                            ty = 'A'
+                        elif distances[len(distances) - 2] > distances[len(distances) - 1]:
+                            ty = 'D'
+                        landmarks.append(points[len(distances) - 2])
+
+                stepper.take_step()
+                print(f"{distance}mm")
+                print(landmarks)
+        stepper.change_dir()
+        for i in range(0, 1600):
+            stepper.take_step()
+        stepper.change_dir()
+        print(landmarks)
+
     def __init__(self):
         self.display_image()
         while True:
@@ -84,8 +173,6 @@ class Robot:
         motor2 = Motor(13, 19, 26)
         # motor1.go_forward()
         # motor2.go_backward()
-
-        stepper = StepperMotor(17, 27)
 
         # wheel_decoder = Decoder(23)
 
