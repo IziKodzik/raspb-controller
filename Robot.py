@@ -175,6 +175,7 @@ class Robot:
         print(f'{self.counted_ticks} after')
 
     def __init__(self):
+        self.counted_ticks = 0
         self.display_image()
         self.decoders()
         print('ended')
