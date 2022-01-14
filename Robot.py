@@ -159,25 +159,18 @@ class Robot:
 
     def decoders(self):
 
-        m = Motor(21, 20, 16)
-        m.go_forward()
-        print(0)
         dec1 = Decoder(23)
-        i = 0
         dec2 = Decoder(24)
-        while i < 41:
-            print(i)
-            dec2.wait_for_change()
-            i = i + 1
-        m.stop()
+        dec1.wait_for_change()
+        print(1)
 
     def __init__(self):
         self.display_image()
         self.decoders()
         print('ended')
+        sys.exit(2137)
         while True:
             pass
-        sys.exit(2137)
 
         motor1 = Motor(21, 20, 16)
         motor2 = Motor(13, 19, 26)
