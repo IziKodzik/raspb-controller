@@ -8,6 +8,5 @@ class Decoder:
 
     def wait_for_change(self, condition=True):
         first = GPIO.input(self.out_pin)
-        print(first)
         while GPIO.input(self.out_pin) == first and condition:
             pass
