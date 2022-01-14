@@ -158,13 +158,17 @@ class Robot:
         print(landmarks)
 
     def decoders(self):
+        motor1 = Motor(21, 20, 16)
+
         dec1 = Decoder(23)
         dec2 = Decoder(24)
         thread = threading.Thread(target=self.count_wheel_ticks, args=(dec2,))
         thread._stopped = False
         thread.start()
+        motor1.go_forward()
         while self.counted_ticks < 41:
             pass
+        motor1.stop()
         print(self.counted_ticks)
         time.sleep(1)
         print(self.counted_ticks)
