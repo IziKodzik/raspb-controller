@@ -163,8 +163,19 @@ class Robot:
         stepper.change_dir()
         print(landmarks)
 
+    def decoders(self):
+        dec1 = Decoder(23)
+        dec2 = Decoder(24)
+        print(1)
+        dec1.wait_for_change()
+        print(2)
+        dec2.wait_for_change()
+        print(3)
+
+
     def __init__(self):
         self.display_image()
+        self.decoders()
         while True:
             pass
         sys.exit(2137)
