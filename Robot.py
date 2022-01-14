@@ -160,7 +160,8 @@ class Robot:
 
     def decoders(self):
         m = Motor(21, 20, 16)
-        m.go_forward()
+
+        # m.go_forward()
         print(0)
         dec1 = Decoder(23)
         thread = threading.Thread(target=self.count_wheel_ticks, args=(dec1,))
