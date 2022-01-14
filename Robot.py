@@ -48,7 +48,7 @@ class Robot:
         current_thread = threading.currentThread()
         while not getattr(current_thread, "_stopped"):
             decoder.wait_for_change(not getattr(current_thread, "_stopped"))
-            self.counted_ticks += 1
+            current_thread.counter = getattr(current_thread, "counter") + 1
         print('Decoding ended.')
 
     def display_image(self):
@@ -159,24 +159,33 @@ class Robot:
 
     def decoders(self):
         motor1 = Motor(21, 20, 16)
+        motor2 = Motor(13, 19, 26)
 
         dec1 = Decoder(23)
         dec2 = Decoder(24)
+
         thread = threading.Thread(target=self.count_wheel_ticks, args=(dec2,))
         thread._stopped = False
+        thread.counter = 0
         thread.start()
+
+        thread1 = threading.Thread(target=self.count_wheel_ticks, args=(dec1,))
+        thread1.counter = 0
+        thread1._stopped = False
+        thread1.start()
+
         motor1.go_forward()
-        motor1.go_backward()
-        while self.counted_ticks < 41:
-            pass
-        motor1.stop()
-        print(self.counted_ticks)
+        motor2.go_forward()
         time.sleep(1)
-        print(self.counted_ticks)
+        motor1.stop()
+        motor2.stop()
+        time.sleep(0.5)
         thread._stopped = True
+        thread1._stopped = True
+        print(thread.counter)
+        print(thread1.counter)
 
     def __init__(self):
-        self.counted_ticks = 0
         self.display_image()
         self.decoders()
         print('ended')
@@ -217,7 +226,7 @@ class Robot:
         map_points_data = {'map-points': points, 'i': 0}
         res = requests.post("http://192.168.0.115:8080/map-points", json=map_points_data)
         points.clear()
-        self.counted_ticks = 0
+        self.counted_ticks1 = 0
         decoder_counter_thread = threading.Thread(target=self.detect_shift)
         decoder_counter_thread._stopped = False
         decoder_counter_thread.start()
