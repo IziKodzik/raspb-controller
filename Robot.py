@@ -165,12 +165,12 @@ class Robot:
     def decoders(self):
         print(0)
         dec1 = Decoder(23)
+        i = 0
         dec2 = Decoder(24)
         while True:
-            print(1)
+            print(i)
             dec1.wait_for_change()
-            print(2)
-
+            i = i + 1
 
     def __init__(self):
         self.display_image()
