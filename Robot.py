@@ -71,8 +71,7 @@ class Robot:
         img = Image.composite(rot, ffff, rot)
         back.paste(img, posn)
         device.display(back.convert(device.mode))
-        while True:
-            pass
+
 
     def find_landmarks(self):
         stepper = StepperMotor(17, 27)
