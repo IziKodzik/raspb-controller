@@ -47,9 +47,9 @@ class Robot:
         print('Decoding...')
         current_thread = threading.currentThread()
         while not getattr(current_thread, "_stopped"):
+            print(self.counted_ticks)
             decoder.wait_for_change(not getattr(current_thread, "_stopped"))
             self.counted_ticks += 1
-            print(self.counted_ticks)
         print('Decoding ended.')
 
     def display_image(self):
