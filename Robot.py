@@ -72,7 +72,6 @@ class Robot:
         back.paste(img, posn)
         device.display(back.convert(device.mode))
 
-
     def find_landmarks(self):
         stepper = StepperMotor(17, 27)
         i2c = busio.I2C(board.SCL, board.SDA)
@@ -95,10 +94,6 @@ class Robot:
 
         for i in range(1, 1600):
             distance = distance_sensor.range
-
-
-
-            
 
             distances.append(distance)
 
@@ -163,6 +158,8 @@ class Robot:
         print(landmarks)
 
     def decoders(self):
+        m = Motor(21, 20, 16)
+        m.go_forward()
         print(0)
         dec1 = Decoder(23)
         i = 0
