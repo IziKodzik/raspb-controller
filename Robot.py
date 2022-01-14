@@ -47,7 +47,6 @@ class Robot:
         print('Decoding...')
         current_thread = threading.currentThread()
         while not getattr(current_thread, "_stopped"):
-            print('n')
             decoder.wait_for_change(not getattr(current_thread, "_stopped"))
             current_thread.counter = getattr(current_thread, "counter") + 1
 
