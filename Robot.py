@@ -61,7 +61,7 @@ class Robot:
         # substitute ssd1331(...) or sh1106(...) below if using that device
 
         device = sh1106(serial)
-        img_path = 'sadge.png'
+        img_path = 'peppo happyL.jpg'
         img = Image.open(img_path).convert('RGBA')
         ffff = Image.new(img.mode, img.size, (255,) * 4)
 
@@ -166,16 +166,18 @@ class Robot:
         print(0)
         dec1 = Decoder(23)
         dec2 = Decoder(24)
-        print(1)
-        dec1.wait_for_change()
-        print(2)
-        dec2.wait_for_change()
-        print(3)
+        while True:
+            print(1)
+            dec1.wait_for_change()
+            print(2)
+            dec2.wait_for_change()
+            print(3)
 
 
     def __init__(self):
         self.display_image()
         self.decoders()
+        print('ended')
         while True:
             pass
         sys.exit(2137)
