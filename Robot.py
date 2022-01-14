@@ -168,6 +168,7 @@ class Robot:
         print(self.counted_ticks)
         time.sleep(1)
         print(self.counted_ticks)
+        thread._stopped = True
 
     def __init__(self):
         self.counted_ticks = 0
