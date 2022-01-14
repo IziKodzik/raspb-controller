@@ -164,6 +164,7 @@ class Robot:
         print(landmarks)
 
     def decoders(self):
+        print(0)
         dec1 = Decoder(23)
         dec2 = Decoder(24)
         print(1)
