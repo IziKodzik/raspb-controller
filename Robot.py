@@ -166,6 +166,7 @@ class Robot:
         thread._stopped = False
         thread.start()
         motor1.go_forward()
+        motor1.go_backward()
         while self.counted_ticks < 41:
             pass
         motor1.stop()
