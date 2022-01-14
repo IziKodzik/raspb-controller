@@ -164,7 +164,7 @@ class Robot:
         dec1 = Decoder(23)
         i = 0
         dec2 = Decoder(24)
-        while True:
+        while i < 41:
             print(i)
             dec2.wait_for_change()
             i = i + 1
