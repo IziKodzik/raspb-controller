@@ -161,7 +161,7 @@ class Robot:
 
         dec1 = Decoder(23)
         dec2 = Decoder(24)
-        dec1.wait_for_change()
+        dec2.wait_for_change()
         print(1)
 
     def __init__(self):
