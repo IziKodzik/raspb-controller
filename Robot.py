@@ -170,8 +170,6 @@ class Robot:
             print(1)
             dec1.wait_for_change()
             print(2)
-            dec2.wait_for_change()
-            print(3)
 
 
     def __init__(self):
