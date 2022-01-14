@@ -163,7 +163,7 @@ class Robot:
         thread = threading.Thread(target=self.count_wheel_ticks, args=(dec2,))
         thread._stopped = False
         thread.start()
-        while self.counted_ticks > 41:
+        while self.counted_ticks < 41:
             pass
         print(self.counted_ticks)
         time.sleep(1)
