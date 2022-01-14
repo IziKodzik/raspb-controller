@@ -1,3 +1,5 @@
+import time
+
 import RPi.GPIO as GPIO
 
 
@@ -9,5 +11,5 @@ class Decoder:
     def wait_for_change(self, condition):
         first = GPIO.input(self.out_pin)
         while GPIO.input(self.out_pin) == first and condition:
-            print('n')
+            print(time.time())
 
