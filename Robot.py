@@ -49,6 +49,8 @@ class Robot:
         while not getattr(current_thread, "_stopped"):
             decoder.wait_for_change(not getattr(current_thread, "_stopped"))
             current_thread.counter = getattr(current_thread, "counter") + 1
+
+        print(current_thread)
         print('Decoding ended.')
 
     def display_image(self):
@@ -174,8 +176,8 @@ class Robot:
         thread1._stopped = False
         thread1.start()
 
-        motor1.go_forward()
-        motor2.go_forward()
+        motor1.go_backward()
+        motor2.go_backward()
         time.sleep(1)
         motor1.stop()
         motor2.stop()
