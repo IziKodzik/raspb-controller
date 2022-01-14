@@ -162,13 +162,17 @@ class Robot:
         m.go_forward()
         print(0)
         dec1 = Decoder(23)
+        thread = threading.Thread(target=self.count_wheel_ticks, args=(dec1,))
+        thread._stopped = False
         i = 0
         dec2 = Decoder(24)
         while i < 41:
             print(i)
             dec2.wait_for_change()
             i = i + 1
+        print(self.counted_ticks)
         m.stop()
+        print(f'{self.counted_ticks} after')
 
     def __init__(self):
         self.display_image()
