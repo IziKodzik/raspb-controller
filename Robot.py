@@ -168,6 +168,7 @@ class Robot:
             print(i)
             dec2.wait_for_change()
             i = i + 1
+        m.stop()
 
     def __init__(self):
         self.display_image()
