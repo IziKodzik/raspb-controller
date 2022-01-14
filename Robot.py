@@ -184,6 +184,8 @@ class Robot:
         thread1._stopped = True
         print(thread.counter)
         print(thread1.counter)
+        print(thread._stopped)
+        print(thread1._stopped)
 
     def __init__(self):
         self.display_image()
