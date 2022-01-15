@@ -171,10 +171,10 @@ class Robot:
         thread.counter = 0
         thread.start()
 
-        thread1 = threading.Thread(target=self.count_wheel_ticks, args=(dec1,))
-        thread1.counter = 0
-        thread1._stopped = False
-        thread1.start()
+        # thread1 = threading.Thread(target=self.count_wheel_ticks, args=(dec1,))
+        # thread1.counter = 0
+        # thread1._stopped = False
+        # thread1.start()
 
         motor1.go_backward()
         time.sleep(1)
@@ -182,11 +182,11 @@ class Robot:
         motor2.stop()
         time.sleep(0.5)
         thread._stopped = True
-        thread1._stopped = True
+        # thread1._stopped = True
         print(thread.counter)
-        print(thread1.counter)
+        # print(thread1.counter)
         print(thread._stopped)
-        print(thread1._stopped)
+        # print(thread1._stopped)
 
     def __init__(self):
         self.display_image()
