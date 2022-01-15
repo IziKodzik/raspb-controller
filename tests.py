@@ -24,7 +24,12 @@ class Ro:
         s._stopped = True
 
 
+def d():
+    pass
+
+
 
 if __name__ == "__main__":
     r = Ro()
+    t = threading.Thread(target=d)
     r.go()

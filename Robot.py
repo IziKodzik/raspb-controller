@@ -47,9 +47,9 @@ class Robot:
         print('Decoding...')
         current_thread = threading.currentThread()
         while not getattr(current_thread, "_stopped"):
-            decoder.wait_for_change(not getattr(current_thread, "_stopped"))
+            decoder.wait_for_change()
             current_thread.counter = getattr(current_thread, "counter") + 1
-
+        decoder.decoding = False
         print(current_thread)
         print('Decoding ended.')
 
