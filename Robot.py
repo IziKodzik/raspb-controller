@@ -49,7 +49,6 @@ class Robot:
         while not getattr(current_thread, "_stopped"):
             decoder.wait_for_change()
             current_thread.counter = getattr(current_thread, "counter") + 1
-        decoder.decoding = False
         print(current_thread)
         print('Decoding ended.')
 
@@ -181,6 +180,8 @@ class Robot:
         motor1.stop()
         motor2.stop()
         time.sleep(0.5)
+        dec2.decoding = False
+
         thread._stopped = True
         # thread1._stopped = True
         print(thread.counter)
