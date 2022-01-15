@@ -13,4 +13,5 @@ class Decoder:
         first = GPIO.input(self.out_pin)
         self.decoding = True
         while GPIO.input(self.out_pin) == first and self.decoding:
+            print(self.decoding)
             pass
