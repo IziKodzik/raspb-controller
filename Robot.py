@@ -162,32 +162,34 @@ class Robot:
         motor1 = Motor(21, 20, 16)
         motor2 = Motor(13, 19, 26)
 
-        dec1 = Decoder(23)
-        dec2 = Decoder(24)
+        dec1 = Decoder(24)
+        dec2 = Decoder(23)
 
-        thread = threading.Thread(target=self.count_wheel_ticks, args=(dec2,))
+        thread = threading.Thread(target=self.count_wheel_ticks, args=(dec1,))
         thread._stopped = False
         thread.counter = 0
         thread.start()
 
-        # thread1 = threading.Thread(target=self.count_wheel_ticks, args=(dec1,))
-        # thread1.counter = 0
-        # thread1._stopped = False
-        # thread1.start()
+        thread1 = threading.Thread(target=self.count_wheel_ticks, args=(dec2,))
+        thread1.counter = 0
+        thread1._stopped = False
+        thread1.start()
 
         motor1.go_backward()
-        time.sleep(1)
+        while thread.counter < 41:
+            pass
         motor1.stop()
         motor2.stop()
         time.sleep(0.5)
+        dec1.decoding = False
         dec2.decoding = False
 
         thread._stopped = True
-        # thread1._stopped = True
+        thread1._stopped = True
         print(thread.counter)
-        # print(thread1.counter)
+        print(thread1.counter)
         print(thread._stopped)
-        # print(thread1._stopped)
+        print(thread1._stopped)
 
     def __init__(self):
         self.display_image()
