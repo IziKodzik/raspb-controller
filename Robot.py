@@ -196,12 +196,14 @@ class Robot:
         wo = 2 * math.pi * 2.5
         angle = ticks * 360 * (wo / o)
 
-        print(wo)
-        print(angle)
+        print(f'{wo} wo')
+        print(f'{angle} angle')
 
         b = 7 * math.sin(math.radians(90 - self.spin))
         c = 7 * math.cos(math.radians(90 - self.spin))
+        print("b")
         print(b)
+        print("c")
         print(c)
 
         if 90 < self.spin < 270:
