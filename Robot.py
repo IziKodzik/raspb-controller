@@ -192,12 +192,7 @@ class Robot:
         print(thread1._stopped)
 
     def xx(self, ticks, direction):
-        o = 2 * math.pi * 7
-        wo = 2 * math.pi * 2.5
-
         angle = ticks * 2.5 / 280 * 360
-
-        print(f'{wo} wo')
         print(f'{angle} angle')
 
         c = 7 * math.sin(math.radians(90 - self.spin))
@@ -218,27 +213,39 @@ class Robot:
         print(f'{right_wheel_delta_x} delta x')
         print(f'{right_wheel_delta_y} delta y')
 
-        if direction is 'right':
-            x = (self.position[0] - (self.position[0] + right_wheel_delta_x)) * math.cos(math.radians(angle)) \
-                - (self.position[1] - (self.position[1] + right_wheel_delta_y)) * math.sin(math.radians(angle)) \
-                + right_wheel_delta_x + self.position[0]
+        if direction == 'right':
+            sin = math.sin(math.radians(-angle))
+            cos = math.cos(math.radians(-angle))
 
-            y = (self.position[0] - (self.position[0] + right_wheel_delta_x)) * math.sin(math.radians(angle)) \
-                + (self.position[1] - (self.position[1] + right_wheel_delta_y)) * math.cos(math.radians(angle)) \
-                + right_wheel_delta_y + self.position[1]
+            self.position[0] -= right_wheel_delta_x
+            self.position[1] -= right_wheel_delta_y
+
+            nx = self.position[0] * cos - self.position[1] * sin
+            ny = self.position[0] * sin + self.position[1] * cos
+
+            self.position[0] = nx + right_wheel_delta_x
+            self.position[1] = ny + right_wheel_delta_y
+
+            print(self.position[0])
+            print(self.position[1])
+
         else:
             left_wheel_delta_x = -right_wheel_delta_x
             left_wheel_delta_y = -right_wheel_delta_y
-            x = (self.position[0] - (self.position[0] + left_wheel_delta_x)) * math.cos(math.radians(angle)) \
-                - (self.position[1] - (self.position[1] + left_wheel_delta_y)) * math.cos(math.radians(angle))\
-                + left_wheel_delta_x + self.position[0]
+            sin = math.sin(math.radians(angle))
+            cos = math.cos(math.radians(angle))
 
-            y = (self.position[0] - (self.position[0] + left_wheel_delta_x)) * math.sin(math.radians(angle)) \
-                + (self.position[1] - (self.position[1] + left_wheel_delta_y)) * math.cos(math.radians(angle))\
-                + right_wheel_delta_y + self.position[1]
+            self.position[0] -= left_wheel_delta_x
+            self.position[1] -= left_wheel_delta_y
 
-        print(x)
-        print(y)
+            nx = self.position[0] * cos - self.position[1] * sin
+            ny = self.position[0] * sin + self.position[1] * cos
+
+            self.position[0] = nx + left_wheel_delta_x
+            self.position[1] = ny + left_wheel_delta_y
+
+            print(self.position[0])
+            print(self.position[1])
 
     def __init__(self):
         self.spin = 90
