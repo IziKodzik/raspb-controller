@@ -195,7 +195,7 @@ class Robot:
         o = 2 * math.pi * 7
         wo = 2 * math.pi * 2.5
 
-        angle = ticks * 2.5/280 * 360
+        angle = ticks * 2.5 / 280 * 360
 
         print(f'{wo} wo')
         print(f'{angle} angle')
@@ -220,18 +220,22 @@ class Robot:
 
         if direction is 'right':
             x = (self.position[0] - (self.position[0] + right_wheel_delta_x)) * math.cos(math.radians(angle)) \
-                - (self.position[1] - (self.position[1] + right_wheel_delta_y)) + right_wheel_delta_x + self.position[0]
+                - (self.position[1] - (self.position[1] + right_wheel_delta_y)) * math.cos(math.radians(angle)) \
+                + right_wheel_delta_x + self.position[0]
 
             y = (self.position[0] - (self.position[0] + right_wheel_delta_x)) * math.sin(math.radians(angle)) \
-                + (self.position[1] - (self.position[1] + right_wheel_delta_y)) + right_wheel_delta_y + self.position[1]
+                + (self.position[1] - (self.position[1] + right_wheel_delta_y)) * math.cos(math.radians(angle)) \
+                + right_wheel_delta_y + self.position[1]
         else:
             left_wheel_delta_x = -right_wheel_delta_x
             left_wheel_delta_y = -right_wheel_delta_y
             x = (self.position[0] - (self.position[0] + left_wheel_delta_x)) * math.cos(math.radians(angle)) \
-                - (self.position[1] - (self.position[1] + left_wheel_delta_y)) + left_wheel_delta_x + self.position[0]
+                - (self.position[1] - (self.position[1] + left_wheel_delta_y)) * math.cos(math.radians(angle))\
+                + left_wheel_delta_x + self.position[0]
 
             y = (self.position[0] - (self.position[0] + left_wheel_delta_x)) * math.sin(math.radians(angle)) \
-                + (self.position[1] - (self.position[1] + left_wheel_delta_y)) + right_wheel_delta_y + self.position[1]
+                + (self.position[1] - (self.position[1] + left_wheel_delta_y)) * math.cos(math.radians(angle))\
+                + right_wheel_delta_y + self.position[1]
 
         print(x)
         print(y)
