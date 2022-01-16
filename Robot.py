@@ -199,21 +199,21 @@ class Robot:
         print(f'{wo} wo')
         print(f'{angle} angle')
 
-        b = 7 * math.sin(math.radians(90 - self.spin))
-        c = 7 * math.cos(math.radians(90 - self.spin))
+        c = 7 * math.sin(math.radians(90 - self.spin))
+        b = 7 * math.cos(math.radians(90 - self.spin))
         print("b")
-        print(b)
-        print("c")
         print(c)
+        print("c")
+        print(b)
 
         if 90 < self.spin < 270:
-            right_wheel_delta_x = -c
+            right_wheel_delta_x = -b
         else:
-            right_wheel_delta_x = c
+            right_wheel_delta_x = b
         if 180 < self.spin < 360:
-            right_wheel_delta_y = b
+            right_wheel_delta_y = c
         else:
-            right_wheel_delta_y = -b
+            right_wheel_delta_y = -c
         print(right_wheel_delta_x)
         print(right_wheel_delta_y)
 
