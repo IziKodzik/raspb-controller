@@ -214,8 +214,8 @@ class Robot:
             right_wheel_delta_y = c
         else:
             right_wheel_delta_y = -c
-        print(right_wheel_delta_x)
-        print(right_wheel_delta_y)
+        print(f'{right_wheel_delta_x} delta x')
+        print(f'{right_wheel_delta_y} delta y')
 
         if direction is 'right':
             x = (self.position[0] - (self.position[0] + right_wheel_delta_x)) * math.cos(math.radians(angle)) \
