@@ -191,11 +191,50 @@ class Robot:
         print(thread._stopped)
         print(thread1._stopped)
 
+    def xx(self, ticks, direction):
+        o = 2 * math.pi * 7
+        wo = 2 * math.pi * 2.5
+        angle = ticks * 360 * (wo / o)
+
+        b = 7 * math.sin(math.radians(90 - self.spin))
+        c = 7 * math.cos(math.radians(90 - self.spin))
+        if 90 < self.spin < 270:
+
+            right_wheel_delta_x = -c
+        else:
+            right_wheel_delta_x = c
+        if 180 < self.spin < 360:
+            right_wheel_delta_y = b
+        else:
+            right_wheel_delta_y = -b
+
+        if direction is 'right':
+            x = (self.position[0] - (self.position[0] + right_wheel_delta_x)) * math.cos(math.radians(angle)) \
+                - (self.position[1] - (self.position[1] + right_wheel_delta_y)) + right_wheel_delta_x + self.position[0]
+
+            y = (self.position[0] - (self.position[0] + right_wheel_delta_x)) * math.sin(math.radians(angle)) \
+                + (self.position[1] - (self.position[1] + right_wheel_delta_y)) + right_wheel_delta_y + self.position[1]
+        else:
+            left_wheel_delta_x = -right_wheel_delta_x
+            left_wheel_delta_y = -right_wheel_delta_y
+            x = (self.position[0] - (self.position[0] + left_wheel_delta_x)) * math.cos(math.radians(angle)) \
+                - (self.position[1] - (self.position[1] + left_wheel_delta_y)) + left_wheel_delta_x + self.position[0]
+
+            y = (self.position[0] - (self.position[0] + left_wheel_delta_x)) * math.sin(math.radians(angle)) \
+                + (self.position[1] - (self.position[1] + left_wheel_delta_y)) + right_wheel_delta_y + self.position[1]
+
+        print(x)
+        print(y)
+
+
     def __init__(self):
+        self.spin = 0
+        sys.exit(2137)
         self.display_image()
+        self.position = [0., 0.]
+        self.xx(0, 'right')
         self.decoders()
         print('ended')
-        sys.exit(2137)
         while True:
             pass
 
