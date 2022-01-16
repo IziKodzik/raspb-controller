@@ -194,7 +194,9 @@ class Robot:
     def xx(self, ticks, direction):
         o = 2 * math.pi * 7
         wo = 2 * math.pi * 2.5
-        angle = ticks * 360 * (wo / o)
+        f = o/wo
+
+        angle = ticks * (wo / o) / 360
 
         print(f'{wo} wo')
         print(f'{angle} angle')
