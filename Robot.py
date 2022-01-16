@@ -229,10 +229,10 @@ class Robot:
 
     def __init__(self):
         self.spin = 0
-        sys.exit(2137)
-        self.display_image()
         self.position = [0., 0.]
         self.xx(0, 'right')
+        sys.exit(2137)
+        self.display_image()
         self.decoders()
         print('ended')
         while True:
