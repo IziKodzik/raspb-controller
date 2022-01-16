@@ -220,7 +220,7 @@ class Robot:
 
         if direction is 'right':
             x = (self.position[0] - (self.position[0] + right_wheel_delta_x)) * math.cos(math.radians(angle)) \
-                - (self.position[1] - (self.position[1] + right_wheel_delta_y)) * math.cos(math.radians(angle)) \
+                - (self.position[1] - (self.position[1] + right_wheel_delta_y)) * math.sin(math.radians(angle)) \
                 + right_wheel_delta_x + self.position[0]
 
             y = (self.position[0] - (self.position[0] + right_wheel_delta_x)) * math.sin(math.radians(angle)) \
