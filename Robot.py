@@ -196,10 +196,15 @@ class Robot:
         wo = 2 * math.pi * 2.5
         angle = ticks * 360 * (wo / o)
 
+        print(wo)
+        print(angle)
+
         b = 7 * math.sin(math.radians(90 - self.spin))
         c = 7 * math.cos(math.radians(90 - self.spin))
-        if 90 < self.spin < 270:
+        print(b)
+        print(c)
 
+        if 90 < self.spin < 270:
             right_wheel_delta_x = -c
         else:
             right_wheel_delta_x = c
@@ -207,6 +212,8 @@ class Robot:
             right_wheel_delta_y = b
         else:
             right_wheel_delta_y = -b
+        print(right_wheel_delta_x)
+        print(right_wheel_delta_y)
 
         if direction is 'right':
             x = (self.position[0] - (self.position[0] + right_wheel_delta_x)) * math.cos(math.radians(angle)) \
@@ -225,6 +232,7 @@ class Robot:
 
         print(x)
         print(y)
+
 
 
     def __init__(self):
