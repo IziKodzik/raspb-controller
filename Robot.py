@@ -235,12 +235,10 @@ class Robot:
         print(x)
         print(y)
 
-
-
     def __init__(self):
         self.spin = 90
         self.position = [0., 0.]
-        self.xx(0, 'right')
+        self.xx(1, 'right')
         sys.exit(2137)
         self.display_image()
         self.decoders()
