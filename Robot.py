@@ -228,7 +228,7 @@ class Robot:
 
 
     def __init__(self):
-        self.spin = 0
+        self.spin = 90
         self.position = [0., 0.]
         self.xx(0, 'right')
         sys.exit(2137)
