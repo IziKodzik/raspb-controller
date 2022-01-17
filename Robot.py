@@ -255,6 +255,8 @@ class Robot:
         self.position = [0., 0.]
         self.display_image()
         self.decoders()
+        time.sleep(5)
+        print(self.position)
         sys.exit(2137)
 
         print('ended')
