@@ -176,7 +176,7 @@ class Robot:
 
         motor1.go_backward()
         motor2.go_backward()
-        while thread.counter < 21:
+        while thread.counter < 300:
             pass
         motor1.stop()
         motor2.stop()
