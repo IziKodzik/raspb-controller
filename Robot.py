@@ -50,6 +50,7 @@ class Robot:
         while not getattr(current_thread, "_stopped"):
             decoder.wait_for_change()
             current_thread.counter = getattr(current_thread, "counter") + 1
+            print(current_thread.counter)
             self.one_wheel_turn(1, direction)
         print('Decoding ended.')
 
