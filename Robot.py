@@ -194,15 +194,15 @@ class Robot:
 
     def one_wheel_turn(self, ticks, direction):
         angle = ticks * 2.5 / 280 * 360
-        print(f'{angle} angle')
+        # print(f'{angle} angle')
         alpha = self.spin % 90
 
         c = 7 * math.sin(math.radians(90 - alpha))
         b = 7 * math.cos(math.radians(90 - alpha))
-        print("b")
-        print(c)
-        print("c")
-        print(b)
+        # print("b")
+        # print(c)
+        # print("c")
+        # print(b)
 
         if 90 < self.spin < 270:
             right_wheel_delta_x = -b
@@ -228,8 +228,8 @@ class Robot:
             self.position[0] = nx + right_wheel_delta_x
             self.position[1] = ny + right_wheel_delta_y
             self.spin -= angle
-            print(self.position[0])
-            print(self.position[1])
+            # print(self.position[0])
+            # print(self.position[1])
 
         else:
             left_wheel_delta_x = -right_wheel_delta_x
@@ -247,8 +247,8 @@ class Robot:
             self.position[1] = ny + left_wheel_delta_y
             self.spin += angle
 
-            print(self.position[0])
-            print(self.position[1])
+            # print(self.position[0])
+            # print(self.position[1])
 
     def __init__(self):
         self.spin = 90
