@@ -212,8 +212,8 @@ class Robot:
             right_wheel_delta_y = c
         else:
             right_wheel_delta_y = -c
-        print(f'{right_wheel_delta_x} delta x')
-        print(f'{right_wheel_delta_y} delta y')
+        # print(f'{right_wheel_delta_x} delta x')
+        # print(f'{right_wheel_delta_y} delta y')
 
         if direction == 'right':
             sin = math.sin(math.radians(-angle))
