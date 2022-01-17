@@ -60,7 +60,7 @@ class Robot:
         serial = i2c(port=1, address=0x3C)
 
         device = sh1106(serial)
-        img_path = 'peppo happyL.jpg' if random.uniform(0, 1) < 0.5 else 'sade.png'
+        img_path = 'peppo happyL.jpg' if random.uniform(0, 1) < 0.5 else 'sadge.png'
         img = Image.open(img_path).convert('RGBA')
         ffff = Image.new(img.mode, img.size, (255,) * 4)
 
