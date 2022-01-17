@@ -174,6 +174,7 @@ class Robot:
         thread1._stopped = False
         thread1.start()
 
+        left_motor.go_backward()
         right_motor.go_backward()
         while thread.counter < 300:
             pass
