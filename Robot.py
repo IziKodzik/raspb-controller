@@ -59,8 +59,6 @@ class Robot:
         # substitute bitbang_6800(RS=7, E=8, PINS=[25,24,23,27]) below if using that interface
         serial = i2c(port=1, address=0x3C)
 
-        # substitute ssd1331(...) or sh1106(...) below if using that device
-
         device = sh1106(serial)
         img_path = 'peppo happyL.jpg' if random.uniform(0, 1) < 0.5 else 'sade.png'
         img = Image.open(img_path).convert('RGBA')
@@ -74,6 +72,7 @@ class Robot:
         device.display(back.convert(device.mode))
 
     def find_landmarks(self):
+        # deprecated
         stepper = StepperMotor(17, 27)
         i2c = busio.I2C(board.SCL, board.SDA)
         distance_sensor = adafruit_vl53l0x.VL53L0X(i2c)
@@ -252,10 +251,10 @@ class Robot:
     def __init__(self):
         self.spin = 90
         self.position = [0., 0.]
-        self.one_wheel_turn(1, 'right')
-        sys.exit(2137)
         self.display_image()
         self.decoders()
+        sys.exit(2137)
+
         print('ended')
         while True:
             pass
