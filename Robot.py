@@ -1,4 +1,5 @@
 import math
+import random
 import sys
 import threading
 import time
@@ -43,17 +44,16 @@ class Robot:
         print(self.shift)
         print('Detecting acceleration ended.')
 
-    def count_wheel_ticks(self, decoder):
+    def count_wheel_ticks(self, decoder, direction):
         print('Decoding...')
         current_thread = threading.currentThread()
         while not getattr(current_thread, "_stopped"):
             decoder.wait_for_change()
             current_thread.counter = getattr(current_thread, "counter") + 1
-        print(current_thread)
+            self.one_wheel_turn(1, direction)
         print('Decoding ended.')
 
     def display_image(self):
-        print('xd')
         # rev.1 users set port=0
         # substitute spi(device=0, port=0) below if using that interface
         # substitute bitbang_6800(RS=7, E=8, PINS=[25,24,23,27]) below if using that interface
@@ -62,7 +62,7 @@ class Robot:
         # substitute ssd1331(...) or sh1106(...) below if using that device
 
         device = sh1106(serial)
-        img_path = 'peppo happyL.jpg'
+        img_path = 'peppo happyL.jpg' if random.uniform(0, 1) < 0.5 else 'sade.png'
         img = Image.open(img_path).convert('RGBA')
         ffff = Image.new(img.mode, img.size, (255,) * 4)
 
@@ -165,12 +165,12 @@ class Robot:
         dec1 = Decoder(24)
         dec2 = Decoder(23)
 
-        thread = threading.Thread(target=self.count_wheel_ticks, args=(dec1,))
+        thread = threading.Thread(target=self.count_wheel_ticks, args=(dec1, 'right'))
         thread._stopped = False
         thread.counter = 0
         thread.start()
 
-        thread1 = threading.Thread(target=self.count_wheel_ticks, args=(dec2,))
+        thread1 = threading.Thread(target=self.count_wheel_ticks, args=(dec2, 'left'))
         thread1.counter = 0
         thread1._stopped = False
         thread1.start()
@@ -226,7 +226,7 @@ class Robot:
 
             self.position[0] = nx + right_wheel_delta_x
             self.position[1] = ny + right_wheel_delta_y
-
+            self.spin -= angle
             print(self.position[0])
             print(self.position[1])
 
@@ -244,6 +244,7 @@ class Robot:
 
             self.position[0] = nx + left_wheel_delta_x
             self.position[1] = ny + left_wheel_delta_y
+            self.spin += angle
 
             print(self.position[0])
             print(self.position[1])
@@ -251,7 +252,7 @@ class Robot:
     def __init__(self):
         self.spin = 90
         self.position = [0., 0.]
-        self.xx(1, 'right')
+        self.one_wheel_turn(1, 'right')
         sys.exit(2137)
         self.display_image()
         self.decoders()
