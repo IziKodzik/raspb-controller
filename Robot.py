@@ -191,12 +191,13 @@ class Robot:
         print(thread._stopped)
         print(thread1._stopped)
 
-    def xx(self, ticks, direction):
+    def one_wheel_turn(self, ticks, direction):
         angle = ticks * 2.5 / 280 * 360
         print(f'{angle} angle')
+        alpha = self.spin % 90
 
-        c = 7 * math.sin(math.radians(90 - self.spin))
-        b = 7 * math.cos(math.radians(90 - self.spin))
+        c = 7 * math.sin(math.radians(90 - alpha))
+        b = 7 * math.cos(math.radians(90 - alpha))
         print("b")
         print(c)
         print("c")

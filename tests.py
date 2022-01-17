@@ -31,10 +31,12 @@ class Ro:
     def xx(self, ticks, direction):
 
         angle = ticks * 2.5 / 280 * 360
+        angle = 180
         print(f'{angle} angle')
 
-        c = 7 * math.sin(math.radians(90 - self.spin))
-        b = 7 * math.cos(math.radians(90 - self.spin))
+        alpha = self.spin % 90
+        c = 7 * math.sin(math.radians(90 - alpha))
+        b = 7 * math.cos(math.radians(90 - alpha))
         print("b")
         print(c)
         print("c")
