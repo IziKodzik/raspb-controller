@@ -158,8 +158,8 @@ class Robot:
 
     def decoders(self):
 
-        motor1 = Motor(21, 20, 16)
-        motor2 = Motor(13, 19, 26)
+        right_motor = Motor(21, 20, 16)
+        left_motor = Motor(13, 19, 26)
 
         dec1 = Decoder(24)
         dec2 = Decoder(23)
@@ -174,11 +174,11 @@ class Robot:
         thread1._stopped = False
         thread1.start()
 
-        motor1.go_backward()
+        right_motor.go_backward()
         while thread.counter < 300:
             pass
-        motor1.stop()
-        motor2.stop()
+        right_motor.stop()
+        left_motor.stop()
         time.sleep(0.5)
         dec1.decoding = False
         dec2.decoding = False
