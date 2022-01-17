@@ -48,10 +48,12 @@ class Robot:
         print('Decoding...')
         current_thread = threading.currentThread()
         while not getattr(current_thread, "_stopped"):
+            self.position_lock.acquire()
             decoder.wait_for_change()
             current_thread.counter = getattr(current_thread, "counter") + 1
             print(current_thread.counter)
             self.one_wheel_turn(1, direction)
+            self.position_lock.release()
         print('Decoding ended.')
 
     def display_image(self):
@@ -159,6 +161,7 @@ class Robot:
         print(landmarks)
 
     def decoders(self):
+
         motor1 = Motor(21, 20, 16)
         motor2 = Motor(13, 19, 26)
 
@@ -189,8 +192,6 @@ class Robot:
         thread1._stopped = True
         print(thread.counter)
         print(thread1.counter)
-        print(thread._stopped)
-        print(thread1._stopped)
 
     def one_wheel_turn(self, ticks, direction):
         angle = ticks * 2.5 / 280 * 360
@@ -251,6 +252,7 @@ class Robot:
             # print(self.position[1])
 
     def __init__(self):
+        self.position_lock = threading.Lock()
         self.spin = 90
         self.position = [0., 0.]
         self.display_image()
