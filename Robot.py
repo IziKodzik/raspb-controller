@@ -48,12 +48,8 @@ class Robot:
         print('Decoding...')
         current_thread = threading.currentThread()
         while not getattr(current_thread, "_stopped"):
-            self.position_lock.acquire()
             decoder.wait_for_change()
             current_thread.counter = getattr(current_thread, "counter") + 1
-            print(current_thread.counter)
-            self.one_wheel_turn(1, direction)
-            self.position_lock.release()
         print('Decoding ended.')
 
     def display_image(self):
