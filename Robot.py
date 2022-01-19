@@ -70,9 +70,8 @@ class Robot:
         back.paste(img, posn)
         device.display(back.convert(device.mode))
 
-    def find_landmarks(self):
+    def find_landmarks(self, stepper):
         # deprecated
-        stepper = StepperMotor(17, 27)
         i2c = busio.I2C(board.SCL, board.SDA)
         distance_sensor = adafruit_vl53l0x.VL53L0X(i2c)
 
@@ -150,9 +149,7 @@ class Robot:
                 stepper.take_step()
                 print(f"{distance}mm")
                 print(landmarks)
-        stepper.change_dir()
-        for i in range(0, 1600):
-            stepper.take_step()
+        self.respin_360()
         stepper.change_dir()
         print(landmarks)
 
@@ -161,15 +158,15 @@ class Robot:
         right_motor = Motor(21, 20, 16)
         left_motor = Motor(13, 19, 26)
 
-        dec1 = Decoder(24)
-        dec2 = Decoder(23)
+        left_decoder = Decoder(24)
+        right_decoder = Decoder(23)
 
-        thread = threading.Thread(target=self.count_wheel_ticks, args=(dec1, 'right'))
+        thread = threading.Thread(target=self.count_wheel_ticks, args=(left_decoder, 'right'))
         thread._stopped = False
         thread.counter = 0
         thread.start()
 
-        thread1 = threading.Thread(target=self.count_wheel_ticks, args=(dec2, 'left'))
+        thread1 = threading.Thread(target=self.count_wheel_ticks, args=(right_decoder, 'left'))
         thread1.counter = 0
         thread1._stopped = False
         thread1.start()
@@ -181,8 +178,8 @@ class Robot:
         right_motor.stop()
         left_motor.stop()
         time.sleep(0.5)
-        dec1.decoding = False
-        dec2.decoding = False
+        left_decoder.decoding = False
+        right_decoder.decoding = False
 
         thread._stopped = True
         thread1._stopped = True
@@ -248,25 +245,21 @@ class Robot:
             # print(self.position[1])
 
     def __init__(self):
-        self.position_lock = threading.Lock()
-        self.spin = 90
-        self.position = [0., 0.]
-        self.display_image()
-        self.decoders()
-        print(self.position)
-        sys.exit(2137)
+        # self.position_lock = threading.Lock()
+        # self.spin = 90
+        # self.position = [0., 0.]
+        # self.display_image()
+        # self.decoders()
+        # print(self.position)
 
-        print('ended')
-        while True:
-            pass
 
-        motor1 = Motor(21, 20, 16)
-        motor2 = Motor(13, 19, 26)
+        # motor1 = Motor(21, 20, 16)
+        # motor2 = Motor(13, 19, 26)
         # motor1.go_forward()
         # motor2.go_backward()
 
         # wheel_decoder = Decoder(23)
-
+        stepper = StepperMotor(17, 27)
         i2c = busio.I2C(board.SCL, board.SDA)
         vl53 = adafruit_vl53l0x.VL53L0X(i2c)
         self.accelerometer = adafruit_adxl34x.ADXL345(i2c)
@@ -275,23 +268,13 @@ class Robot:
 
         points = []
         print('First scan.')
-        for i in range(0, 1600):
-            distance = vl53.range
-            if distance > 8000:
-                distance = 0
-
-            if distance != 0:
-                radians = i * 0.225 * math.pi / 180.0
-                points.append({'x': (distance * math.sin(radians)), 'y': (distance * math.cos(radians))})
-            stepper.take_step()
-
-        stepper.change_dir()
-        for i in range(0, 1600):
-            stepper.take_step()
+        self.make_360_scan(points, vl53)
+        self.respin_360()
 
         stepper.change_dir()
         map_points_data = {'map-points': points, 'i': 0}
         res = requests.post("http://192.168.0.115:8080/map-points", json=map_points_data)
+        sys.exit(2137)
         points.clear()
         self.counted_ticks1 = 0
         decoder_counter_thread = threading.Thread(target=self.detect_shift)
@@ -316,12 +299,26 @@ class Robot:
                                'y': (distance * math.cos(radians)) - self.shift[1] * 10000})
 
             stepper.take_step()
-        stepper.change_dir()
-        for i in range(0, 1600):
-            stepper.take_step()
+        self.respin_360()
         stepper.change_dir()
 
         map_points_data = {'map-points': points, 'i': 1}
         requests.post("http://192.168.0.115:8080/map-points", json=map_points_data)
 
         points.clear()
+
+    def respin_360(self):
+        stepper.change_dir()
+        for i in range(0, 1600):
+            stepper.take_step()
+
+    def make_360_scan(self, points, vl53):
+        for i in range(0, 1600):
+            distance = vl53.range
+            if distance > 8000:
+                distance = 0
+
+            if distance != 0:
+                radians = math.radians(i * 0.225)
+                points.append({'x': (distance * math.sin(radians)), 'y': (distance * math.cos(radians))})
+            stepper.take_step()
