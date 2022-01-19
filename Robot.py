@@ -259,7 +259,7 @@ class Robot:
         # motor2.go_backward()
 
         # wheel_decoder = Decoder(23)
-        stepper = StepperMotor(17, 27)
+        self.stepper = StepperMotor(17, 27)
         i2c = busio.I2C(board.SCL, board.SDA)
         vl53 = adafruit_vl53l0x.VL53L0X(i2c)
         self.accelerometer = adafruit_adxl34x.ADXL345(i2c)
@@ -271,7 +271,6 @@ class Robot:
         self.make_360_scan(points, vl53)
         self.respin_360()
 
-        stepper.change_dir()
         map_points_data = {'map-points': points, 'i': 0}
         res = requests.post("http://192.168.0.115:8080/map-points", json=map_points_data)
         sys.exit(2137)
@@ -308,9 +307,10 @@ class Robot:
         points.clear()
 
     def respin_360(self):
-        stepper.change_dir()
+        self.stepper.change_dir()
         for i in range(0, 1600):
-            stepper.take_step()
+            self.stepper.take_step()
+        self.stepper.change_dir()
 
     def make_360_scan(self, points, vl53):
         for i in range(0, 1600):
@@ -321,4 +321,4 @@ class Robot:
             if distance != 0:
                 radians = math.radians(i * 0.225)
                 points.append({'x': (distance * math.sin(radians)), 'y': (distance * math.cos(radians))})
-            stepper.take_step()
+            self.stepper.take_step()
