@@ -320,5 +320,6 @@ class Robot:
 
                 if distance != 0:
                     radians = math.radians(i * 0.225)
-                    points.append({'x': (distance * math.sin(radians)), 'y': (distance * math.cos(radians))})
+                    points.append(
+                        {'x': (distance * math.sin(radians)), 'y': -(distance * math.cos(radians)), 'angle': i * 0.225})
             self.stepper.take_step()
