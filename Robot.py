@@ -272,7 +272,7 @@ class Robot:
         self.respin_360()
 
         map_points_data = {'map-points': points, 'i': 0}
-        res = requests.post("http://192.168.0.115:8080/map-points", json=map_points_data)
+        res = requests.post("http://192.168.0.59:8080/map-points", json=map_points_data)
         sys.exit(2137)
         points.clear()
         self.counted_ticks1 = 0
