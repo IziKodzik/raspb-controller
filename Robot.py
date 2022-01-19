@@ -252,7 +252,6 @@ class Robot:
         # self.decoders()
         # print(self.position)
 
-
         # motor1 = Motor(21, 20, 16)
         # motor2 = Motor(13, 19, 26)
         # motor1.go_forward()
@@ -314,11 +313,12 @@ class Robot:
 
     def make_360_scan(self, points, vl53):
         for i in range(0, 1600):
-            distance = vl53.range
-            if distance > 8000:
-                distance = 0
+            if i % 10 == 0:
+                distance = vl53.range
+                if distance > 3000:
+                    distance = 0
 
-            if distance != 0:
-                radians = math.radians(i * 0.225)
-                points.append({'x': (distance * math.sin(radians)), 'y': (distance * math.cos(radians))})
-            self.stepper.take_step()
+                if distance != 0:
+                    radians = math.radians(i * 0.225)
+                    points.append({'x': (distance * math.sin(radians)), 'y': (distance * math.cos(radians))})
+                self.stepper.take_step()
