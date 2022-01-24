@@ -77,6 +77,11 @@ def calc_angle(point0, point1):
         angle = 360 + angle
     return angle
 
+def calc_dist(point0, point1):
+    dx = (point0.x - point1.x)
+    dy = (point0.y - point1.y)
+    return math.sqrt(
+        dx ** 2 + dy ** 2) + 0.0000000000000000000000000000000000000000000000000000000000000000000000000000000001
 
 # def calc_angle22(point0, point1):
 #     dx = (point0.x - point1.x)
